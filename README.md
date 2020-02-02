@@ -1,4 +1,5 @@
 # FURIMA DB設計
+
 ## users
 |Column|Type|Options|
 |------|----|-------|
@@ -97,7 +98,7 @@
 |type|string|null: false|
 |exhibition_id|integer|null: false, foreign_key: true|
 
-### Association 
+### Association
 - belongs_to exhibition
 
 ## sizes
