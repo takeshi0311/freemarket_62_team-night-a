@@ -12,10 +12,12 @@
 |j-family_name|string|null :false|
 |birthday|integer|null :false|
 |phone_number|integer|null :false|
+|profile|text||
 
 ### Association
 - has_many exhibitions
 - has_many purchases
+- has_many comments
 - has_one pay
 - has_one adress
 
@@ -24,6 +26,7 @@
 |------|----|-------|
 |name|string|null: false|
 |description|text|null: false|
+|size|string||
 |stats|string|null: false|
 |shipping_charges|string|null: false|
 |shipping_method|string|null: false|
@@ -34,11 +37,22 @@
 
 ### Association
 - belongs_to user
+- belongs_to category
+- belongs_to bramd
+- has_many comments
 - has_many images
-- has_many categorys
-- has_many bramds
-- has_many sizes
 - has_one purchase
+
+## comments
+|Column|Type|Options|
+|------|----|-------|
+|body|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|exhibition_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to user
+- belongs_to exhibition
 
 ## images
 |Column|Type|Options|
@@ -90,7 +104,8 @@
 |exhibition_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to exhibition
+- has_many exhibitions
+- has_ancestry
 
 ## brands
 |Column|Type|Options|
@@ -99,13 +114,4 @@
 |exhibition_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to exhibition
-
-## sizes
-|Column|Type|Options|
-|------|----|-------|
-|size|string|null: false|
-|exhibition_id|integer|null: false, foreign_key: true|
-
-### Association
-- belongs_to exhibition
+- has_many exhibitions
