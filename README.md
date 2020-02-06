@@ -1,4 +1,5 @@
 # FURIMA DB設計
+https://gyazo.com/08693bcccbb988301e46a259f9fb92b3
 
 ## users
 |Column|Type|Options|
