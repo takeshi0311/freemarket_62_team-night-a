@@ -1,5 +1,5 @@
 # FURIMA DB設計
-https://gyazo.com/08693bcccbb988301e46a259f9fb92b3
+https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0deca
 
 ## users
 |Column|Type|Options|
@@ -20,7 +20,7 @@ https://gyazo.com/08693bcccbb988301e46a259f9fb92b3
 - has_many purchases
 - has_many comments
 - has_one pay
-- has_one adress
+- has_one address
 
 ## exhibitions
 |Column|Type|Options|
@@ -35,11 +35,13 @@ https://gyazo.com/08693bcccbb988301e46a259f9fb92b3
 |price|integer|nill: false|
 |shopping_date|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
+|brand_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to user
 - belongs_to category
-- belongs_to bramd
+- belongs_to brand
 - has_many comments
 - has_many images
 - has_one purchase
@@ -64,7 +66,7 @@ https://gyazo.com/08693bcccbb988301e46a259f9fb92b3
 ### Association
 - belongs_to exhibition
 
-## adresses
+## addresses
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|integer|null: false|
@@ -102,7 +104,6 @@ https://gyazo.com/08693bcccbb988301e46a259f9fb92b3
 |Column|Type|Options|
 |------|----|-------|
 |type|string|null: false|
-|exhibition_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many exhibitions
@@ -112,7 +113,6 @@ https://gyazo.com/08693bcccbb988301e46a259f9fb92b3
 |Column|Type|Options|
 |------|----|-------|
 |type|string|null: false|
-|exhibition_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many exhibitions
