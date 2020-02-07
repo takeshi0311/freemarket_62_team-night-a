@@ -9,8 +9,8 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |password|string|null: false|
 |family_name|string|null: false|
 |last_name|string|null :false|
-|j-family_name|string|null :false|
-|j-last_name|string|null :false|
+|frigana_family_name|string|null :false|
+|frigana_last_name|string|null :false|
 |birthday|integer|null :false|
 |phone_number|integer|null :false|
 |profile|text||
@@ -84,7 +84,7 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |card_number|integer|null: false|
 |month|integer|null: false|
 |year|integer|null: false|
-|security-code|integer|null: false|
+|security_code|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
