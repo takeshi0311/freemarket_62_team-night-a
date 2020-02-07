@@ -16,13 +16,13 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |profile|text||
 
 ### Association
-- has_many exhibitions
+- has_many items
 - has_many purchases
 - has_many comments
 - has_one pay
 - has_one address
 
-## exhibitions
+## items
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -51,20 +51,20 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |------|----|-------|
 |body|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|exhibition_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to user
-- belongs_to exhibition
+- belongs_to item
 
 ## images
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|exhibition_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to exhibition
+- belongs_to item
 
 ## addresses
 |Column|Type|Options|
@@ -94,11 +94,11 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|exhibition_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to user
-- belongs_to exhibition
+- belongs_to item
 
 ## categorys
 |Column|Type|Options|
@@ -106,7 +106,7 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |type|string|null: false|
 
 ### Association
-- has_many exhibitions
+- has_many items
 - has_ancestry
 
 ## brands
@@ -115,4 +115,4 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |type|string|null: false|
 
 ### Association
-- has_many exhibitions
+- has_many items
