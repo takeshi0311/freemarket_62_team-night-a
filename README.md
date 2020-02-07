@@ -28,7 +28,7 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |name|string|null: false|
 |description|text|null: false|
 |size|string||
-|stats|string|null: false|
+|stats|integer|null: false, enum|
 |shipping_charges|string|null: false|
 |shipping_method|string|null: false|
 |region|string|null: false|
