@@ -10,7 +10,7 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |family_name|string|null: false|
 |last_name|string|null :false|
 |j-family_name|string|null :false|
-|j-family_name|string|null :false|
+|j-last_name|string|null :false|
 |birthday|integer|null :false|
 |phone_number|integer|null :false|
 |profile|text||
@@ -28,7 +28,7 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |name|string|null: false|
 |description|text|null: false|
 |size|string||
-|stats|integer|null: false, enum|
+|status|integer|null: false, enum|
 |shipping_charges|string|null: false|
 |shipping_method|string|null: false|
 |region|string|null: false|
@@ -70,8 +70,8 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|integer|null: false|
-|prefectures|string|null: false|
-|municipalities|sturing|null: false|
+|prefecture|string|null: false|
+|municipalitie|sturing|null: false|
 |building|string||
 |user_id|integer|null: false, foreign_key: true|
 
