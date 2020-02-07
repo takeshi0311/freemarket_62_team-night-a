@@ -12,6 +12,8 @@
   background-size: cover;
   display: flex;
   align-items: center;
+  background-repeat: no-repeat;
+  position: relative;
   &__content {
     max-width: 1280px;
     width: 100%;
@@ -52,7 +54,7 @@
   }
 }
 
-.memJapan {
+.reason {
   padding: 0px 20px 60px;
   &__subttl {
   text-align: center;
@@ -186,6 +188,17 @@
     text-align: center;
     margin: 0 0 25px;
     padding-bottom: 15px;
+    position: relative;
+    &::after {
+      content: "";
+      width: 70px;
+      height: 4px;
+      background-color: #3CCACE;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      }
   }
   &__lists {
     max-width: calc(1040px + 20px);
