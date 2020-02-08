@@ -1,3 +1,22 @@
 @import 'ress';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+
+* {
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
+.main{
+  display:block;
+  .main-section{
+    width:700px;
+    margin:0 auto;
+    &__verification{
+      font-size:22px;
+      padding:32px;
+    }
+  }
+}
