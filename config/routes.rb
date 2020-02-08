@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   root to: 'tweets#index'
   get 'tweets' => 'tweets#index'
+  get 'tweets/update' => 'tweets#update'
 end
