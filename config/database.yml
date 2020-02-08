@@ -50,5 +50,10 @@ test:
 production:
   <<: *default
   database: freemarket_62_team-night-a_production
-  username: freemarket_62_team-night-a
-  password: <%= ENV['FREEMARKET_62_TEAM-NIGHT-A_DATABASE_PASSWORD'] %>
+  # 本番環境とローカルのMySQLの設定を合わせるため
+  # 本番環境のusernameはデフォルトでrootというユーザーでアクセス可能であるため、ローカルでもこちらを使用。
+  username: root
+  #MySQLにrootでアクセスする際に、必要なパスワード。直接記載できない為、環境変数で記載。
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  #MySQLサーバーに接続する際、mysql.sockファイルで接続するらしく、そのディレクトリの場所を示している。
+  socket: /var/lib/mysql/mysql.sock
