@@ -1,3 +1,9 @@
+*{
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
 .header{
   display: block;
   height: 100px;
@@ -26,12 +32,16 @@
           width: 100%;
           display: flex;
           margin-bottom: 5px;
+          height: 36px;
         }
           input{
             width: calc(100% - 36px);
             height: 36px;
             padding: 0 0 0 5px;
             font-size: 16px;
+            border-style: solid;
+            border-color: gray;
+            border-width: 1px;
           }
         button{
           cursor: pointer;
