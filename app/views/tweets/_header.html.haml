@@ -14,10 +14,10 @@
     .header__inner__nav
       .list-left
         .list-left__item-first
-          %a.category-btn{href: "#"} カテゴリー
+          = link_to 'カテゴリー', '#', class: "category-btn"
         .list-left__item-second
-          %a.brand-btn{href: "#"} ブランド
+          = link_to "ブランド", "#", class:"brand-btn"
       .list-right
         .list-right__item
-          %a.login-btn{href: "#"} ログイン
-          %a.new-member-btn{href: "#"} 新規会員登録
+          = link_to "ログイン", "#", class: "login-btn"
+          = link_to "新規会員登録", "#", class: "new-member-btn"
