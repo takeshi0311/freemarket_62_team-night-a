@@ -68,6 +68,7 @@ h3{
 .buy-section__item{
   padding-bottom: 48px;
   border-top:1px solid #f5f5f5;
+  padding: 32px 0;
   &__content{
     max-width: 343px;
     margin:0 auto;
@@ -85,6 +86,7 @@ h3{
         &__label{
           text-align: left;
           font-size: 18px;
+          padding-top:6px;
         }
         &__money{
           font-size:24px;
@@ -101,6 +103,7 @@ h3{
   padding: 32px 0;
   &__box{
     margin:4px 0 0;
+    font-size: 14px;
     &__resist{
       display:flex;
       color: #0099e8;
@@ -115,8 +118,8 @@ h3{
   border-top:1px solid #f5f5f5;
   padding: 32px 0;
   &__box{
-    display:flex;
     margin:4px 0 0;
+    font-size: 14px;
   }
   &__resist{
     display:flex;
@@ -129,6 +132,16 @@ h3{
 
 .buy-content__btn{
   border-top:1px solid #f5f5f5;
+  padding-bottom:0;
+  padding: 32px 0;
+  &__buy{
+    border: 1px solid #888;
+    background: #888;
+    color: #fff;
+    width:100%;
+    line-height: 48px;
+    line-height: 48px;
+  }
 }
 
 .fal{
