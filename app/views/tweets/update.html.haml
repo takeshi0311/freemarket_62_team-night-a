@@ -17,28 +17,30 @@
               %span お金が入るよ
               %span (税込)送料なし
       
-    %section.buy-section__item__buy
-      .buy-section__item__buy__content
+    %section.buy-section__item
+      .buy-section__item__content
         .buy-section__item__content__form
           %ul.buy-section__item__content__form__price
             %li.buy-section__item__content__form__price__cell
-              .buy-section__item__content__form__price__label
+              .buy-section__item__content__form__price__label 
                 支払い金額
               .buy-section__item__content__form__price__money
                 %span ￥200
-        %section.buy-content__pay__method
-          %h3 お支払い方法
-          = link_to tweets_path, class: ".buy-content__pay__method__box" do
-            = icon('fas', 'fa-plus-circle', class: "fal fa-plus-circle")
-            %p.buy-content__pay__method__box__resist
-              登録してください
-        
-        %section.buy-content__address__resist
-          %h3　配送先
-          = link_to tweets_path, class: ".buy-content__pay__method__box" do
-            = icon('fas', 'fa-plus-circle', class: "fal fa-plus-circle")
-            %p.buy-content__pay__method__box__resist
-              登録してください
+          %section.buy-content__pay__method
+            %h3 支払い方法
+            .buy-content__pay__method__box
+              = link_to tweets_path, class: "buy-content__pay__method__box__resist" do
+                = icon('fas', 'fa-plus-circle', class: "fal fa-plus-circle")
+                %p.buy-content__pay__method__box__resist__to
+                  登録してください
+          
+          %section.buy-content__address
+            %h3　配送先
+            .buy-content__address__box
+              = link_to tweets_path, class: "buy-content__address__resist" do
+                = icon('fas', 'fa-plus-circle', class: "fal fa-plus-circle")
+                %p.buy-content__address__resist__to
+                  登録してください
 
         %section.buy-content__btn
           %button.buy-content__btn__buy

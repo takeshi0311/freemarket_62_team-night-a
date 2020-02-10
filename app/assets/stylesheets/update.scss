@@ -9,6 +9,14 @@
   padding: 0;
 }
 
+section{
+  display:block;
+}
+
+h3{
+  font-size:14px;
+}
+
 .main{
   display:block;
   .main-section{
@@ -55,4 +63,74 @@
       }
     }
   }
+}
+
+.buy-section__item{
+  padding-bottom: 48px;
+  border-top:1px solid #f5f5f5;
+  &__content{
+    max-width: 343px;
+    margin:0 auto;
+    &__form{
+      display:block;
+      &__price{
+        display: table;
+        width:100%;
+        list-style: none;
+        padding:10px;
+        &__cell{
+          font-weight: 600;
+          display: flex;
+        }
+        &__label{
+          text-align: left;
+          font-size: 18px;
+        }
+        &__money{
+          font-size:24px;
+          padding-left:150px;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+.buy-content__pay__method{
+  border-top:1px solid #f5f5f5;
+  padding: 32px 0;
+  &__box{
+    margin:4px 0 0;
+    &__resist{
+      display:flex;
+      color: #0099e8;
+      &__to{
+        padding-left:3px;
+      }
+    }
+  }
+}
+
+.buy-content__address{
+  border-top:1px solid #f5f5f5;
+  padding: 32px 0;
+  &__box{
+    display:flex;
+    margin:4px 0 0;
+  }
+  &__resist{
+    display:flex;
+    color: #0099e8;
+    &__to{
+      padding-left:3px;
+    }
+  }
+}
+
+.buy-content__btn{
+  border-top:1px solid #f5f5f5;
+}
+
+.fal{
+  padding-top:3.6px;
 }
