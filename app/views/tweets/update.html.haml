@@ -12,9 +12,9 @@
             %p.main-section__item__detail__name 
               商品入るよ
             %p.main-section__item__detail__price
-              %span お金が入るよ
-              %span (税込)送料なし
-      
+              %span ¥200
+              %span.main-section__item__detail__tax (税込)送料なし
+
     %section.buy-section__item
       .buy-section__item__content
         .buy-section__item__content__form
@@ -24,6 +24,13 @@
                 支払い金額
               .buy-section__item__content__form__price__money
                 %span ￥200
+          %ul.buy-section__point
+            %li.buy-section__point__check
+              .buy-section__point__check__box
+                %i.fas.fa-check-square
+                %label.buy-section__point__check__box__label
+                  ポイントを使用（所持ポイント:P0)
+
           %section.buy-content__pay__method
             %h3 支払い方法
             .buy-content__pay__method__box
