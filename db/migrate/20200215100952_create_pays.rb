@@ -5,7 +5,6 @@ class CreatePays < ActiveRecord::Migration[5.0]
       t.integer :month, null: false
       t.integer :year, null: false
       t.integer :security_code, null: false
-      t.reference :user, null: false, foreign_key: true
 
       t.timestamps
     end

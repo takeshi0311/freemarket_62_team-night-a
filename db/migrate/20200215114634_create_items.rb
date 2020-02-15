@@ -10,9 +10,6 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.string :region, null: false
       t.integer :price, null: false
       t.string :shopping_date, null: false
-      t.reference :user, foreign_key: true
-      t.reference :category, foreign_key: true
-      t.reference :brand, foreign_key: true
       
       t.timestamps
     end
