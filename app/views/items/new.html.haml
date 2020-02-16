@@ -1,7 +1,7 @@
 %section.l-single-container.buy-item-container
   .sell__block
     %h2.sell__block--head 商品の情報を入力
-    %form{:action => "#", :method => "post", :class  => "sell__block--form"}
+    %form{ action: "#", method: "post", class: "sell__block--form"}
       .sell__image
         .sell__image--top
           %h3.sell__image--top--left 出品画像
@@ -9,7 +9,7 @@
         .sell__image-second
           最大10枚までアップロードできます
         .sell__image--upload
-          %input.sell__image--upload--file{:name => "image--upload", :type => "file", :style => "display: none;"}/
+          %input.sell__image--upload--file{ name: "image--upload", type: "file", style: "display: none;"}/
           %pre.visible-pc
             :preserve
               ドラッグアンドドロップ
@@ -18,11 +18,11 @@
         .sell__name--top
           %h3.sell__name--top--left 商品名
           %span.sell__name--top--right 必須
-        %input.sell__name--text{:name => "sell--name", :type => "text", :placeholder => "商品名（必須40文字まで）"}/
+        %input.sell__name--text{ name: "sell--name", type: "text", placeholder: "商品名（必須40文字まで）"}/
         .sell__name--explain
           %h3.sell__name--explain--left 商品説明
           %span.sell__name--explain--right 必須
-        %textarea.sell__explain--text{:placeholder => "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", :rows => "5"}
+        %textarea.sell__explain--text{ placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"}
       .sell__detail
         %p.sell__detail--top 商品の詳細
         .sell__detail--second
@@ -44,12 +44,12 @@
             %option{"aria-selected" => "false", :label => "ハンドメイド", :value => "9"} ハンドメイド
             %option{"aria-selected" => "false", :label => "チケット", :value => "1027"} チケット
             %option{"aria-selected" => "false", :label => "自動車・オートバイ", :value => "1318"} 自動車・オートバイ
-          %svg{"aria-hidden" => "true", :fill => "#888888", "fill-rule" => "evenodd", :height => "24", :viewbox => "0 0 24 24", :width => "24"}
-            %path{:d => "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+          %svg{"aria-hidden" => "true", fill: "#888888", "fill-rule" => "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+            %path{ d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
         .sell__detail--third
           %h3.sell__detail--brand ブランド
           %span.sell__detail--any 任意
-        %input.sell__detail--text{:name => "sell--brand", :type => "text", :placeholder => "例）シャネル"}/
+        %input.sell__detail--text{ name: "sell--brand", type: "text", placeholder: "例）シャネル"}/
         .sell__detail--forth
           %h3.sell__detail--status 商品の状態
           %span.sell__detail--require 必須
@@ -62,7 +62,7 @@
             %option{"aria-selected" => "false", :label => "やや傷や汚れあり", :value => "4"} やや傷や汚れあり
             %option{"aria-selected" => "false", :label => "傷や汚れあり", :value => "5"} 傷や汚れあり
             %option{"aria-selected" => "false", :label => "全体的に状態が悪い", :value => "6"} 全体的に状態が悪い
-          %svg{"aria-hidden" => "true", :fill => "#888888", "fill-rule" => "evenodd", :height => "24", :viewbox => "0 0 24 24", :width => "24"}
+          %svg{"aria-hidden" => "true", fill: "#888888", "fill-rule" => "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
             %path{:d => "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
       .sell__delivery
         %span.sell__delivery--top 配送について
@@ -75,8 +75,8 @@
             %option{"aria-selected" => "true", :label => "選択してください", :selected => "selected", :value => ""} 選択してください
             %option{"aria-selected" => "false", :label => "送料込み(出品者負担)", :value => "2"} 送料込み(出品者負担)
             %option{"aria-selected" => "false", :label => "着払い(購入者負担)", :value => "1"} 着払い(購入者負担)
-          %svg{"aria-hidden" => "true", :fill => "#888888", "fill-rule" => "evenodd", :height => "24", :viewbox => "0 0 24 24", :width => "24"}
-            %path{:d => "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+          %svg{"aria-hidden" => "true", fill: "#888888", "fill-rule" => "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+            %path{ d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
         .sell__delivery--third
           %h3.sell__delivery--local 発送元の地域
           %span.sell__delivery--require 必須
@@ -131,8 +131,8 @@
             %option{"aria-selected" => "false", :label => "鹿児島県", :value => "46"} 鹿児島県
             %option{"aria-selected" => "false", :label => "沖縄県", :value => "47"} 沖縄県
             %option{"aria-selected" => "false", :label => "未定", :value => "99"} 未定
-          %svg{"aria-hidden" => "true", :fill => "#888888", "fill-rule" => "evenodd", :height => "24", :viewbox => "0 0 24 24", :width => "24"}
-            %path{:d => "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+          %svg{"aria-hidden" => "true", fill: "#888888", "fill-rule" => "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+            %path{ d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
         .sell__delivery--forth
           %h3.sell__delivery--days 発送までの日数
           %span.sell__delivery--require 必須
@@ -142,8 +142,8 @@
             %option{"aria-selected" => "false", :label => "1~2日で発送", :value => "1"} 1~2日で発送
             %option{"aria-selected" => "false", :label => "2~3日で発送", :value => "2"} 2~3日で発送
             %option{"aria-selected" => "false", :label => "4~7日で発送", :value => "3"} 4~7日で発送
-          %svg{"aria-hidden" => "true", :fill => "#888888", "fill-rule" => "evenodd", :height => "24", :viewbox => "0 0 24 24", :width => "24"}
-            %path{:d => "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+          %svg{"aria-hidden" => "true", fill: "#888888", "fill-rule" => "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+            %path{ d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
       .sell__price
         .sell__price--top
           %span.sell__price--topprice 販売価格
@@ -159,7 +159,7 @@
                 .sell__price--yen
                   ¥
                   .sell__price--input
-                    %input.sell__price--default{:placeholder => "例）300", :value => ""}/
+                    %input.sell__price--default{ placeholder: "例）300", value: ""}/
         .sell__price--second
           .sell__price--fee 販売手数料 (10%)
           .sell__price--border -
@@ -181,6 +181,6 @@
             また、出品をもちまして
             = link_to "加盟店規約", "/jp/seller_terms/", class: "a", target: "_blank"
             に同意したことになります。
-        %button.sell__exhibition--botton{:type => "submit"}出品する
-        %button.sell__exhibition--back{:type => "submit"} もどる
+        %button.sell__exhibition--botton{ type: "submit"}出品する
+        %button.sell__exhibition--back{ type: "submit"} もどる
 =render "singlefooter"
