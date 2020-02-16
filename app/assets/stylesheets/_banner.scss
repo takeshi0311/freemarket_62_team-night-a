@@ -1,0 +1,51 @@
+*{
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+.banner{
+  background-image: url(bg-appBanner-pict.jpg);
+  padding: 100px 40px;
+  position:relative;
+  background-size: cover;
+  background-position: center;
+  &__inner{
+    text-align: center;
+    color: white;
+    &__title{
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+    &__content{
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      font-size: 35px;
+    }
+    &__icon{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px auto 0;
+      a{
+        margin-right: 10px;
+        .appstore-btn{
+          margin-top: 30px;
+          width: 180px;
+          &:hover {
+            opacity: 0.5 ;
+          }
+        }
+        .google-btn{
+          margin-top: 17px;
+          width: 206px;
+          &:hover {
+            opacity: 0.5 ;
+          }
+        }
+      }
+    }
+  }
+}
+

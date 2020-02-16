@@ -1,3 +1,5 @@
+=render "header"
+
 .main
   .mainSection
     .mainSection__content
@@ -10,9 +12,9 @@
         フリマアプリです
       .mainSection__content__btn
         %a.mainSection__content__btn__appBtn{href: "#"}
-          %img{height: "53.33", src: "/assets/app.svg", width: "180"}/
+          %img{height: "53.33", src: "#{asset_path('app.svg')}", width: "180"}/
         %a.mainSection__content__btn__googleBtn{href: "#"}
-          %img{height: "53.33", src: "/assets/goo.svg", width: "180"}/
+          %img{height: "53.33", src: "#{asset_path('goo.svg')}", width: "180"}/
   .reason
     %h2.reason__subttl
       FURIMAが選ばれる3つの理由
@@ -20,7 +22,7 @@
       %li.reason__lists__list
         .reason__lists__list__photo
           %span.reason__lists__list__photo__num 1
-          %img{height: "306", src: "/assets/pict-reason-01-.jpg", width: "306"}/
+          %img{height: "306", src: "#{asset_path('pict-reason-01-.jpg')}", width: "306"}/
         %h3.reason__lists__list__txt
           %span.reason__lists__list__txt__head 3分
           ですぐに出品
@@ -29,7 +31,7 @@
       %li.reason__lists__list
         .reason__lists__list__photo
           %span.reason__lists__list__photo__num 2
-          %img{height: "306", src: "/assets/pict-reason-02-.jpg", width: "306"}/
+          %img{height: "306", src: "#{asset_path('pict-reason-02-.jpg')}", width: "306"}/
         %h3.reason__lists__list__txt
           %span.reason__lists__list__txt__head シンプル
           で使いやすい
@@ -38,7 +40,7 @@
       %li.reason__lists__listEnd
         .reason__lists__listEnd__photo
           %span.reason__lists__listEnd__photo__num 3
-          %img{height: "306", src: "/assets/pict-reason-03-.jpg", width: "306"}/
+          %img{height: "306", src: "#{asset_path('pict-reason-03-.jpg')}", width: "306"}/
         %h3.reason__lists__listEnd__txt
           手数料
           %span.reason__lists__listEnd__txt__head 業界最安
@@ -55,27 +57,27 @@
         ほしかったあの商品に出会えるかもしれません。
       .middleSection__inside__btn
         %a.middleSection__inside__btn__appBtn{href: "#"}
-          %img{height: "53.33", src: "/assets/app.svg", width: "180"}/
+          %img{height: "53.33", src: "#{asset_path('app.svg')}", width: "180"}/
         %a.middleSection__inside__btn__googleBtn{href: "#"}
-          %img{height: "53.33", src: "/assets/goo.svg", width: "180"}/
+          %img{height: "53.33", src: "#{asset_path('goo.svg')}", width: "180"}/
   .characteristic
     %h2.characteristic__subttl FURIMAの特徴
     .characteristic__lists
       .characteristic__lists__list
         .characteristic__lists__list__img
-          %img{height: "337.61", src: "/assets/characteristic-img1.png", width: "219.33"}/
+          %img{height: "337.61", src: "#{asset_path('characteristic-img1.png')}", width: "219.33"}/
         %h3.characteristic__lists__list__ttl 簡単に売り買いできる
         %p.characteristic__lists__list__describe
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       .characteristic__lists__list
         .characteristic__lists__list__img
-          %img{height: "337.61", src: "/assets/characteristic-img2.png", width: "219.33"}/
+          %img{height: "337.61", src: "#{asset_path('characteristic-img2.png')}", width: "219.33"}/
         %h3.characteristic__lists__list__ttl 売上金は即日振込みに対応
         %p.characteristic__lists__list__describe
           午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
       .characteristic__lists__list
         .characteristic__lists__list__img
-          %img{height: "337.61", src: "/assets/characteristic-img3.png", width: "219.33"}/
+          %img{height: "337.61", src: "#{asset_path('characteristic-img3.png')}", width: "219.33"}/
         %h3.characteristic__lists__list__ttl 様々な支払いに対応
         %p.characteristic__lists__list__describe
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
@@ -172,4 +174,7 @@
                     0
                 %p.pickupCategory__box__items__item__link__body__name__show__tax (税込)
   = render partial:  "cameraBtn"
-  = link_to "新規会員登録", index_signup_index_path, class: 'post'
+
+=render "banner"
+
+=render "footer"

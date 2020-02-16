@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
 }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root to: 'tweets#index'
   get 'tweets' => 'tweets#index'
 
@@ -15,4 +13,9 @@ Rails.application.routes.draw do
       get 'done' # 登録完了後のページ
     end
   end
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root to: 'items#index'
+  resources :items
 end

@@ -71,7 +71,7 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |------|----|-------|
 |postal_code|integer|null: false|
 |prefecture|string|null: false|
-|municipalitie|sturing|null: false|
+|municipalitie|string|null: false|
 |building|string||
 |user_id|integer|null: false, foreign_key: true|
 
