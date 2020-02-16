@@ -1,0 +1,36 @@
+.signup-sms
+  %header.signup-smsHeader
+    %h1
+      = link_to root_path do
+        = image_tag 'logo.png'
+    %nav.signup-smsHeader__progress-bar
+      %ol.clearfix
+        %li.signup-smsHeader__progress-bar__through
+          会員情報
+          .signup-smsHeader__progress-bar__through--point
+        %li.signup-smsHeader__progress-bar__active
+          電話番号認証
+          .signup-smsHeader__progress-bar__active--point
+        %li.signup-smsHeader__progress-bar__none
+          完了
+          .signup-smsHeader__progress-bar__none__status
+  %main.sms-main
+    %section.sms-main__container
+      %h2.sms-main__container.registration 電話番号の確認
+      %form#register-form.sms-main__container__inner{action: "https://", method: "POST", novalidate: "#"}
+        %input{name: "after_save_callback", type: "hidden", value: ""}/
+        .sms-main__container__inner__content
+          .sms-main__container__inner__content__form-group
+            %label.sms-main__container__inner__content__form-group__label{:for => "phone_number"} 携帯電話の番号
+            %input.sms-main__container__inner__content__form-group__input{:name => "phone_number", :placeholder => "携帯電話の番号を入力", :type => "tel", :value => ""}/
+          %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+          %button.sms-main__container__inner__content__btn-blue{type: "submit"} SMSを送信する
+          %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+          .sms-main__container__inner__content__txt-right
+            = link_to root_path do
+              電話番号が必要な理由
+              %i.fas.fa-angle-right
+        %input{name: "__csrf_value", type: "hidden", value: "7b5393bdfeaacc76db5e65278a506b8d3c0263c4f83a5248b5f4efa11fd111bafdbb9028a4f85976a17d9e59fa60ee1f206a9fe67d1a15c2b99df3874953fe6ef"}/
+        %input{name: "id", type: "hidden", value: "868376807"}/
+-# 仮置き
+= link_to "3へ", done_signup_index_path, class: 'post'
