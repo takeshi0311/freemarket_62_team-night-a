@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
 }
-  root to: 'tweets#index'
-  get 'tweets' => 'tweets#index'
 
   resources :signup do
     collection do
