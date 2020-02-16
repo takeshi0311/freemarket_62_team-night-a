@@ -1,0 +1,480 @@
+// 右の文字の装飾：「出品画像」、「商品名」、「商品説明」、「カテゴリー」、「ブランド」、「商品の状態」、「配送料の負担」、「発送元の地域」、「発送までの日数」、「価格」、「販売利益」
+@mixin fontgroup($color:black, $fSize: 16px, $fWight: 600) {
+  color: $color;
+  font-size: $fSize;
+  font-weight: $fWight;
+}
+// 「必須」文字の装飾
+@mixin formrequire() {
+    // background: #ea352d;
+    background: green;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+}
+// テキストボックスの「選択してください」の文字の装飾
+@mixin textbox(){
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 8px 0 0;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+}
+// 「選択してください」のテキストの各選択肢の装飾
+@mixin option(){
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+// 「はてなマーク」の装飾
+@mixin svg(){
+    bottom: 0;
+    margin: auto;
+    pointer-events: none;
+    position: absolute;
+    right: 16px;
+    top: 0;
+}
+// 右の文字の装飾：「商品の詳細」、「配送について」、「販売価格(300~9,999,999)
+@mixin fontgroup2(){
+  color: rgb(136, 136, 136);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+  margin-bottom: 24px;
+}
+// ーーーヘッダーから全部ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+.buy-item-container{
+  background: #f5f5f5;
+            .sell__block{
+            width: 700px;
+            margin: 0 auto;
+            background:white;
+                    &--head {
+                      text-align: center;
+                      line-height: 1.5;
+                      font-size: 22px;
+                      padding: 32px 16px;
+                    }
+// ーーーここから下は「出品投稿」フォーム全体ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+                    &--form{
+                      border-top: 1px solid #eee;
+// ーーーここから下は「出品画像」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+                                .sell__image{
+                                  padding: 40px;
+                                        &--top{
+                                          display: flex;
+                                            &--left{
+                                              @include fontgroup
+                                            }
+                                            &--right{
+                                              @include formrequire
+                                            }
+                                          }
+                                        &-second{
+                                            @include fontgroup( #333, 14px, 0);
+                                            margin: 8px 0px 0px;
+                                            line-height: 1.5;
+                                          }
+                                        &--upload{
+                                          margin: 16px auto 0;
+                                          position: relative;
+                                          min-height: 162px;
+                                          background: #f5f5f5;
+                                          border: 1px dashed #ccc;
+                                          font-size: 0;
+                                          text-align: center;
+                                          transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
+                                          cursor: pointer;
+                                          }
+                                        .visible-pc{
+                                          position: absolute;
+                                          top: 50%;
+                                          left: 16px;
+                                          right: 16px;
+                                          text-align: center;
+                                          font-size: 14px;
+                                          line-height: 1.5;
+                                          -webkit-transform: translate(0, -50%);
+                                          transform: translate(0, -50%);
+                                          pointer-events: none;
+                                          white-space: pre-wrap;
+                                          word-wrap: break-word;
+                                          }
+                                        }
+// ーーーここから上は「出品画像」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// ーーーここから下は「出品名」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+                                .sell__name{
+                                  border-top: 1px solid #eee;
+                                  padding: 40px;
+                                    &--top{
+                                      display: flex;
+                                        &--left{
+                                          @include fontgroup(black, 14px, 600)
+                                        }
+                                        &--right{
+                                          @include formrequire
+                                        }
+                                      }
+                                    &--text{
+                                      width: 100%;
+                                      margin: 8px 0 0;
+                                      height: 48px;
+                                      padding: 10px 16px 8px;
+                                      border-radius: 4px;
+                                      border: 1px solid #ccc;
+                                      background: #fff;
+                                      line-height: 1.5;
+                                      font-size: 16px;
+                                      }
+                                    &--explain{
+                                      display: flex;
+                                      margin: 40px 0 0;
+                                        &--left{
+                                          @include fontgroup(black, 14px, 600)
+                                        }
+                                        &--right{
+                                          @include formrequire
+                                        }
+                                      }
+                                    .sell__explain--text{
+                                      margin: 8px 0 0;
+                                      display: block;
+                                      width: 100%;
+                                      max-width: 100%;
+                                      min-height: 104px;
+                                      padding: 10px;
+                                      border: 1px solid #ccc;
+                                      background: #fff;
+                                      font-size: 16px;
+                                      line-height: 1.5;
+                                      }
+                                    }
+// ーーーここから上は「出品名」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// ーーーここから下は「出品の詳細」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+                                .sell__detail{
+                                  border-top: 1px solid #eee;
+                                  padding: 40px;
+                                    &--top{
+                                          color: rgb(136, 136, 136);
+                                          font-size: 14px;
+                                          font-weight: 600;
+                                          line-height: 1.4em;
+                                          margin-bottom: 24px;
+                                      }
+                                    &--second{
+                                      display: flex;
+                                      margin: 40px 0 0;
+                                        .sell__detail--category{
+                                          @include fontgroup(black, 14px, 600);
+                                        }
+                                        .sell__detail--require{
+                                          @include formrequire;
+                                        }
+                                      }
+                                    &--selecttop{
+                                      position: relative;
+                                      width: inherit;
+                                        select{
+                                          @include textbox;
+                                            option{
+                                              @include option;
+                                            }
+                                          }
+                                        svg{
+                                          @include svg;
+                                         }
+                                        }
+                                    &--third{
+                                      display: flex;
+                                      margin: 40px 0 0;
+                                        .sell__detail--brand{
+                                        @include fontgroup(black, 14px, 600);
+                                      }
+                                        .sell__detail--any{
+                                        background: #ccc;
+                                        margin: 0 0 0 8px;
+                                        padding: 2px 4px;
+                                        border-radius: 2px;
+                                        color: #fff;
+                                        font-size: 12px;
+                                        vertical-align: top;
+                                      }
+                                    }
+                                    &--text{
+                                      @include textbox;
+                                    }
+                                    &--forth{
+                                      display: flex;
+                                      margin: 40px 0 0;
+                                        .sell__detail--status{
+                                          @include fontgroup(black, 14px, 600);
+                                      }
+                                        .sell__detail--require{
+                                          @include formrequire;
+                                      }
+                                    }
+                                    &--selectdown{
+                                      position: relative;
+                                      width: inherit;
+                                        select{
+                                          @include textbox;
+                                                option{
+                                                  @include option;
+                                                }
+                                              }
+                                        svg{
+                                          @include svg;
+                                      }
+                                    }
+                                  }
+// ーーーここから上は「出品の詳細」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// ーーーここから下は「配送について」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+                                .sell__delivery{
+                                  border-top: 1px solid #eee;
+                                  padding: 40px;
+                                    &--top{
+                                      @include fontgroup2;
+                                    }
+                                    &--question{
+                                      display: inline-block;
+                                      width: 14px;
+                                      height: 14px;
+                                      border-radius: 50%;
+                                      background: #0099e8;
+                                      color: #fff;
+                                      line-height: 14px;
+                                      font-size: 12px;
+                                      text-align: center;
+                                    }
+                                    &--second{
+                                      display: flex;
+                                      margin: 40px 0 0;
+                                        .sell__delivery--payment{
+                                          @include fontgroup(black, 14px, 600);
+                                      }
+                                        .sell__delivery--require{
+                                          @include formrequire;
+                                      }
+                                    }
+                                    &--selecttop{
+                                      position: relative;
+                                      width: inherit;
+                                        select{
+                                          @include textbox;
+                                            option{
+                                              @include option;
+                                        }
+                                      }
+                                        svg{
+                                          @include svg;
+                                      }
+                                    }
+                                    &--third{
+                                      display: flex;
+                                      margin: 40px 0 0;
+                                        .sell__delivery--local{
+                                        @include fontgroup(black, 14px, 600);
+                                      }
+                                        .sell__delivery--require{
+                                        @include formrequire;
+                                      }
+                                    }
+                                    &--selectmiddle{
+                                      position: relative;
+                                      width: inherit;
+                                        select{
+                                          @include textbox;
+                                            option{
+                                              @include option;
+                                        }
+                                      }
+                                        svg{
+                                          @include svg;
+                                      }
+                                    }
+                                    &--forth{
+                                      display: flex;
+                                      margin: 40px 0 0;
+                                        .sell__delivery--days{
+                                          @include fontgroup(black, 14px, 600);
+                                      }
+                                        .sell__delivery--require{
+                                          @include formrequire;
+                                      }
+                                    }
+                                    &--selectdown{
+                                      position: relative;
+                                      width: inherit;
+                                        select{
+                                          @include textbox;
+                                            option{
+                                              @include option;
+                                        }
+                                      }
+                                        svg{
+                                          @include svg;
+                                      }
+                                    }
+                                  }
+// ーーーここから上は「配送について」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// ーーーここから下は「販売価格」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+                        .sell__price{
+                          padding: 40px;
+                          border-top: 1px solid #eee;
+                            &--top{
+                              float: left;
+                                .sell__price--topprice{
+                                  @include fontgroup2;
+                              }
+                                .sell__price--secondprice{
+                                  color: rgb(136, 136, 136);
+                                  font-size: 11px;
+                                  font-weight: 600;
+                                  line-height: 1.4em;
+                                  margin-bottom: 24px;
+                              }
+                                .sell__price--question{
+                                  display: inline-block;
+                                  width: 14px;
+                                  height: 14px;
+                                  border-radius: 50%;
+                                  background: #0099e8;
+                                  color: #fff;
+                                  line-height: 14px;
+                                  font-size: 12px;
+                                  text-align: center;
+                              }
+                            }
+                            &--box{
+                              float: right;
+                              width: 400px;
+                              margin-bottom: 24px;
+                                .sell__price--group{
+                                    list-style: none;
+                                        .sell__price--list{
+                                          padding: 0 0 24px;
+                                          border: 0;
+                                          margin: 0;
+                                          .sell__price--list--payment{
+                                            .sell__price--payment{
+                                              width: 50%;
+                                              line-height: 48px;
+                                              float: left;
+                                              font-weight: 600;
+                                              font-size: 14px;
+                                                .sell__price--require{
+                                                  @include formrequire;
+                                              }
+                                            }
+                                            .sell__price--yen{
+                                              width: 50%;
+                                              text-align: right;
+                                              float: right;
+                                                .sell__price--input{
+                                                  display: inline-block;
+                                                  width: 80%;
+                                                  margin: 0 0 0 5%;
+                                                    .sell__price--default{
+                                                      height: 48px;
+                                                      padding: 10px 16px 8px;
+                                                      border-radius: 4px;
+                                                      border: 1px solid #ccc;
+                                                      background: #fff;
+                                                      line-height: 1.5;
+                                                      font-size: 16px; 
+                                                      width: 100%;        
+                                                      margin: 0;
+                                                      text-align: right;                                                                                     
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                            &--second{
+                              display: flex;
+                              padding: 24px 0;
+                              width: 64%;
+                              font-size: 14px;
+                              margin-left: 220px;
+                              border-top: 1px solid #ccc;
+                                .sell__price--fee{
+                              }
+                                .sell__price--border{
+                                  margin-left:auto;
+                              }
+                            }
+                            &--third{
+                              display: flex;
+                              padding: 24px 0;
+                              width: 64%;
+                              font-size: 14px;
+                              margin-left: 220px;
+                              border-top: 1px solid #ccc;
+                                .sell__price--profit{
+                                  font-size: 16px;
+                                  font-weight: 600;
+                              }
+                                .sell__price--border{
+                                  margin-left:auto;
+                                  font-size: 34px;
+                              }
+                            }
+                          }
+// ーーーここから上は「販売価格」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// ーーーここから下は「注意書き＋出品ボタン＋もどるボタン」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+                          .sell__exhibition{
+                            padding: 40px;
+                            border-top: 1px solid #eee;
+                              &--note p{
+                                font-size: 14px;
+                            }
+                              &--note a{
+                                color: #0099e8;
+                                text-decoration: none;
+                            }
+                              &--botton{
+                                background: green;
+                                border: 1px solid green;
+                                color: #fff;
+                                transition: all ease-out .3s;
+                                cursor: pointer;
+                                text-align: center;
+                                display: block;
+                                width: 100%;
+                                line-height: 48px;
+                                font-size: 14px;
+                                margin-top: 40px;
+                            }
+                              &--back{
+                                display: block;
+                                line-height: 48px;
+                                font-size: 14px;
+                                transition: all ease-out .3s;
+                                cursor: pointer;
+                                text-align: center;
+                                width: 45%;
+                                margin: 24px auto 0;
+                                background: #aaa;
+                                border: 1px solid #aaa;
+                                color: #fff;
+                            }
+                          }
+// ーーーここから上は「注意書き＋出品ボタン＋もどるボタン」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+                    }
+// ーーーここから上は「出品投稿」フォーム全体ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    }
+  }
+// ーーー上はヘッダーから全部ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー

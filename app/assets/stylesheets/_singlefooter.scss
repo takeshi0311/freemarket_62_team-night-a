@@ -1,0 +1,41 @@
+@mixin font() {
+  text-decoration: none;
+                color: #333;
+                font-size: 12px;
+                margin: 0 0 0 16px;
+}
+
+.single-footer{
+  // width: 456px;
+  width: 100%;
+  height: 220px;
+  // margin: 0 auto;
+  background: #f5f5f5;
+            .single-footer__main{
+              margin: 0 auto;
+              width: 456px;
+              height: 220px;
+              padding: 40px 0;
+              .single-fototer__private{
+                @include font;
+              }
+              .single-fototer__terms{
+                @include font;
+              }
+              .single-fototer__transaction{
+                @include font;
+              }
+              .single-footer__logo{
+                vertical-align: middle;
+                margin-top: 23px;
+                margin-left: 85px;
+              }
+              .single-footer__small{
+
+                .single-footer__small--character{
+                  font-size: 12px;
+                  margin-left: 168px;
+                }
+              }
+            }
+}
