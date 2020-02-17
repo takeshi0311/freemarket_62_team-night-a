@@ -1,0 +1,122 @@
+.signin {
+  .signin-header{
+    text-align: center;
+    height: 128px;
+    background-color: #f5f5f5;
+    h1 {
+      display: inline-block;
+      margin-top: 40px;
+    }
+    a {
+      display: inline-block;
+      width: 185px;
+      height: 49px;
+      line-height: 49px;
+      margin-right: 8px;
+    }
+    img {
+      width: 185px;
+      height: 49px;
+    }
+  }
+  .signin-main {
+    display: block;
+    &__panel {
+      max-width: none;
+      width: 456px;
+      margin: 0 auto;
+      background: #fff;
+      &__login-no-account {
+        padding: 40px 64px;
+        text-align: center;
+        p {
+          font-size: 14px;
+        }
+        a {
+          display: block;
+          margin: 8px 0 0;
+          border: 1px solid #0099e8;
+          background: #0099e8;
+          color: #fff;
+          line-height: 40px;
+          font-size: 14px;
+        }
+      }
+      &__loginForm-inner {
+        padding: 32px 64px;
+        border-top: 1px solid #eee;
+        .btn-default {
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          transition: all ease-out .3s;
+          cursor: pointer;
+          text-align: center;
+        }
+        &__btnFace {
+          margin: 16px 0 0;
+          background: #385185;
+          color: #fff;
+          position: relative;
+          .fa-facebook-square {
+            position: absolute;
+            top: 50%;
+            left: 7%;
+            transform: translate(0, -50%);
+            font-size: 20px;
+          }
+        }
+        &__btnGoogle {
+          margin: 16px 0 0;
+          background: #fff url(/assets/google.svg) no-repeat 3px top;
+          background-size: 20px;
+          background-position: 20px;
+          border: #979797 solid 1px;
+          color: #333;
+          position: relative;
+          }
+        }
+      &__form-inner {
+        padding: 24px 64px 32px;
+        &__group:first-child {
+          margin: 0;
+        }
+        &__group {
+          margin: 24px 0 0;
+        }
+        .input-default {
+          height: 48px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+          width: 100%;
+        }
+        .submit {
+          margin: 24px 0 0;
+          background: #3ccace;
+          border: 1px solid #3ccace;
+          color: #fff;
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          transition: all ease-out .3s;
+          cursor: pointer;
+          text-align: center;
+        }
+        .password  {
+          color: #0099e8;
+          text-decoration: none;
+          font-size: 14px;
+          display: block;
+          margin: 40px 0 0;;
+        }
+      }
+    }
+  }
+}
+
