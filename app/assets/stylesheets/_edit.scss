@@ -41,15 +41,15 @@
       width: 700px;
       margin: 0 auto;
       .topContent{
-        .item-box {
+        .item-Box {
           background-color: #fff;
           padding: 24px 40px 40px;
-          .itemBox__name{
+          &__name{
           text-align: center;
           font-weight: bold;
           font-size: 24px;
           }
-          .itemBox__body {
+          &__body {
             margin: 16px 0 0;
             ul {
               display: flex;
@@ -82,7 +82,7 @@
               }
             }
           }
-          .itemBox__price {
+          &__price {
             margin: 24px 0 24px;
             text-align: center;
             display: flex;
@@ -92,7 +92,7 @@
               font-weight: bold;
               margin: 0 10px 0 0;
             }
-            .itemBox__price-detail {
+            &-detail {
               font-size: 16px;
             }
           }

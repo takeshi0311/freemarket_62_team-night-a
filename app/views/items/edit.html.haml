@@ -1,19 +1,19 @@
 %nav.breadCrumbs
   %ul
     %li
-      %a{href:"/"} FURIMA
+      = link_to "FRIMA", "#" 
     %li
       %i.fa.fa-angle-right
     %li
-      %a{href:"#"} メンズ
+      = link_to "メンズ", "#" 
     %li
       %i.fa.fa-angle-right
     %li
-      %a{href:"#"} ジャケット/アウター
+      = link_to "ジャケット/アウター", "#" 
     %li
       %i.fa.fa-angle-right
     %li
-      %a{href:"#"} ノーカラージャケット
+      = link_to "ノーカラージャケット", "#" 
     %li
       %i.fa.fa-angle-right
     %li
@@ -23,23 +23,23 @@
     .contentLeftqq
       .contentRight
         .topContent
-          .item-box
-            %h2.itemBox__name product2
-            .itemBox__body
+          .item-Box
+            %h2.item-Box__name product2
+            .item-Box__body
               %ul
                 %li
-                  %img{src:"https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", }/
+                  = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png'
                   %ul
                     %li
-                      %img{height:"75", src:"https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", width:"75"}/
+                      = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png', width:"75",height:"75"
                     %li
-                      %img{height:"75", src:"https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png", width:"75"}/
+                      = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png', width:"75",height:"75"
                     %li
-                      %img{height:"75", src:"https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png", width:"75"}/
-            .itemBox__price
+                      = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png', width:"75",height:"75"
+            .item-Box__price
               %span
                 ¥20000
-              .itemBox__price-detail
+              .item-Box__price-detail
                 %span
                   (税込)
                 %span
@@ -54,11 +54,11 @@
                   %tr
                     %th カテゴリー
                     %td
-                      %a{href:"#"} メンズ
+                      = link_to "メンズ","#" 
                       %br/
-                      %a{href:"#"} ジャケット/アウター
+                      = link_to "ジャケット/アウター", "#" 
                       %br/
-                      %a{href:"#"} ノーカラージャケット
+                      = link_to "ノーカラージャケット", "#" 
                   %tr
                     %th ブランド
                     %td
@@ -74,7 +74,7 @@
                   %tr
                     %th 発送元の地域
                     %td
-                      %a{href:"#"} 青森県
+                      = link_to "青森県", "#"
                   %tr
                     %th 発送日の目安
                     %td 1-2日で発送
@@ -104,14 +104,14 @@
                 コメントする
         %ul.links
           %li
-            %a{href:"#"}
+            = link_to "#" do
               %i.fa.fa-angle-left
               %span
               前の商品
           %li
-            %a{href:"#"}
+            = link_to "#" do
               %span 後ろの商品
               %i.fa.fa-angle-right
         .relatedItems
-          %a{href:"#"} メンズをもっと見る
+          = link_to "メンズをもっと見る", "#"
           .productLists
