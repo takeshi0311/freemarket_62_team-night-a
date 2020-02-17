@@ -1,0 +1,239 @@
+@import 'ress';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+@mixin a-font(){
+  position: relative;
+  display: block;
+  color: #333;
+  font-size: 16px;
+  line-height: 72px;
+}
+
+.clearfix::after{
+  content:"";
+  display: block;
+  clear: both;
+}
+
+body{
+  background-color: #f5f5f5;
+}
+
+
+.mypage{
+  margin: 40px auto 0;
+  width: 1020px;
+  padding: 0 0 40px;
+  display: block;
+  &__main{
+    float: right;
+    width: 700px;
+    &__user-icon{
+      height: 200px;
+      position: relative;
+      padding: 20px;
+      background-image: url(middleSection.jpg);
+      background-size: cover;
+      text-align: center;
+      a{
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translate(0, -50%);
+        color: #333;
+        figure{
+          overflow: hidden;
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+          border-radius: 50%;
+          img{
+            vertical-align: middle;
+          }
+        }
+        h2{
+          font-size: 14px;
+          margin: 8px 0 0;
+        }
+        .user-icon-number{
+          margin: 8px 0 0;
+          font-size: 14px;
+          &__text{
+            display: inline-block;
+            span{
+              margin: 0 0 0 8px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    &__tab-container{
+      margin: 0;
+      background-color: #fff;
+      &__tabs{
+        border: 0;
+        background-color: #eee;
+        li.mypage__main__tab-container__tabs__notice{
+          width: 345px;
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+          a{
+            border-top: 1px solid #ea352d;
+            background-color: white;
+            @include a-font;
+          }
+        }
+        li{
+          width: 345px;
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+          a{
+            @include a-font;
+          }
+        }
+      }
+
+      .mypage__tab-content{
+        &__item{
+          display: block;
+            li{
+              border-bottom: 1px solid #eee;
+              position: relative;
+              a{
+                display: block;
+                min-height: 80px;
+                padding: 16px;
+                color: #333;
+                figure{
+                  position: relative;
+                  overflow: hidden;
+                  float: left;
+                  width: 48px;
+                  height: 48px;
+                  image{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    z-index: 1;
+                    width: 100%;
+                  }
+                }
+                .tab-item{
+                  margin: 0 40px 0 68px;
+                  &__text{
+                    overflow: hidden;
+                    max-height: 4.4em;
+                    line-height: 1.5;
+                    text-overflow: ellipsis;
+                  }
+                  time{
+                    display: inline-block;
+                    color: #888;
+                    .far{
+                      margin: 0 8px 0 0;
+                      span{
+                        vertical-align: middle;
+                      }
+                    }
+                  }
+                }
+                .fas{
+                  position: absolute;
+                  top: 50%;
+                  right: 16px;
+                  transform: translate(0, -50%);
+                }
+              }
+            }
+          }
+        }        
+      }
+      .mypage__main__tab-container-item{
+        margin: 40px 0 0;
+        background-color: #fff;
+        h2{
+          padding: 0 16px;
+          background: #fafafa;
+          font-size: 16px;
+          line-height: 72px;
+        }
+        .mypage__main__tab-container-item__title__tabs{
+          background-color: #eee;
+          li.mypage__main__tab-container-item__title__tabs__trading{
+            background-color: white;
+            width: 347px;
+            a{
+              border-top: 1px solid #ea352d;
+              @include a-font
+            }
+          }
+          li{
+            background-color: #eee;
+            width: 347px;
+            display: inline-block;
+            text-align: center;
+            vertical-align: top;
+            a{
+              @include a-font
+            }
+          }         
+        }
+        .mypage__tab-content{
+          height: 300px;
+          text-align: center;
+          line-height: 300px;
+          background-color: white;
+        }
+      }
+    }
+  
+  
+  &__side{
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0;
+    
+    li{
+      border: 0;
+      :hover {
+        background-color: #eee;
+      }
+      a{
+        position: relative;
+        display: block;
+        min-height: 48px;
+        padding: 16px;
+        background: #fff;
+        font-size: 14px;
+        color: #333;
+        border: solid #eee;
+        border-width: 0.5px; 
+        .fas.fa-angle-right{
+          position: absolute;
+          top: 50%;
+          right: 16px;
+          color: #ccc;
+          transform: translate(0, -50%);
+          transition: .2s;
+        }
+      }
+    }
+    h3{
+      margin: 40px 0 0;
+      font-size: 16px;
+      font-weight: 400;
+      a{
+        font-size: 14px;
+      }
+    }
+  }
+}

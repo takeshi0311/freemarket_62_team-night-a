@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   root to: 'tweets#index'
   get 'tweets' => 'tweets#index'
+  get 'users/loginid' => 'users#show'
 end
