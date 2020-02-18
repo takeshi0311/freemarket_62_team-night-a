@@ -1,26 +1,26 @@
 .signin
-  %header.signin-header
+  %header.signin__header
     %h1
       = link_to root_path do
         = image_tag 'logo.png'
-  %main.signin-main
-    .signin-main__panel
-      .signin-main__panel__login-no-account
+  %main.signin__main
+    .signin__main__panel
+      .signin__main__panel__login-no-account
         %p アカウントをお持ちでない方はこちら
         = link_to '新規会員登録', signup_index_path
-      .signin-main__panel__loginForm-inner
-        %button#facebook-login.signin-main__panel__loginForm-inner__btnFace.btn-default
+      .signin__main__panel__loginForm-inner
+        %button#facebook-login.signin__main__panel__loginForm-inner__btnFace.btn-default
           %i.fab.fa-facebook-square
           Facebookでログイン
-        %button#google-login.signin-main__panel__loginForm-inner__btnGoogle.btn-default
+        %button#google-login.signin__main__panel__loginForm-inner__btnGoogle.btn-default
           Googleでログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .signin-main__panel__form-inner
-          .signin-main__panel__form-inner__group
+        .signin__main__panel__form-inner
+          .signin__main__panel__form-inner__group
             = f.email_field :email, placeholder: "メールアドレス", class:'input-default', autofocus: true, autocomplete: "email"
-          .signin-main__panel__form-inner__group
+          .signin__main__panel__form-inner__group
             = f.password_field :password,  placeholder: "パスワード", class:'input-default', autocomplete: "current-password"
-          .signin-main__panel__form-inner__group
+          .signin__main__panel__form-inner__group
             .g-recaptcha.login-captcha{"data-sitekey":  "6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc"}
               %div{style: "width: 304px; height: 78px;"}
                 %div
