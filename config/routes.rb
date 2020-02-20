@@ -14,5 +14,12 @@ resources :signup do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'items#index'
-  resources :items
+  resources :items 
+  resources :pays, only:[:new,:show] do
+    collection do
+      post 'show', to: 'pay#show'
+      post 'purchase', to: 'pay#purchase'
+      post 'delete', to: 'pay#delete'
+    end
+  end
 end
