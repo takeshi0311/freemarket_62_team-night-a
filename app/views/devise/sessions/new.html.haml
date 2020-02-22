@@ -1,0 +1,30 @@
+.signin
+  %header.signin__header
+    %h1
+      = link_to root_path do
+        = image_tag 'logo.png'
+  %main.signin__main
+    .signin__main__panel
+      .signin__main__panel__login-no-account
+        %p アカウントをお持ちでない方はこちら
+        = link_to '新規会員登録', signup_index_path
+      .signin__main__panel__loginForm-inner
+        %button#facebook-login.signin__main__panel__loginForm-inner__btnFace.btn-default
+          %i.fab.fa-facebook-square
+          Facebookでログイン
+        %button#google-login.signin__main__panel__loginForm-inner__btnGoogle.btn-default
+          Googleでログイン
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .signin__main__panel__form-inner
+          .signin__main__panel__form-inner__group
+            = f.email_field :email, placeholder: "メールアドレス", class:'input-default', autofocus: true, autocomplete: "email"
+          .signin__main__panel__form-inner__group
+            = f.password_field :password,  placeholder: "パスワード", class:'input-default', autocomplete: "current-password"
+          .signin__main__panel__form-inner__group
+            .g-recaptcha.login-captcha{"data-sitekey":  "6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc"}
+              %div{style: "width: 304px; height: 78px;"}
+                %div
+                  %iframe{frameborder: "0", height: "78", name: "a-zc8hnwuonrlo", role: "presentation", sandbox: "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox", scrolling: "no", src: "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc&co=aHR0cHM6Ly93d3cubWVyY2FyaS5jb206NDQz&hl=ja&v=JZfekeK8w6ZlhLfH_ZyseSLX&size=normal&cb=v3it7qea55oz", width: "304"}
+                %textarea#g-recaptcha-response.g-recaptcha-response{name: "g-recaptcha-response", style: "width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"}
+          = f.submit "Log in", class:'submit'
+          = link_to "パスワードお忘れの方", root_path, class: 'password' 

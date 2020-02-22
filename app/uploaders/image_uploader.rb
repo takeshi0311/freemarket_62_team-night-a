@@ -45,4 +45,19 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
   process resize_to_fit: [720, 720]
+
+  # 環境毎の画像保存先
+  if Rails.env.development?
+    storage :file
+  elsif Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
+
+  # S3のディレクトリ名
+  def store_dir
+    "uploads/# {model.class.to_s.underscore}/# {mounted_as}/# {model.id}"
+  end
+
 end
