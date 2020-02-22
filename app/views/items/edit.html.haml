@@ -30,17 +30,17 @@
                 %table.item-teble
                   %tr.main-item-imag
                     %td{align:"center", colspan:"4"}
-                      %img{width:"560", name:"BigImage", src:"https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png"}/
+                      = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", width:"560",name:"BigImage"
                   %tr
                     %td
-                      %a{href:"javascript:void(0)", onmouseover:"changeimage( 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png' )"}
-                        %img{height:"87", src:"https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", width:"140"}/
+                      = link_to "javascript:void(0)", onmouseover:"changeimage( 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png' )" do
+                        = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", size: "147x87"
                     %td
-                      %a{href:"javascript:void(0)", onmouseover:"changeimage( 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png' )"}
-                        %img{height:"87", src:"https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png", width:"140"}/
+                      = link_to "javascript:void(0)", onmouseover:"changeimage( 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png' )" do
+                        = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png", size: "147x87"
                     %td
-                      %a{href:"javascript:void(0)", onmouseover:"changeimage( 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png' )"}
-                        %img{height:"87", src:"https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png", width:"140"}/
+                      = link_to "javascript:void(0)", onmouseover:"changeimage( 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png' )" do
+                        = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png", size: "147x87"
             .item-Box__price
               %span
                 ¥20000
