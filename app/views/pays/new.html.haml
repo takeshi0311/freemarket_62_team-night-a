@@ -4,7 +4,7 @@
   %section.main-pay
     %h2.main-pay__head
       支払い方法
-    = form_tag(purchase_pays_path, method: :get, id: 'charge-form', name: "inputForm",class: "main-pay__form") do
+    = form_tag(purchase_pays_path, method: :post, id: 'charge-form', name: "inputForm",class: "main-pay__form") do
       .main-pay__form__detail
         %label.form-label カード番号
         %span.form-require 必須
