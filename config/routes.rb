@@ -3,9 +3,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
 }
 
-  root to: 'tweets#index'
-  get 'tweets' => 'tweets#index'
-
 
   resources :signup do
 
@@ -21,5 +18,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'items#index'
   resources :items
+
+  resources :users, only: [:show] do
+    collection do
+      get 'mypage'
+      get 'logout'
+    end
+  end
 
 end
