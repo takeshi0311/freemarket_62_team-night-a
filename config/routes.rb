@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :pays, only:[:new,:create,:show] do
     collection do
       post 'show', to:'pays#show'
-      post 'purchase', to: 'pays#purchase'
+      post 'register', to: 'pays#register'
       post 'delete', to: 'pays#delete'
     end
   end

@@ -6,7 +6,7 @@ class PaysController < ApplicationController
     redirect_to pays_path if pay.exists?
   end
 
-  def purchase
+  def register
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
       redirect_to action: "new"
