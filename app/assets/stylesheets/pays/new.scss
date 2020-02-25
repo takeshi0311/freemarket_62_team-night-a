@@ -14,6 +14,14 @@
   cursor: pointer;
 }
 
+@mixin invalid{
+  border: #ea352d 1px solid;
+}
+
+@mixin valid{
+  border: #3CCACE 1px solid;
+}
+
 .main{
   display:block;
   .main-pay{
@@ -42,6 +50,12 @@
         border-radius: 4px;
         line-height: 1.5;
         font-size:16px;
+      }
+      &__number.invalid{
+        @include invalid
+      }
+      &__number.valid{
+        @include valid
       }
       &__card{
         margin:8px 0 0;
@@ -81,12 +95,24 @@ img{
       &__list{
         @include list
       }
+      &__list.invalid{
+        @include invalid
+      }
+      &__list.valid{
+        @include valid
+      }
     }
     &__year{
       width: calc(50% - 2px);
       display:inline-block;
       &__list{
         @include list
+      }
+      &__list.invalid{
+        @include invalid
+      }
+      &__list.valid{
+        @include valid
       }
     }
   }
@@ -101,7 +127,14 @@ img{
     line-height: 1.5;
     font-size: 16px;
   }
+  &__security.invalid{
+      @include invalid
+    }
+  &__security.valid{
+    @include valid
+  }
 }
+
 
 .pay__note{
   position: relative;
@@ -133,4 +166,13 @@ img{
   background:#3CCACE;
   border: 1px solid #3CCACE;
   text-align: center;
+}
+
+#exp_date-error,
+#card_number-error,
+#cvc-error {
+  color: #ea352d;
+  line-height: 1.5;
+  font-size: 14px;
+  margin-top: 8px;
 }
