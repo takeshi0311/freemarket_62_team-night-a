@@ -44,6 +44,8 @@
         .item-Box {
           background-color: #fff;
           padding: 24px 40px 40px;
+          width: 700px;
+          height: 1400px;
           &__name{
           text-align: center;
           font-weight: bold;
@@ -166,6 +168,17 @@
               }
             } 
           }
+        }
+        .item-buy-btn{
+          font-size: 24px;
+          line-height: 60px;
+          display: block;
+          margin: 65px;
+          background: #FF6666;
+          color: #fff;
+          text-align: center;
+          font-weight: 600;
+          border-radius: 7px;
         }
       }
       .commentBox {
