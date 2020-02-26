@@ -41,17 +41,10 @@ ActiveRecord::Schema.define(version: 20200215114634) do
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                           null: false
-    t.text     "description",      limit: 65535, null: false
-    t.string   "size"
-    t.integer  "status",                         null: false
-    t.string   "shipping_charges",               null: false
-    t.string   "shipping_method",                null: false
-    t.string   "region",                         null: false
-    t.integer  "price",                          null: false
-    t.string   "shopping_date",                  null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.string   "name",                      null: false
+    t.text     "description", limit: 65535, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "pays", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

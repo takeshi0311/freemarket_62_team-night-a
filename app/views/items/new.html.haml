@@ -2,7 +2,7 @@
 %section.l-single-container.buy-item-container
   .sell__block
     %h2.sell__block--head 商品の情報を入力
-    %form{ action: "#", method: "post", class: "sell__block--form"}
+    = form_for @item, html: {class: 'sell__block--form'} do |f|
       .sell__image
         .sell__image--top
           %h3.sell__image--top--left 出品画像
@@ -19,11 +19,11 @@
         .sell__name--top
           %h3.sell__name--top--left 商品名
           %span.sell__name--top--right 必須
-        %input.sell__name--text{ name: "sell--name", type: "text", placeholder: "商品名（必須40文字まで）"}/
+        = f.text_field :name, class: "sell__name--text", placeholder:"商品名（必須40文字まで）"
         .sell__name--explain
           %h3.sell__name--explain--left 商品説明
           %span.sell__name--explain--right 必須
-        %textarea.sell__explain--text{ placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"}
+        = f.text_area :description, class: "sell__explain--text", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" , rows: "5"
       .sell__detail
         %p.sell__detail--top 商品の詳細
         .sell__detail--second
@@ -182,6 +182,6 @@
             また、出品をもちまして
             = link_to "加盟店規約", "/jp/seller_terms/", class: "a", target: "_blank"
             に同意したことになります。
-        %button.sell__exhibition--botton{ type: "submit"}出品する
+        = f.submit "出品する", class: "sell__exhibition--botton"
         %button.sell__exhibition--back{ type: "submit"} もどる
 =render "singlefooter"
