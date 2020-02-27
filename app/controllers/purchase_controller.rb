@@ -17,10 +17,10 @@ class PurchaseController < ApplicationController
     pay = Pay.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
-      :amount => 5000,
+      :amount => 200,
       :customer => pay.customer_id,
       :currency => 'jpy'
     )
-    redirect_to action: 'done'
+    redirect_to root_path, notice: '商品の購入が完了しました'
   end
 end

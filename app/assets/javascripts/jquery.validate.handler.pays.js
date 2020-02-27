@@ -70,7 +70,7 @@ $(function () {
       }
     }
   });
-  $("#card_number,#exp_month, #exp_year,#cvc").blur(function () {
+  $("#card_number, #exp_month, #exp_year,#cvc").blur(function () {
     $(this).valid();
   });
 });

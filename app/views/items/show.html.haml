@@ -48,6 +48,7 @@
                 %p.buy-content__address__register__to
                   登録してください
 
-        %section.buy-content__btn
-          %button.buy-content__btn__buy 購入する
+        = form_tag(controller: :purchase, action: :index, method: :get) do
+          %section.buy-content__btn
+            %button.buy-content__btn__buy 購入する
             
