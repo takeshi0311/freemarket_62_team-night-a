@@ -34,4 +34,12 @@ Rails.application.routes.draw do
       get 'done', to: 'purchase#done'
     end
   end
+
+  resources :users, only: [:show] do
+    collection do
+      get 'mypage'
+      get 'logout'
+    end
+  end
+
 end

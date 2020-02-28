@@ -1,0 +1,24 @@
+.logout{
+  margin: 40px auto 0;
+  width: 1020px;
+  padding: 0 0 40px;
+  display: block;
+  &__main{
+    float: right;
+    width: 700px;
+    background-color:#eee;
+    color: #333;
+    &__box{
+      height: 100px;
+      position: relative;
+      margin: 100px 150px;
+      background-color: #3CCACE;
+      font-size: 40px;
+      text-align: center;
+      line-height: 100px;
+      a{
+        color: white;
+      }
+    }
+  }
+}

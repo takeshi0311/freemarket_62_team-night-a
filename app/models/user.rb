@@ -5,4 +5,8 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable
 
   has_many :pays
+  has_many :items
+  has_many :purchases
+  has_many :comments
+  has_one :address
 end
