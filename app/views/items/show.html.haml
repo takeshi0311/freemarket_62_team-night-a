@@ -7,7 +7,7 @@
       .main-section__item__buy
         .main-section__item__buy__box
           %h3.main-section__item__buy__image
-            %img.main-section__item__buy__image__up{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png(40 kB)https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"}/
+            = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png",size: "80x80"
           .main-section__item__detail
             %p.main-section__item__detail__name 
               商品入るよ
@@ -45,7 +45,8 @@
                 %p.buy-content__address__register__to
                   登録してください
 
-        = form_tag(controller: :purchase, action: :index, method: :get) do
+        = form_tag(controller: :purchase, action: :index, method: :post) do
           %section.buy-content__btn
             %button.buy-content__btn__buy 購入する
-            
+
+=render "singlefooter"      

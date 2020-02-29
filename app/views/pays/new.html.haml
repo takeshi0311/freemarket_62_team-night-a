@@ -1,4 +1,4 @@
-= render partial: "pays-header"
+= render "pays-header"
 
 .main
   %section.main-pay
@@ -65,3 +65,5 @@
             カード裏面の番号とは？
         #card_token
         = submit_tag "登録する", id: "token_submit",class: "btn__form"
+
+=render "items/singlefooter"
