@@ -9,5 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @image = Image.find(1)
+    @item = Item.find(1)
   end 
 end
