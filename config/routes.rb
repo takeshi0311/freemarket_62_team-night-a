@@ -26,4 +26,5 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :categories, only: [:index]
 end
