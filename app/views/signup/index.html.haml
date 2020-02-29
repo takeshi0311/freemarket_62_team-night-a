@@ -8,7 +8,7 @@
       %h2.signup__main__body__ttl 新規会員登録
       .signup__main__body__ttl__inner
         .signup__main__body__ttl__inner__content
-          = link_to "#", { class: "signup__main__body__ttl__inner__content__btn-mail"} do
+          = link_to member_signup_index_path, { class: "signup__main__body__ttl__inner__content__btn-mail"} do
             = icon 'far', 'envelope'
             メールアドレスで登録する
           %button#facebook-login.signup__main__body__ttl__inner__content__btn-facebook
@@ -16,23 +16,8 @@
             Facebookで登録する
           %button#google-login.signup__main__body__ttl__inner__content__btn-google
             Googleで登録する
-    %form#login_form_facebook{action: "/jp/signup/facebook/", method: "POST", novalidate: "novalidate"}
-      %input{name: "__csrf_value", type:  "hidden", value: "46e7ddcdae91a43ff05a4b2c94067b9c3ffd0f24563e6521d0b45cd064c9a236a1db5b8c423ea24fd5b6e900886980ef21c47f86315cc5cdcf298e24ff8162262"}/
-      %input{name: "nickname", type: "hidden", value: ""}/
-      %input{name: "email", type: "hidden", value: ""}/
-      %input{name: "facebook_user_id", type:  "hidden", value: ""}/
-      %input{name: "facebook_access_token", type: "hidden", value: ""}/
-      %input{name: "login_type", type: "hidden", value: "facebook"}/
-    %form#login_form_google{action: "/jp/signup/google/", method: "POST", novalidate: "novalidate"}
-      %input{name: "__csrf_value", type: "hidden", value: "46e7ddcdae91a43ff05a4b2c94067b9c3ffd0f24563e6521d0b45cd064c9a236a1db5b8c423ea24fd5b6e900886980ef21c47f86315cc5cdcf298e24ff8162262"}/
-      %input{name: "nickname", type: "hidden", value: ""}/
-      %input{name: "email", type: "hidden", value: ""}/
-      %input{name: "google_user_id", type: "hidden", value: ""}/
-      %input{name: "google_access_token", type: "hidden", value: ""}/
-      %input{name: "login_type", type: "hidden", value: "google"}/
-    %input#google_client_id{type: "hidden", value: "238694260676-l0gp5j3hs9p8l2hjmnt126q0b4iin34r.apps.googleusercontent.com"}/
-    %input#facebook_app_id{type: "hidden", value: "466308336793848"}/
+=render "items/singlefooter"
 
--#仮置き
-= link_to "2へ", mem_signup_index_path, class: 'post'
+
+
 
