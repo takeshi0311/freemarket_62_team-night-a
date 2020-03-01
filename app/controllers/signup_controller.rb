@@ -62,8 +62,6 @@ class SignupController < ApplicationController
       :email,
       :password,
       :password_confirmation,
-      :reset_password_token,
-      :reset_password_sent_at,
       :family_name,
       :last_name,
       :frigana_family_name,
