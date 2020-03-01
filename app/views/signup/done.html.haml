@@ -17,11 +17,9 @@
   %main.done-main
     %section.done-main__container
       %h2.done-main__container.registration 会員登録完了
-      %form#register-form.done-main__container__inner{action: "https://", method: "POST", novalidate: "#"}
-        %input{name: "after_save_callback", type: "hidden", value: ""}/
+      .done-main__container__inner
         .done-main__container__inner__content
           .done-main__container__inner__content__form-group
             %label.done-main__container__inner__content__form-group__label{for: "phone_number"} ありがとうございます。会員登録が完了しました。
-          %button.done-main__container__inner__content__btn-blue{type: "submit"} フリマを始める
-        %input{name: "__csrf_value", type: "hidden", value: "7b5393bdfeaacc76db5e65278a506b8d3c0263c4f83a5248b5f4efa11fd111bafdbb9028a4f85976a17d9e59fa60ee1f206a9fe67d1a15c2b99df3874953fe6ef"}/
-        %input{name: "id", type: "hidden", value: "868376807"}/
+          = link_to "フリマを始める", root_path, class: 'done-main__container__inner__content__btn-blue' 
+=render "items/singlefooter"
