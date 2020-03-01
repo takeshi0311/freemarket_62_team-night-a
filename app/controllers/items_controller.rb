@@ -9,5 +9,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-  end 
+  end
+  
+  def buy
+  end
 end

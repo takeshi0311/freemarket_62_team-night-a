@@ -12,13 +12,18 @@ Rails.application.routes.draw do
       get 'index'
       get 'mem'
       get 'sms'
-      get 'done' # 登録完了後のページ
+      get 'done' 
     end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'items#index'
-  resources :items 
+  resources :items do
+    collection do
+      get 'buy'
+    end
+  end
+
   resources :pays, only:[:new,:create,:show] do
     collection do
       post 'show', to:'pays#show'
@@ -35,10 +40,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show] do
+  resources :users , only: [:show] do
     collection do
+      post 'register', to: 'users#register'
       get 'mypage'
       get 'logout'
+      get 'address'
     end
   end
 
