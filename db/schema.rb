@@ -28,11 +28,10 @@ ActiveRecord::Schema.define(version: 20200221233525) do
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.string   "ancestry"
+    t.string   "type",       null: false
+    t.string   "ancestry",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -70,6 +69,7 @@ ActiveRecord::Schema.define(version: 20200221233525) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(version: 20200221233525) do
     t.integer  "birthday_month",                      null: false
     t.integer  "birthday_day",                        null: false
     t.string   "phone_number",                        null: false
-    t.index    "email", name: "index_users_on_email", unique: true, using: :btree
-    t.index    "reset_password_token", name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
