@@ -1,6 +1,5 @@
 # FURIMA DB設計
 https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0deca
-
 ## users
 |Column|Type|Options|
 |------|----|-------|
@@ -14,14 +13,12 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |birthday|integer|null :false|
 |phone_number|integer|null :false|
 |profile|text||
-
 ### Association
 - has_many items
 - has_many purchases
 - has_many comments
 - has_one pay
 - has_one address
-
 ## items
 |Column|Type|Options|
 |------|----|-------|
@@ -37,7 +34,6 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |user_id|integer|null: false, foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
-
 ### Association
 - belongs_to user
 - belongs_to category
@@ -45,27 +41,22 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 - has_many comments
 - has_many images
 - has_one purchase
-
 ## comments
 |Column|Type|Options|
 |------|----|-------|
 |body|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
-
 ### Association
 - belongs_to user
 - belongs_to item
-
 ## images
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
-
 ### Association
 - belongs_to item
-
 ## addresses
 |Column|Type|Options|
 |------|----|-------|
@@ -74,10 +65,8 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |municipalitie|string|null: false|
 |building|string||
 |user_id|integer|null: false, foreign_key: true|
-
 ### Association
 - belongs_to user
-
 ## pays
 |Column|Type|Options|
 |------|----|-------|
@@ -86,34 +75,27 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |year|integer|null: false|
 |security_code|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
-
 ### Association
 - belongs_to user
-
 ## purchases
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
-
 ### Association
 - belongs_to user
 - belongs_to item
-
 ## categorys
 |Column|Type|Options|
 |------|----|-------|
 |type|string|null: false|
 |ancestry|string|null: false|
-
 ### Association
 - has_many items
 - has_ancestry
-
 ## brands
 |Column|Type|Options|
 |------|----|-------|
 |type|string|null: false|
-
 ### Association
 - has_many items

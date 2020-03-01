@@ -14,10 +14,11 @@
     .header__inner__nav
       .list-left
         .list-left__item-first
-          = link_to 'カテゴリー', '#', class: "category-btn"
+          = link_to 'カテゴリー', categories_path, class: "category-btn"
         .list-left__item-second
           = link_to "ブランド", "#", class:"brand-btn"
       .list-right
         .list-right__item
-          = link_to 'ログイン', new_user_session_url
-          = link_to '新規会員登録', signup_index_path
+          = link_to "ログイン", "#", class: "login-btn"
+          = link_to "新規会員登録", "#", class: "new-member-btn"
+          = link_to "マイページ", mypage_users_path, class: "mypage-btn"
