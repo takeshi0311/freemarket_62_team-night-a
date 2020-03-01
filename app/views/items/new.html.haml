@@ -30,21 +30,8 @@
           %h3.sell__detail--category カテゴリー
           %span.sell__detail--require 必須
         .sell__detail--selecttop
-          %select{:name => "categoryId"}
-            %option{"aria-selected" => "true", :label => "選択してください", :selected => "selected", :value => ""} 選択してください
-            %option{"aria-selected" => "false", :label => "レディース", :value => "1"} レディース
-            %option{"aria-selected" => "false", :label => "メンズ", :value => "2"} メンズ
-            %option{"aria-selected" => "false", :label => "ベビー・キッズ", :value => "3"} ベビー・キッズ
-            %option{"aria-selected" => "false", :label => "インテリア・住まい・小物", :value => "4"} インテリア・住まい・小物
-            %option{"aria-selected" => "false", :label => "本・音楽・ゲーム", :value => "5"} 本・音楽・ゲーム
-            %option{"aria-selected" => "false", :label => "おもちゃ・ホビー・グッズ", :value => "1328"} おもちゃ・ホビー・グッズ
-            %option{"aria-selected" => "false", :label => "コスメ・香水・美容", :value => "6"} コスメ・香水・美容
-            %option{"aria-selected" => "false", :label => "その他", :value => "10"} その他
-            %option{"aria-selected" => "false", :label => "家電・スマホ・カメラ", :value => "7"} 家電・スマホ・カメラ
-            %option{"aria-selected" => "false", :label => "スポーツ・レジャー", :value => "8"} スポーツ・レジャー
-            %option{"aria-selected" => "false", :label => "ハンドメイド", :value => "9"} ハンドメイド
-            %option{"aria-selected" => "false", :label => "チケット", :value => "1027"} チケット
-            %option{"aria-selected" => "false", :label => "自動車・オートバイ", :value => "1318"} 自動車・オートバイ
+          -# f.selectでプルダウンを実装することができる→具体的な記述）f.select:保存したいカラム名(category_id),プルダウンに表示させたい値(@category_parent_array),{オプション}
+          = f.select :category_id, @category_parent_array, {include_blank: '選択してください'}, {}
           %svg{"aria-hidden" => "true", fill: "#888888", "fill-rule" => "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
             %path{ d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
         .sell__detail--third

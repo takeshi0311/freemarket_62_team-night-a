@@ -10,6 +10,12 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    #セレクトボックスの選択肢を格納する配列を定義
+    @category_parent_array = []
+      #データベースから、親カテゴリーのみ抽出し、配列化→where(ancestry: nil)で親要素のみを取得することができる
+      Category.where(ancestry: nil).each do |parent|
+          @category_parent_array << parent.name
+      end
   end
 
   def create
