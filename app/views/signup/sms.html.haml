@@ -17,20 +17,16 @@
   %main.sms-main
     %section.sms-main__container
       %h2.sms-main__container.registration 電話番号の確認
-      %form#register-form.sms-main__container__inner{action: "https://", method: "POST", novalidate: "#"}
-        %input{name: "after_save_callback", type: "hidden", value: ""}/
+      = form_for @user, url: done_signup_index_path, method: :get, html: {class: 'sms-main__container__inner', id: "signup-form"} do |f|
         .sms-main__container__inner__content
           .sms-main__container__inner__content__form-group
-            %label.sms-main__container__inner__content__form-group__label{:for => "phone_number"} 携帯電話の番号
-            %input.sms-main__container__inner__content__form-group__input{:name => "phone_number", :placeholder => "携帯電話の番号を入力", :type => "tel", :value => ""}/
+            = f.label :phone_number, "携帯電話の番号", class: "sms-main__container__inner__content__form-group__label"
+            = f.text_field :phone_number, placeholder: '携帯電話の番号を入力', class:'sms-main__container__inner__content__form-group__input',id:"phonenumber"
           %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
-          %button.sms-main__container__inner__content__btn-blue{type: "submit"} SMSを送信する
+          = f.submit :"SMSを送信する", class: "sms-main__container__inner__content__btn-blue"
           %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
           .sms-main__container__inner__content__txt-right
             = link_to root_path do
               電話番号が必要な理由
               %i.fas.fa-angle-right
-        %input{name: "__csrf_value", type: "hidden", value: "7b5393bdfeaacc76db5e65278a506b8d3c0263c4f83a5248b5f4efa11fd111bafdbb9028a4f85976a17d9e59fa60ee1f206a9fe67d1a15c2b99df3874953fe6ef"}/
-        %input{name: "id", type: "hidden", value: "868376807"}/
--# 仮置き
-= link_to "3へ", done_signup_index_path, class: 'post'
+=render "items/singlefooter"

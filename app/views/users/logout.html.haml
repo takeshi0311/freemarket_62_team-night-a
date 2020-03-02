@@ -2,7 +2,7 @@
 .logout.clearfix
   .logout__main
     .logout__main__box
-      = link_to "ログアウト","#"
+      = link_to "ログアウト", destroy_user_session_path, method: :delete
   = render "side"
 = render "items/cameraBtn"
 = render "items/banner"

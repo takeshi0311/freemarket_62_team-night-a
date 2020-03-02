@@ -1,0 +1,108 @@
+.signup-member
+  %header.signup-memberHeader
+    %h1
+      = link_to root_path do
+        = image_tag 'logo.png'
+    %nav.signup-memberHeader__progress-bar
+      %ol.clearfix
+        %li.signup-memberHeader__progress-bar__active
+          会員情報
+          .signup-memberHeader__progress-bar__active--point 
+        %li.signup-memberHeader__progress-bar__none
+          電話番号認証
+          .signup-memberHeader__progress-bar__none__status
+        %li.signup-memberHeader__progress-bar__none
+          完了
+          .signup-memberHeader__progress-bar__none__status
+  %main.member-main
+    %section.member-main__container
+      %h2.member-main__container.registration 会員情報入力
+      = form_for @user, url: sms_signup_index_path, method: :get, html: {class: 'member-main__container__inner', id: "signup-form"} do |f|
+        .member-main__container__inner__content
+          .member-main__container__inner__content__form-group
+            = f.label :nickname, "ニックネーム", class: "member-main__container__inner__content__form-group__label"
+            %span.member-main__container__inner__content__form-group__require 必須
+            = f.text_field :nickname, placeholder: '例) フリマ太郎', class:'member-main__container__inner__content__form-group__input', id: "nickname"
+          .member-main__container__inner__content__form-group
+            = f.label :email, "メールアドレス", class: "member-main__container__inner__content__form-group__label"
+            %span.member-main__container__inner__content__form-group__require 必須
+            = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class:'member-main__container__inner__content__form-group__input', id: "email"
+          .member-main__container__inner__content__form-group
+            = f.label :password, "パスワード", class: "member-main__container__inner__content__form-group__label"
+            %span.member-main__container__inner__content__form-group__require 必須
+            = f.password_field :password, placeholder: '7文字以上の半角英数字', class:'member-main__container__inner__content__form-group__input',id: "password"
+            %p.member-main__container__inner__content__form-group__info-txt
+              ※ 英字と数字の両方を含めて設定してください
+            = f.label :password_confirmation, "パスワード(確認用)", class: "member-main__container__inner__content__form-group__label"
+            %span.member-main__container__inner__content__form-group__require 必須
+            = f.password_field :password_confirmation, placeholder: '7文字以上の半角英数字', class:'member-main__container__inner__content__form-group__input', id: "password_confirmation"
+            %p.member-main__container__inner__content__form-group__info-txt
+              ※ 英字と数字の両方を含めて設定してください
+            .member-main__container__inner__content__form-group__password-toggle
+              .member-main__container__inner__content__form-group__password-toggle__checkbox
+                %input#passcheck{type: "checkbox"}/
+                %i.icon-check
+                %label.member-main__container__inner__content__form-group__password-toggle__checkbox__label{for: "reveal_password"} パスワードを表示する
+              .member-main__container__inner__content__form-group__password-container
+                %span.member-main__container__inner__content__form-group__password-container-revealed
+          .member-main__container__inner__content__form-group
+            %h3.member-main__container__inner__content__form-group__sub-head 本人確認
+            %p.member-main__container__inner__content__form-group__sub-head__txt
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .member-main__container__inner__content__form-group
+            %div
+              = f.label :name, "お名前", class: "member-main__container__inner__content__form-group__label" 
+              %span.member-main__container__inner__content__form-group__require 必須
+            = f.text_field :family_name, placeholder: '例) 山田', class:'member-main__container__inner__content__form-group__input-half', id: "family_name"
+            = f.text_field :last_name, placeholder: '例) 彩', class:'member-main__container__inner__content__form-group__input-half', id: "last_name"
+            #name_error
+          .member-main__container__inner__content__form-group
+            %div
+              = f.label :name, "お名前カナ(全角)", class: "mem-main__container__inner__content__form-group__label" 
+              %span.member-main__container__inner__content__form-group__require 必須
+            = f.text_field :frigana_family_name, placeholder: '例) ヤマダ', class:'member-main__container__inner__content__form-group__input-half', id: "frigana_family_name"
+            = f.text_field :frigana_last_name, placeholder: '例) アヤ', class:'member-main__container__inner__content__form-group__input-half', id: "frigana_last_name"
+            #frigana_name_error
+          .member-main__container__inner__content__form-group
+            = f.label :birthday, "生年月日", class: "mem-main__container__inner__content__form-group__label" 
+            %span.member-main__container__inner__content__form-group__require 必須
+            %br/
+            .member-main__container__inner__content__form-group__birthday-select
+              .member-main__container__inner__content__form-group__birthday-select__wrap
+                %i.fas.fa-angle-down
+                = f.select :birthday_year,["--"], {},{class: "member-main__container__inner__content__form-group__birthday-select__wrap__select", id:"select_birth_year"}
+              %span 年
+              .member-main__container__inner__content__form-group__birthday-select__wrap
+                %i.fas.fa-angle-down
+                = f.select :birthday_month, ["--"], {},{class: "member-main__container__inner__content__form-group__birthday-select__wrap__select", id:"select_birth_month"}
+              %span 月
+              .member-main__container__inner__content__form-group__birthday-select__wrap
+                %i.fas.fa-angle-down
+                = f.select :birthday_day, ["--"], {},{class: "member-main__container__inner__content__form-group__birthday-select__wrap__select", id:"select_birth_day"}
+              %span 日
+              #birth_date_error
+            .clearfix
+          %p.member-main__container__inner__content__info-txt
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+        .member-main__container__inner__content
+          .member-main__container__inner__content__form-group
+            %p.member-main__container__inner__content__form-group_txt-center
+              「次へ進む」のボタンを押すことにより、
+              = link_to "利用規約", "#", class: 'post' 
+              に同意したものとみなします
+          = f.submit :"次へ進む", class: "member-main__container__inner__content__btn-blue"
+          .member-main__container__inner__content__txt-right
+            %p
+              = link_to root_path do
+                本人情報の登録について
+                %i.fas.fa-angle-right
+          .member-main__container__inner__content__recaptcha-term
+            %p
+              This site is protected by reCAPTCHA and the Google
+              = link_to "Privacy Policy", "#", class: 'post' 
+              and
+              = link_to "Terms of Service", "#", class: 'post'
+              apply.
+=render "items/singlefooter"
+
+
