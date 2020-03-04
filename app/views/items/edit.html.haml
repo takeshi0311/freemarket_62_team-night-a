@@ -1,3 +1,5 @@
+= render partial:  "header"
+
 %nav.breadCrumbs
   %ul
     %li
@@ -30,32 +32,30 @@
                 %table.item-teble
                   %tr.main-item-imag
                     %td{align:"center", colspan:"4"}
-                      = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", width:"560",name:"BigImage"
+                      = image_tag @image.image, width:"560",name:"BigImage"
                   %tr
                     %td
-                      = link_to "javascript:void(0)", onmouseover:"changeimage( 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png' )" do
-                        = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", size: "147x87"
+                      = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
+                        = image_tag @image.image,size: "147x87"
+                      = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
+                        = image_tag @image.image,size: "147x87"
                     %td
-                      = link_to "javascript:void(0)", onmouseover:"changeimage( 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png' )" do
-                        = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png", size: "147x87"
-                    %td
-                      = link_to "javascript:void(0)", onmouseover:"changeimage( 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png' )" do
-                        = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png", size: "147x87"
+                      = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
+                        = image_tag @image.image,size: "147x87"
             .item-Box__price
-              %span
-                ¥20000
+              %span= @item.price
               .item-Box__price-detail
                 %span
                   (税込)
                 %span
                   送料込み
-            .itemDetail product2
+            .itemDetail= @item.name
             .table
               %table
                 %tbody
                   %tr
                     %th 出品者
-                    %td hoge
+                    %td
                   %tr
                     %th カテゴリー
                     %td
@@ -69,20 +69,19 @@
                     %td
                   %tr
                     %th 商品のサイズ
-                    %td
+                    %td= @item.size
                   %tr
                     %th 商品の状態
-                    %td 新品/未使用
+                    %td= @item.status
                   %tr
                     %th 配送料の負担
-                    %td 着払い（購入者負担）
+                    %td= @item.shipping_charges
                   %tr
                     %th 発送元の地域
-                    %td
-                      = link_to "青森県", "#"
+                    %td= @item.region
                   %tr
                     %th 発送日の目安
-                    %td 1-2日で発送
+                    %td= @item.shopping_date
             .optionalArea
               %ul
                 %li#likeBtn.optionalBtn.likeBtn
@@ -94,6 +93,9 @@
                     %i.fa.fa-flag
                     不適切な商品の通報
             %a.item-buy-btn{href:item_path}購入画面に進む
+            %a.item-edit-btn{href:item_path}商品編集
+            %form.item-Description
+              %textarea= @item.description
           .commentBox
             %ul.commentContents
             %form#new_comment.new_comment{"accept-charset":"UTF-8", action:"#", method:"post"}
@@ -121,3 +123,4 @@
         .relatedItems
           = link_to "メンズをもっと見る", "#"
           .productLists
+  = render partial:  "cameraBtn"

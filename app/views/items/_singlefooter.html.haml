@@ -1,9 +1,9 @@
-%footer.single-footer
+%%footer.single-footer
   .single-footer__main
-    = link_to "プライバシーポリシー", "https://www.mercari.com/jp/privacy/", class: "single-footer__private"
-    = link_to "メルカリ利用規約", "https://www.mercari.com/jp/tos/", class: "single-footer__terms"
-    = link_to "特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/", class: "single-footer__transaction"
-    = link_to "https://www.mercari.com/jp/tokutei/", class: "single-footer__logo" do
-      = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?35314277", alt: "mercari", class: "single-footer__logo", height: "65", width: "80"
-    %p.single-footer__small
-      %small.single-footer__small--character © Furima, Inc.
+    .clearfix
+      = link_to "プライバシーポリシー", "#", class: "single-footer__private"
+      = link_to "フリマ利用規約", "#", class: "single-footer__terms"
+      = link_to "特定商取引に関する表記", "#", class: "single-footer__transaction"
+      = link_to image_tag(src= "logo-gray.png", class: "single-footer__logo", size: "50x50"), '#'
+      %p.single-footer__small
+        %small.single-footer__small--character © Furima, Inc.

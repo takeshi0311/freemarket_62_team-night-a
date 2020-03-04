@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200215114634) do
+ActiveRecord::Schema.define(version: 20200221233525) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "postal_code",   null: false
@@ -52,8 +52,14 @@ ActiveRecord::Schema.define(version: 20200215114634) do
     t.string   "region",                         null: false
     t.integer  "price",                          null: false
     t.string   "shopping_date",                  null: false
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.integer  "brand_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
   create_table "pays", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -77,8 +83,20 @@ ActiveRecord::Schema.define(version: 20200215114634) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "nickname",                            null: false
+    t.string   "family_name",                         null: false
+    t.string   "last_name",                           null: false
+    t.string   "frigana_family_name",                 null: false
+    t.string   "frigana_last_name",                   null: false
+    t.integer  "birthday_year",                       null: false
+    t.integer  "birthday_month",                      null: false
+    t.integer  "birthday_day",                        null: false
+    t.string   "phone_number",                        null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "items", "brands"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "users"
 end

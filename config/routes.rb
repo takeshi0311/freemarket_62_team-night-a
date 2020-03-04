@@ -3,16 +3,14 @@ Rails.application.routes.draw do
 
   get 'purchase/done'
 
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-}
+  devise_for :users
 
-  resources :signup do
+  resources :signup, only: [:index, :create], path: "/signup" do
     collection do
       get 'index'
-      get 'mem'
-      get 'sms'
-      get 'done' 
+      get  'member'
+      get  'sms'
+      get 'done', to: 'signup#create' # 入力した情報すべてを保存
     end
   end
 
@@ -49,4 +47,5 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :categories, only: [:index]
 end

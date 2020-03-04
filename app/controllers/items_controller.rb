@@ -4,9 +4,6 @@ class ItemsController < ApplicationController
 
   def update
   end
-
-  def edit
-  end
   
   def buy
     @pay = Pay.where(user_id: current_user.id).first
@@ -18,4 +15,13 @@ class ItemsController < ApplicationController
       @default_card_information = customer.cards.retrieve(@pay.card_id)
     end
   end
+  def show
+  end
+
+
+  def edit
+    gon.image = Image.find(1)
+    @image = Image.find(1)
+    @item = Item.find(1)
+  end 
 end
