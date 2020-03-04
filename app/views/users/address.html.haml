@@ -4,31 +4,33 @@
   %section.address__box
     %h2.address__box__input
       発送元・お届け先住所入力
-    = form_for @address,url: register_users_path, method: :post, html:{class: 'address__box__form', id: "address__form"} do |f|
+    = form_for @address, url: register_users_path, method: :get, html:{class: 'address__box__form', id: "address-form"} do |f|
       .address__box__form__content
         .address__box__form__content__list
           %label.address__box__form__content__list__label 郵便番号
           %span.address__box__form__content__list__require 必須
-          = f.text_field :postal_code, placeholder: "例）123-4567",class: "address__box__form__content__list__input",id: "postal_code"
-        
+          = f.text_field :postal_code, id: "postal_code" ,placeholder: "例）123-4567",class: "address__box__form__content__list__input"
+          #postal_code_error
         .address__box__form__content__list
           %label.address__box__form__content__list__label 都道府県
           %span.address__box__form__content__list__require 必須
-          = f.text_field :prefecture, placeholder: "北海道", class: "address__box__form__content__list__input", id: "card_number"
-
+          .address__box__form__content__list__prefecture 
+            %i.fas.fa-chevron-down.fa-lg.address__box__form__content__list__prefecture__icon
+            = f.collection_select :prefecture_id,Prefecture.all,:id,:name,{prompt: "--"},{class: "address__box__form__content__list__prefecture__pulldown"}
+            #prefecture_id_error
         .address__box__form__content__list
           %label.address__box__form__content__list__label 市区町村
           %span.address__box__form__content__list__require 必須
-          = f.text_field :municipalitie, placeholder: "例)横浜市緑区", class: "address__box__form__content__list__input", id: "card_number"
-
+          = f.text_field :municipalitie, id: "municipalitie", placeholder: "例)横浜市緑区", class: "address__box__form__content__list__input" 
+          #municipalitie_error
         .address__box__form__content__list
           %label.address__box__form__content__list__label 番地
           %span.address__box__form__content__list__require 必須
-          = f.text_field :street, placeholder: "例)青山1-1-1", class: "address__box__form__content__list__input", id: "card_number"
-
+          = f.text_field :street, id: "street", placeholder: "例)青山1-1-1", class: "address__box__form__content__list__input"
+          #street_error
         .address__box__form__content__list
           %label.address__box__form__content__list__label 建物名
           %span.address__box__form__content__list__arbitrary 任意
-          = f.text_field :building, placeholder: "例)柳ビル103", class: "address__box__form__content__list__input",  id: "card_number"
+          = f.text_field :building, id: "building", placeholder: "例)柳ビル103", class: "address__box__form__content__list__input"
 
           = f.submit :"登録する", class: "btn__form"

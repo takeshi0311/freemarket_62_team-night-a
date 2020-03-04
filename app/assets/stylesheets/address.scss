@@ -7,6 +7,15 @@
   vertical-align: top;
 }
 
+@mixin invalid{
+  border: #ea352d 1px solid;
+}
+
+@mixin valid{
+  border: #3CCACE 1px solid;
+}
+
+
 .address{
   display:block;
   &__box{
@@ -33,6 +42,39 @@
             background: #3CCACE;
             @include background
           }
+          &__prefecture{
+            width: 100%;
+            display: inline-block;
+            position: relative;
+            
+            &__icon{
+              position: absolute;
+              right: 16px;
+              top: 30%;
+              z-index: 2;
+              color: #888;
+              font-size: 8px;
+            }
+            &__pulldown{
+              background: #fff;
+              width: 100%;
+              margin: 8px 0 0;
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+              cursor: pointer;
+            }
+            &__pulldown.invalid{
+              @include invalid
+            }
+            &__pulldown.valid{
+              @include valid
+            }
+          }
           &__arbitrary{
             background: #ccc;
             @include background
@@ -48,8 +90,27 @@
             line-height: 1.5;
             font-size: 16px;
           }
+          &__input.invalid{
+            @include invalid
+          }
+          &__input.valid{
+            @include valid
+          }
         }
       }
     }
   }
+}
+
+
+
+.validation_error,
+#postal_code-error,
+#address_prefecture_id-error,
+#municipalitie-error,
+#street-error {
+  color: #ea352d;
+  line-height: 1.5;
+  font-size: 14px;
+  margin-top: 8px;
 }
