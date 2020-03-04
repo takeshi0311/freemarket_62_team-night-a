@@ -29,6 +29,7 @@
                 %i.fas.fa-check-square
                 %label.buy-section__point__check__box__label
                   ポイントを使用（所持ポイント:P0)
+          
           %section.buy-content__pay__method
             %h3 支払い方法
             - if @pay.blank?
@@ -41,13 +42,13 @@
             - else
               .card__detail__number
                 = "**** **** ****" +@default_card_information.last4
+                = form_tag(delete_pays_path, method: :post, id: 'charge-form',class: "card__delete",name: "inputForm") do
+                  %input{ type: "hidden",name: "card_id", value:""}
+                  %button.card__delete__button 削除する
               - exp_month = @default_card_information.exp_month.to_s
               - exp_year  = @default_card_information.exp_year.to_s.slice(2,3)
               .card__detail__time
                 = exp_month + "/" + exp_year
-                = form_tag(delete_pays_path, method: :post, id: 'charge-form',class: "card__detail__submit",name: "inputForm") do
-                  %input{ type: "hidden",name: "card_id", value:""}
-                  %button.card__detail__submit__button 削除する
             
           
           %section.buy-content__address

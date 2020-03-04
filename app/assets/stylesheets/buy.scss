@@ -175,3 +175,11 @@ h3{
 .fal{
   padding-top:3.4px;
 }
+
+.card__delete{
+  display:block;
+  float:right;
+  &__button{
+    color: #0099e8;
+  }
+}
