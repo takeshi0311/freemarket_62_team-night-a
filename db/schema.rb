@@ -45,11 +45,9 @@ ActiveRecord::Schema.define(version: 20200215114634) do
     t.string   "name",                      null: false
     t.text     "description", limit: 65535, null: false
     t.integer  "category_id"
-    t.integer  "user_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
-    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
   create_table "pays", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
