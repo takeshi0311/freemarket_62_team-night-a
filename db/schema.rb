@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20200215114634) do
     t.string   "brand",                         null: false
     t.string   "status",                        null: false
     t.string   "shipping_method",               null: false
+    t.integer  "price",                         null: false
     t.string   "shopping_date",                 null: false
     t.integer  "category_id"
     t.datetime "created_at",                    null: false

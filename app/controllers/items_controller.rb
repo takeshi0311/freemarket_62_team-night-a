@@ -31,6 +31,17 @@ class ItemsController < ApplicationController
     # findは通常条件にあった1つを取得するが、ancestryを導入しているので、".children"メソッドで、選択されたものの子カテゴリーの配列を取得することができる。
     @category_grandchildren = Category.find("#{params[:child_id]}").children
  end
+
+# ユーザーが入力した金額を計算するアクション
+ def price
+  # デフォルトではparams[:price]は文字列として送られるため、.to_iをつけ整数型にする
+  price = params[:price].to_i
+  # 消費税の計算
+  # roundをつけることで端数が生じた際に四捨五入できる
+  @price_tax = (price * 0.1).round
+  # 利益の計算
+  @price_profit = price - @price_tax
+end
     # ----------------------------------------
   def create
     @item = Item.new(item_params)

@@ -133,7 +133,7 @@
                 .sell__price--yen
                   ¥
                   .sell__price--input
-                    %input.sell__price--default{ placeholder: "例）300", value: ""}/
+                    = f.number_field :price, class: "sell__price--default",placeholder: "例）300", min: 300, max: 9999999
         .sell__price--second
           .sell__price--fee 販売手数料 (10%)
           .sell__price--border -
