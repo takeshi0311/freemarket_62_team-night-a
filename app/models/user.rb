@@ -10,8 +10,10 @@ class User < ApplicationRecord
         has_one  :pay
         has_one  :address
 
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PASSWORD_REGEX = /(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}/i
+
 
 
   validates :nickname,                presence: true, length: {maximum: 20}
