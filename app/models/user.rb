@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PASSWORD_REGEX = /(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}/i
-  VALID_PHONE_REGEX = /(0{1}\d{9,10})/
+  # VALID_PHONE_REGEX = /(0{1}\d{9,10})/
 
 
   validates :nickname,                presence: true, length: {maximum: 20}
@@ -26,7 +26,7 @@ class User < ApplicationRecord
   validates :birthday_year,           presence: true
   validates :birthday_month,          presence: true
   validates :birthday_day,            presence: true
-  validates :phone_number,            presence: true, format: { with: VALID_PHONE_REGEX }
+  # validates :phone_number,            presence: true, format: { with: VALID_PHONE_REGEX }
 end
 
 
