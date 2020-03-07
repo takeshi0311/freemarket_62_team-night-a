@@ -27,7 +27,6 @@ class User < ApplicationRecord
   validates :birthday_year,           presence: true
   validates :birthday_month,          presence: true
   validates :birthday_day,            presence: true
-
 end
 
 

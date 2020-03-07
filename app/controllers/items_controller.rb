@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   def index
+    @image = Image.all
+    @item = Item.all
   end
 
   def update

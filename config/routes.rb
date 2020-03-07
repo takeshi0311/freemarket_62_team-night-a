@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :signup, only: [:index, :create], path: "/signup" do
     collection do
       get 'index'
-      get  'member'
-      get  'sms'
+      get 'member'
+      get 'sms'
       get 'done', to: 'signup#create' # 入力した情報すべてを保存
     end
   end
