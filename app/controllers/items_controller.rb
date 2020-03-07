@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   end
   
   def buy
+    @address = Address.where(user_id: current_user.id).first
     @pay = Pay.where(user_id: current_user.id).first
     if @pay.blank?
       redirect_to action: "new"
@@ -15,6 +16,7 @@ class ItemsController < ApplicationController
       @default_card_information = customer.cards.retrieve(@pay.card_id)
     end
   end
+
   def show
   end
 

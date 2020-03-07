@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def address
     @user = User.new
     @address = @user.build_address
+    address= Address.where(user_id: current_user.id)
+    redirect_to buy_items_path if address.exists?
   end
   
   def register

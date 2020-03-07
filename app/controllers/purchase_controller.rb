@@ -10,6 +10,7 @@ class PurchaseController < ApplicationController
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(pay.customer_id)
       @default_card_information = customer.cards.retrieve(pay.card_id)
+      redirect_to action: "pay"
     end
   end
 

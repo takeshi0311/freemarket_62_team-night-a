@@ -179,7 +179,17 @@ h3{
 .card__delete{
   display:block;
   float:right;
+  font-size:14px;
   &__button{
     color: #0099e8;
   }
+}
+
+.card__expiration{
+  display:flex;
+  font-size:14px;
+}
+
+.address__register{
+  font-size:14px;
 }
