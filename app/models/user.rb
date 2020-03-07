@@ -8,7 +8,9 @@ class User < ApplicationRecord
         has_many :purchases
         has_many :comments
         has_one  :pay
-        has_one  :address
+        has_one  :address,inverse_of: :user
+
+        accepts_nested_attributes_for :address
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PASSWORD_REGEX = /(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}/i

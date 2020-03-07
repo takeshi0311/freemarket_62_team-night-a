@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
   resources :users do
     collection do
-      get 'register', to: 'users#register'
+      post 'register', to: 'users#register'
       get 'mypage'
       get 'logout'
       get 'address'

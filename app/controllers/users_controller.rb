@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_current_user, only: :register
+
   def mypage
   end
 
@@ -6,16 +8,41 @@ class UsersController < ApplicationController
   end
 
   def address
-    @address = Address.new
+    @user = User.new
+    @address = @user.build_address
   end
   
   def register
-    @address = Address.new(address_params)
+    @user = User.new(id:current_user.id)
+    @address = @user.build_address(user_params[:address_attributes])
     if @address.save
       redirect_to buy_items_path
     else
       render address_users_path
     end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(
+      :id,
+      :family_name,
+      :last_name,
+      :frigana_family_name,
+      :frigana_last_name,
+      address_attributes: [
+        :id,
+        :postal_code,
+        :prefecture_id,
+        :municipalitie,
+        :street,
+        :building,
+      ]
+  )
+  end
+
+  def set_current_user
+    @current_user = User.find_by(id: session[:user_id])
   end
 
   def address_params
