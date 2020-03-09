@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
       @item = Item.find(1)
     if @item.user_id != current_user.id
       flash[:notice] = "権限がありません"
-      redirect_to("item_path")
+      redirect_to(item_path(@item))
     end
   end
 
