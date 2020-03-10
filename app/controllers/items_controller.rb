@@ -30,6 +30,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.user_id == current_user.id
       @item.destroy
+    else
+      flash[:notice] = "削除できませんでした"
+      redirect_to(item_path(@item))
     end
   end
 
