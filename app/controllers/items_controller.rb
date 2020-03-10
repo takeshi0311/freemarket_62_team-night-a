@@ -25,6 +25,13 @@ class ItemsController < ApplicationController
       redirect_to(item_path(@item))
     end
   end
+  
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.user_id == current_user.id
+      @item.destroy
+    end
+  end
 
   def edit
   end 

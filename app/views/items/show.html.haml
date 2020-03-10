@@ -95,7 +95,7 @@
                   -# itemの外部キーとcurrent_user.idが同じであれば出品者なので編集ボタンが表示される。参考カリキュラムhttps://master.tech-camp.in/curriculums/178
                 - if user_signed_in? && current_user.id == @item.user_id 
                   = link_to("編集",item_path(@item.id),class:"item-edit-btn")
-                  = link_to("削除",item_path(@item.id),class:"item-delete-btn")
+                  = link_to("削除",item_path(@item.id),method: :delete,class:"item-delete-btn")
                   -# 非出品者には購入ボタンが表示される。
                 - else
                   = link_to("購入",item_path(@item.id),class:"item-buy-btn")
