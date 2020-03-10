@@ -31,9 +31,13 @@ class ItemsController < ApplicationController
     if @item.user_id == current_user.id
       @item.destroy
     else
-      flash[:notice] = "削除できませんでした"
-      redirect_to(item_path(@item))
-    end
+  end
+
+  if @item.destroy
+    flash[:notice] = "削除しました"
+  else
+    flash[:notice] = "削除できませんでした"
+    redirect_to(item_path(@item))
   end
 
   def edit
