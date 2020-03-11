@@ -104,7 +104,7 @@
         - if user_signed_in?
           .commentBox
             %ul.commentContents
-            = form_tag("/items/#{@item.id}/comments", method: :post) do
+            = form_tag(item_comments_path(@item.id), method: :post) do
               %textarea{cols:"30",name:"text",placeholder:"コメントする",rows:"2"}
               %input{type:"submit",value:"コメント",class:"commentBtn"}
               %p.noticeMsg
@@ -114,12 +114,11 @@
               %br/
             %h4 ＜コメント一覧＞
             .comments
-              
               - if @comments
                 - @comments.each do |comment|
                   %p
                     %strong
-                      = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                      = link_to comment.user.nickname, "#"
                       ：
                     = comment.text
         %ul.links
@@ -137,5 +136,3 @@
           .productLists
   = render partial:  "cameraBtn"
 =render "items/singlefooter"
-
-              
