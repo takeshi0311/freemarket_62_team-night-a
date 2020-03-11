@@ -9,12 +9,46 @@
           %span.sell__image--top--right 必須
         .sell__image-second
           最大10枚までアップロードできます
-        .sell__image--upload
-          %input.sell__image--upload--file{ name: "image--upload", type: "file", style: "display: none;"}/
-          %pre.visible-pc
-            :preserve
-              ドラッグアンドドロップ
+        -# %label{for: "sell__image--upload--file"}
+        -#   %i.fas.fa-camera
+        -#   ドラッグアンドドロップ 
+        -#   %br
+        -#   またはクリックしてファイルをアップロード
+        -#   = f.fields_for :images do |i|
+        -#     = i.file_field :image, id: "sell__image--upload--file", style: "display: none;"
+        -#     %br/
+        -# .sell__image--third
+        -#   #image-box
+        -#     #previews
+        -#       - if @item.persisted?
+        -#         - @item.images.each_with_index do |image, i|
+        -#           = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+        -#   = f.fields_for :images do |image|
+        -#     = image.label :image, class: "sell__image--class", for: "sell__image--upload--file" , multiple: "multiple" do
+        -#       .js-file_group{"data-index" => "#{image.index}"}
+        -#         = image.file_field :image, class: "js-file", id: "sell__image--upload--file"
+        -#       %i.fas.fa-camera
+        -#       ドラッグアンドドロップ 
+        -#       %br
+        -#       またはクリックしてファイルをアップロード
+        .post__drop__box__container
+          .prev-content
+            - if @item.persisted?
+              - @item.images.each_with_index do |image, i|
+                = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+          .label-content
+            %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+              %i.fas.fa-camera
+              ドラッグアンドドロップ 
+              %br
               またはクリックしてファイルをアップロード
+          .hidden-content
+            = f.fields_for :images do |i|
+              = i.file_field :image, class: "hidden-field"
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
+              %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
       .sell__name
         .sell__name--top
           %h3.sell__name--top--left 商品名

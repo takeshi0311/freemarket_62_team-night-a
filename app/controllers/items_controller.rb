@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    # newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
+    @item.images.new
   end
 
   # 以下全て、formatはjsonのみ
@@ -45,7 +47,7 @@ end
     # ----------------------------------------
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save! 
       redirect_to root_path, notice: '出品完了しました'
     else
       render :new
@@ -55,6 +57,7 @@ end
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id)
+    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image])
   end
+
 end

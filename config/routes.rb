@@ -21,5 +21,6 @@ resources :signup do
       get 'category_grandchildren', defaults: { format: 'json' }
       get 'price', defaults: { format: 'json' }
     end
+    # resources :items , only: [:show]
   end
 end
