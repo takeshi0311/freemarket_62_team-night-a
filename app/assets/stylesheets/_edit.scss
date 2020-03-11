@@ -208,7 +208,7 @@
         background-color: #fff;
         margin: 10px 0;
         text-align: center;
-        .new_comment{
+        
           textarea {
             width: 100%;
             min-height: 104px;
@@ -231,7 +231,27 @@
             width: 60%;
             border-radius: 100px;
           }
-        }
+          h4{
+            line-height: 1.57;
+            letter-spacing: 0.15em;
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+          }
+          .comments {
+            padding: 5px;
+            margin-top: 15px;
+            border: 1px solid #808080;
+            text-align: left;
+            color: #808080;
+            p{
+              strong{
+                a{
+                  color: #808080;
+                }
+              }
+            }
+          } 
       }
     }
     .links{

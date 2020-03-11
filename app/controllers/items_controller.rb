@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
     @image = Image.find(1)
     @item = Item.find(1)
     @user = User.find(1)
+    @comments = @item.comments.includes(:user)
   end
 
   # 出品者以外がURLから直接的に編集、購入画面に進めないようにするため
