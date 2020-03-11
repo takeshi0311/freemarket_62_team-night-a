@@ -101,7 +101,7 @@
                   = link_to("購入",item_path(@item.id),class:"item-buy-btn")
             %form.item-Description
               %textarea= @item.description
-        - if user_signed_in? && current_user
+        - if user_signed_in?
           .commentBox
             %ul.commentContents
             = form_tag("/items/#{@item.id}/comments", method: :post) do
