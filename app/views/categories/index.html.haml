@@ -1,0 +1,11 @@
+.parent
+- @parents.each do |parent|
+ =parent.name
+
+.children
+- @children.each do |child|
+ =child.name
+
+.grand_children
+- @grand_children.each do |grand_child|
+ =grand_child.name

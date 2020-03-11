@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-}
-  
-resources :signup do
+  devise_for :users
+
+  resources :signup, only: [:index, :create], path: "/signup" do
     collection do
       get 'index'
-      get 'mem'
+      get 'member'
       get 'sms'
-      get 'done' # 登録完了後のページ
+      get 'done', to: 'signup#create' # 入力した情報すべてを保存
     end
   end
 
@@ -21,6 +19,14 @@ resources :signup do
       get 'category_grandchildren', defaults: { format: 'json' }
       get 'price', defaults: { format: 'json' }
     end
-    # resources :items , only: [:show]
   end
+
+  resources :users, only: [:show] do
+    collection do
+      get 'mypage'
+      get 'logout'
+    end
+  end
+
+  resources :categories, only: [:index]
 end

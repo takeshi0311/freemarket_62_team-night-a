@@ -2,8 +2,8 @@
   border-style: solid;
   border-width: 10px;
 }
-.signup-mem {
-  .signup-memHeader{
+.signup-member {
+  .signup-memberHeader{
     text-align: center;
     height: 128px;
     background-color: #f5f5f5;
@@ -105,7 +105,7 @@
       }
     }
   }
-  .mem-main {
+  .member-main {
     display: block;
     background-color: #f5f5f5;
     &__container {
@@ -127,6 +127,10 @@
           a {
             color: #0099e8;
             text-decoration: none;
+          }
+          .field_with_errors {
+            display: contents;
+            // もしくは diplay: inline;
           }
           &__form-group:first-child {
             margin: 0;
@@ -157,12 +161,18 @@
               line-height: 1.5;
               font-size: 16px;
             }
+            &__input.invalid { 
+              border: #ea352d 1px solid;
+            }
+            &__input.valid {
+              border: seagreen 1px solid; 
             &__info-txt {
               margin: 8px 0 0;
               line-height: 1.5;
               color: #888;
               font-size: 14px;
             }
+          }
             &__password-toggle {
               &__checkbox {
                 margin: 16px 0 0;
@@ -238,6 +248,13 @@
               line-height: 1.5;
               font-size: 16px;
             }
+            &__input-half.invalid { 
+              border: #ea352d 1px solid;
+            }
+            &__input-half.valid {
+              border: seagreen 1px solid; 
+            }
+            
             &__birthday-select {
               &__wrap {
                 width: 76px;
@@ -254,7 +271,6 @@
                 font-size: 25px;
                 }
                 &__select {
-                  padding: 0 10px;
                   width: 100%;
                   position: relative;
                   z-index: 2;
@@ -263,9 +279,15 @@
                   border-radius: 4px;
                   border: 1px solid #ccc;
                   background: 0;
-                  font-size: 16px;
+                  font-size: 14px;
                   line-height: 1.5;
                   cursor: pointer;
+                }
+                &__select.invalid {
+                  border: #ea352d 1px solid;
+                }
+                &__select.valid {
+                  border: seagreen 1px solid;
                 }
               }
             }
@@ -318,3 +340,14 @@
     }
   }
 }
+#nickname-error, #email-error, #password-error,
+#password_confirmation-error, #family_name-error,
+#last_name-error, #frigana_family_name-error,
+#frigana_last_name-error,#select_birth_day-error, 
+#select_birth_month-error, #select_birth_year-error{
+  color: #ea352d;
+  line-height: 1.5;
+  font-size: 14px;
+  margin-top: 8px;
+}
+

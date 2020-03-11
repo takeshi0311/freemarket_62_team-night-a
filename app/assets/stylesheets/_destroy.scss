@@ -1,0 +1,32 @@
+.contents.row{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 660px;
+  .success{
+    margin: 20px 0;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+    background-color: white;
+    box-sizing: border-box;
+    text-align: center;
+      h3{
+        line-height: 1.57;
+        letter-spacing: 0.15em;
+        font-size: 16px;
+        color: #666;
+      }
+      .btn{
+        padding: 8px 20px;
+        font-size: 14px;
+        border: 2px solid #57C3E9;
+        color: #57C3E9;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 3px;
+        display: inline-block;
+      }
+    }
+  }
