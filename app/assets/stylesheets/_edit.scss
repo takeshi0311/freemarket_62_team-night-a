@@ -64,7 +64,7 @@
                 .main-item-imag{
                   td{
                     img{
-                      object-fit: cover;
+                      object-fit: contain;
                       height: 346px;
                     }
                   }
@@ -75,7 +75,7 @@
                   td{
                     margin: 7px;
                     img{
-                      object-fit: cover; 
+                      object-fit: contain; 
                     }
                   }
                 }
@@ -137,36 +137,50 @@
           }
         }
         .optionalArea {
-          display: flex;
-          justify-content: space-between;
-          ul {
-            margin: 10px 0 0;
-            display: flex;
-            .likeBtn {
+          
+          ul{
+            
+            li.likeBtn {
               margin-right: auto;
               padding: 6px 10px;
               border-radius: 40px;
               color: #3CCACE;
               border: 1px solid #ffb340;
-              list-style: none;
+              display: inline-block;
             }
-          }
-          ul {
-            margin: 10px 0 0;
-            display: flex;
-            list-style: none;
-            .optionalBtn {
-              font-size: 14px;
-              a {
-                padding: 6px 10px;
-                display: inline-block;
-                border-radius: 4px;
-                color: #333;
-                border: 1px solid #333;
-                text-decoration: none;
-              }
-            } 
-          }
+            li.optionalBtn {
+              display: inline-block;
+              padding: 6px 10px;
+              border-radius: 4px;
+              color: #a9a9a9;
+              border: 1px solid #a9a9a9;
+              text-decoration: none;
+            
+            }
+          }  
+        }
+        
+        .item-edit-btn{
+          font-size: 24px;
+          line-height: 60px;
+          display: block;
+          margin: 65px;
+          background: #3cb371;
+          color: #fff;
+          text-align: center;
+          font-weight: 600;
+          border-radius: 7px;
+        }
+        .item-delete-btn{
+          font-size: 24px;
+          line-height: 60px;
+          display: block;
+          margin: 65px;
+          background: #808080;
+          color: #fff;
+          text-align: center;
+          font-weight: 600;
+          border-radius: 7px;
         }
         .item-buy-btn{
           font-size: 24px;
@@ -174,17 +188,6 @@
           display: block;
           margin: 65px;
           background: #FF6666;
-          color: #fff;
-          text-align: center;
-          font-weight: 600;
-          border-radius: 7px;
-        }
-        .item-edit-btn{
-          font-size: 24px;
-          line-height: 60px;
-          display: block;
-          margin: 65px;
-          background: #3cb371;
           color: #fff;
           text-align: center;
           font-weight: 600;

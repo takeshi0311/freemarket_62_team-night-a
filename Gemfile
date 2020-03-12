@@ -76,4 +76,3 @@ gem 'active_hash'
 gem 'gon'
 gem 'pry-rails'
 gem 'ancestry'
-
