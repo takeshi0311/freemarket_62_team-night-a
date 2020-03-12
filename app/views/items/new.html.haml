@@ -1,7 +1,7 @@
 %section.l-single-container.buy-item-container
   .sell__block
     %h2.sell__block--head 商品の情報を入力
-    %form{ action: "#", method: "post", class: "sell__block--form"}
+    = form_for action: "#", method: "post", class: "sell__block--form"
       .sell__image
         .sell__image--top
           %h3.sell__image--top--left 出品画像
