@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     @address = Address.where(user_id: current_user.id).first
     @pay = Pay.where(user_id: current_user.id).first
     if @pay.blank?
-      redirect_to action: "new"
+      redirect_to controller: "pays", action: "new"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@pay.customer_id)
