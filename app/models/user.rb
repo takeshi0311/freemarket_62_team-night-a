@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
         has_many :items
         has_many :purchases
-        has_many :comments  #commentsテーブルとのアソシエーション
+        has_many :comments
         has_one  :pay
         has_one  :address
 
