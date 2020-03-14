@@ -27,6 +27,18 @@ class ItemsController < ApplicationController
     end
   end
 
+
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.user_id == current_user.id && @item.destroy
+      flash[:notice] = "削除しました"
+    else
+      flash[:notice] = "削除できませんでした"
+      redirect_to(item_path(@item))
+    end
+  end
+
+  
   def new
     @item = Item.new
     # newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
@@ -63,16 +75,6 @@ class ItemsController < ApplicationController
   # 利益の計算
   @price_profit = price - @price_tax
   
-  def destroy
-    @item = Item.find(params[:id])
-    if @item.user_id == current_user.id && @item.destroy
-      flash[:notice] = "削除しました"
-    else
-      flash[:notice] = "削除できませんでした"
-      redirect_to(item_path(@item))
-    end
-  end
-
   def edit
   end 
 
