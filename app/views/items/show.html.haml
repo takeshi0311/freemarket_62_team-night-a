@@ -22,7 +22,7 @@
       %p product2
 
 - if flash[:notice]
-  %p= flash[:notice]
+  %p.alert= flash[:notice]
 
 .main
   .showmain
@@ -73,16 +73,16 @@
                     %td
                   %tr
                     %th 商品のサイズ
-                    %td= @item.size
+                    %td= @item.sizerail
                   %tr
                     %th 商品の状態
                     %td= @item.status
                   %tr
                     %th 配送料の負担
-                    %td= @item.shipping_charges
+                    %td
                   %tr
                     %th 発送元の地域
-                    %td= @item.region
+                    %td
                   %tr
                     %th 発送日の目安
                     %td= @item.shopping_date
@@ -101,20 +101,26 @@
                   = link_to("購入",item_path(@item.id),class:"item-buy-btn")
             %form.item-Description
               %textarea= @item.description
+        - if user_signed_in?
           .commentBox
             %ul.commentContents
-            %form#new_comment.new_comment{"accept-charset":"UTF-8", action:"#", method:"post"}
-              %input{name:"utf8", type:"hidden", value:"✓"}/
-              %input{name:"authenticity_token", type:"hidden", value:"T8vpqdpS7TX8SuZ7mZbU6ev2BYEaOCJpgDk7J5BfvGywvqAdX5qOhLXc8WbCV3VXw0LWy7hbr9Hx5eJUG4fGYQ=="}/
-              %textarea#comment_body{name:"comment[body]", required:"required"}
+            = form_tag(item_comments_path(@item.id), method: :post) do
+              %textarea{cols:"30",name:"text",placeholder:"コメントする",rows:"2"}
+              %input{type:"submit",value:"コメント",class:"commentBtn"}
               %p.noticeMsg
                 相手のことを考え丁寧なコメントを心がけましょう。
                 %br/
                 不快な言葉遣いなどは利用制限や退会処分となることがあります。
               %br/
-              %button.commentBtn{name:"button", type:"submit"}
-                %i.fa.fa-comment
-                コメントする
+            %h4 ＜コメント一覧＞
+            .comments
+              - if @comments
+                - @comments.each do |comment|
+                  %p
+                    %strong
+                      = link_to comment.user.nickname, "#"
+                      ：
+                    = comment.text
         %ul.links
           %li
             = link_to "#" do
