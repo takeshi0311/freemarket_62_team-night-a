@@ -27,10 +27,11 @@ Rails.application.routes.draw do
 
   resources :purchase, only: [:index] do
     collection do
-      post 'index', to: 'purchase#index'
-      get 'pay', to: 'purchase#pay'
+      get 'index', to: 'purchase#index'
+      get 'pay'
       get 'done', to: 'purchase#done'
-      root to: 'items#index'
+    end
+  end
   
   resources :items do
     #Ajaxで動くアクションのルートを作成

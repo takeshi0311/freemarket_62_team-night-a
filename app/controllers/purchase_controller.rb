@@ -1,8 +1,8 @@
 class PurchaseController < ApplicationController
-
   require 'payjp'
 
   def index
+    @item = Item.find(params[:id])
     pay = Pay.where(user_id: current_user.id).first
     if pay.blank?
       redirect_to controller: "pays", action: "new"
@@ -15,13 +15,18 @@ class PurchaseController < ApplicationController
   end
 
   def pay
+    @item = Item.find(params[:id])
     pay = Pay.where(user_id: current_user.id).first
+    if pay.blank?
+      redirect_to controller: "pays", action: "new"
+    else
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
-      :amount => 200,
+      :amount => @item.price,
       :customer => pay.customer_id,
       :currency => 'jpy'
     )
     redirect_to root_path, notice: '商品の購入が完了しました'
+    end
   end
 end

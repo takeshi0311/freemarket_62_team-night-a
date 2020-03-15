@@ -19,7 +19,7 @@ class PaysController < ApplicationController
       )
       @pay = Pay.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @pay.save
-        redirect_to action:"show"
+        redirect_to contoller:"item", action:"buy"
       else
         redirect_to action:"create"
       end

@@ -11,6 +11,8 @@ class ItemsController < ApplicationController
   end
   
   def buy
+    @item = Item.find(params[:id])
+    @image = Image.find(params[:id])
     @address = Address.where(user_id: current_user.id).first
     @pay = Pay.where(user_id: current_user.id).first
     if @pay.blank?
@@ -23,22 +25,23 @@ class ItemsController < ApplicationController
   end
 
   def show
-    gon.image = Image.find(1)
-    @image = Image.find(1)
-    @item = Item.find(1)
-    @user = User.find(1)
+    gon.image = Image.find(params[:id])
+    @item = Item.find(params[:id])
+    @image = Image.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   # 出品者以外がURLから直接的に編集、購入画面に進めないようにするため
   def ensure_correct_user
       @item = Item.find(1)
-    if @item.user_id != current_user.id
-      flash[:notice] = "権限がありません"
-      redirect_to(item_path(@item))
-    end
+    #if @item.user_id != current_user.id
+      #flash[:notice] = "権限がありません"
+      #redirect_to(item_path(@item))
+    #end
   end
 
   def new
+    @user = current_user.id
     @item = Item.new
     # newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
     @item.images.new
@@ -78,6 +81,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.user_id == current_user.id && @item.destroy
       flash[:notice] = "削除しました"
+      redirect_to root_path
     else
       flash[:notice] = "削除できませんでした"
       redirect_to(item_path(@item))
@@ -101,7 +105,7 @@ end
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image])
+    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
 end

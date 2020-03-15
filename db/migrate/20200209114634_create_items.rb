@@ -3,7 +3,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
     create_table :items do |t|
       t.string :name, null: false
       t.text :description, null: false
-      # t.string :sizerail
+      t.string :sizerail
       t.string :brand, null: false
       t.string :status, null: false
       # t.string :shipping_charges, null: false
@@ -12,7 +12,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.integer :price, null: false
       t.string :shopping_date, null: false
       t.references :category, foreign_key: true
-      # t.references :user, foreigh_key: true
+      t.references :user, foreigh_key: true
       
       t.timestamps
     end

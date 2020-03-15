@@ -1,5 +1,5 @@
 body{
-  background:#f5f5f5;;
+  //background:#f5f5f5;;
   min-height:100%;
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
 }
@@ -32,6 +32,7 @@ h3{
 
 .main{
   display:block;
+  background:#f5f5f5;
   .main-section{
     background:white;
     width:700px;
@@ -163,6 +164,13 @@ h3{
   @include border;
   padding-bottom:0;
   padding: 32px 0;
+  &__nobuy{
+    border: 1px solid rgb(40, 54, 54);
+    background:rgb(40, 54, 54);
+    color: #fff;
+    width:100%;
+    line-height: 48px;
+  }
   &__buy{
     border: 1px solid #3CCACE;
     background:#3CCACE;
