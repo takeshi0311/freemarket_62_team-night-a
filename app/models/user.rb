@@ -9,6 +9,7 @@ class User < ApplicationRecord
         has_many :comments
         has_one  :pay
         has_one  :address,inverse_of: :user
+        has_many :buyed_items, foreign_key: "buyer_id", class_name: "Item"
 
         accepts_nested_attributes_for :address
 

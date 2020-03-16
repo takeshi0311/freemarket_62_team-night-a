@@ -261,3 +261,23 @@
   }
 }
 
+.items-box_photo__soldout{
+  width: 0;
+  height: 0;
+  border-top: 114px solid #ea352d ;
+  border-right: 114px solid transparent;
+  border-bottom: 114px solid transparent;
+  border-left: 114px solid #ea352d ;
+  z-index:100;
+  position: relative;
+  top:-350px;
+  &__inner{
+    transform: rotate(-45deg);
+    font-size: 32px;
+    margin:-50px 0px 0px -75px;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+}
+

@@ -3,8 +3,9 @@ class ItemsController < ApplicationController
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
 
   def index
-    @image = Image.all
-    @item = Item.all
+    @items = Item.all
+    @images = Image.all
+    #@item = Item.where.not(buyer_id: nil)
   end
 
   def update

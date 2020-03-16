@@ -38,6 +38,10 @@
                   %tr.main-item-imag
                     %td{align:"center", colspan:"4"}
                       = image_tag @image.image, width:"560",name:"BigImage"
+                      -if @item.buyer_id.present?
+                        .items-box_photo__soldout
+                          .items-box_photo__soldout__inner
+                            SOLD
                   %tr
                     %td
                       = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
@@ -98,8 +102,12 @@
                   = link_to("編集",item_path(@item.id),class:"item-edit-btn")
                   = link_to("削除",item_path(id:@item.id),method: :delete,class:"item-delete-btn")
                   -# 非出品者には購入ボタンが表示される。
+                - elsif @item.buyer_id.present?
+                  %section.buy-content__btn
+                    %button.buy-content__btn__nobuy 売り切れ
                 - else
                   = link_to("購入",buy_items_path(id:@item.id),class:"item-buy-btn")
+
             %form.item-Description
               %textarea= @item.description
           .commentBox
