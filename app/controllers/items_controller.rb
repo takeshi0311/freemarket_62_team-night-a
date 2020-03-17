@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @image = Image.find(params[:id])
     @user = User.find(params[:id])
+    @comments = @item.comments.includes(:user)
   end
 
   # 出品者以外がURLから直接的に編集、購入画面に進めないようにするため

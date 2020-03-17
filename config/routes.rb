@@ -32,12 +32,14 @@ Rails.application.routes.draw do
     end
   end
   
+  root to: 'items#index'
   resources :items do
-    #Ajaxで動くアクションのルートを作成
-    collection do
-      get 'category_children', defaults: { format: 'json' }
-      get 'category_grandchildren', defaults: { format: 'json' }
-      get 'price', defaults: { format: 'json' }
+      resources :comments, only: [:create]
+  #Ajaxで動くアクションのルートを作成
+  collection do
+    get 'category_children', defaults: { format: 'json' }
+    get 'category_grandchildren', defaults: { format: 'json' }
+    get 'price', defaults: { format: 'json' }
     end
   end
 

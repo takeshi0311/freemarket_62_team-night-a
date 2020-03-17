@@ -14,6 +14,12 @@ class UsersController < ApplicationController
     redirect_to buy_items_path if address.exists?
   end
   
+  def show
+    user = User.find(params[:id])
+    @nickname = user.nickname
+    @item = user.item.page(params[:page]).per(5).order("created_at DESC")
+  end
+  
   def register
     @user = User.new(id:current_user.id)
     @address = @user.build_address(user_params[:address_attributes])
