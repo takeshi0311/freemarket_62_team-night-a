@@ -15,8 +15,6 @@ Rails.application.routes.draw do
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'items#index'
-
     #Ajaxで動くアクションのルートを作成
   resources :pays, only:[:new,:create,:show] do
     collection do

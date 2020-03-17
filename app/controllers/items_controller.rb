@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+
     gon.image = Image.find(params[:id])
     @item = Item.find(params[:id])
     @image = Image.find(params[:id])
