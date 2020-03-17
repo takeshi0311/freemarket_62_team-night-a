@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     address= Address.where(user_id: current_user.id)
     redirect_to buy_items_path if address.exists?
   end
-  
+
   def show
     user = User.find(params[:id])
     @nickname = user.nickname
