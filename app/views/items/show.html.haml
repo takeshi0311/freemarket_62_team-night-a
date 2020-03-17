@@ -87,12 +87,8 @@
                     %th 発送日の目安
                     %td= @item.shopping_date
             .optionalArea
+              = render partial:"items/favoriteBtn"
               %ul
-                %li.likeBtn
-                  %i.fa.fa-star お気に入り 0
-                %li.optionalBtn
-                  %i.fa.fa-flag 不適切な商品の通報
-                  -# itemの外部キーとcurrent_user.idが同じであれば出品者なので編集ボタンが表示される。参考カリキュラムhttps://master.tech-camp.in/curriculums/178
                 - if user_signed_in? && current_user.id == @item.user_id 
                   = link_to("編集",(item_path(@item.id)),class:"item-edit-btn")
                   = link_to("削除",item_path(@item.id),method: :delete,class:"item-delete-btn")
@@ -136,3 +132,4 @@
           .productLists
   = render partial:  "cameraBtn"
 =render "items/singlefooter"
+                

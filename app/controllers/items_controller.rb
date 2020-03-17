@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def index
     @image = Image.all
     @item = Item.all
+    @item = Item.new
   end
 
   def update
@@ -38,7 +39,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  
+
   def new
     @item = Item.new
     # newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。

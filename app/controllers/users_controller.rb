@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   def logout
   end
 
+  def index
+  end
+
   def show
     user = User.find(params[:id])
     @nickname = user.nickname
