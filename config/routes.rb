@@ -27,16 +27,14 @@ Rails.application.routes.draw do
 
   resources :purchase, only: [:index] do
     collection do
-      get 'index', to: 'purchase#index'
       get 'pay'
-      get 'done', to: 'purchase#done'
+      get 'buy'
     end
   end
   
   resources :items do
     #Ajaxで動くアクションのルートを作成
     collection do
-      get 'buy'
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
       get 'price', defaults: { format: 'json' }

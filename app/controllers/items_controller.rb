@@ -10,20 +10,6 @@ class ItemsController < ApplicationController
 
   def update
   end
-  
-  def buy
-    @item = Item.find(params[:id])
-    @image = Image.find(params[:id])
-    @address = Address.where(user_id: current_user.id).first
-    @pay = Pay.where(user_id: current_user.id).first
-    if @pay.blank?
-      redirect_to controller: "pays", action: "new"
-    else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(@pay.customer_id)
-      @default_card_information = customer.cards.retrieve(@pay.card_id)
-    end
-  end
 
   def show
     gon.image = Image.find(params[:id])
@@ -35,10 +21,10 @@ class ItemsController < ApplicationController
   # 出品者以外がURLから直接的に編集、購入画面に進めないようにするため
   def ensure_correct_user
       @item = Item.find(1)
-    #if @item.user_id != current_user.id
-      #flash[:notice] = "権限がありません"
-      #redirect_to(item_path(@item))
-    #end
+    if @item.user_id != current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to(item_path(@item))
+    end
   end
 
   def new

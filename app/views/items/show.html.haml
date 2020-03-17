@@ -106,7 +106,7 @@
                   %section.buy-content__btn
                     %button.buy-content__btn__nobuy 売り切れ
                 - else
-                  = link_to("購入",buy_items_path(id:@item.id),class:"item-buy-btn")
+                  = link_to("購入",buy_purchase_index_path(id:@item.id),class:"item-buy-btn")
 
             %form.item-Description
               %textarea= @item.description
