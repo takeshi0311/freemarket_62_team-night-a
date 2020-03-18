@@ -3,7 +3,6 @@ class PurchaseController < ApplicationController
 
   def buy
     @item = Item.find(params[:id])
-    @image = Image.find(params[:id])
     @address = Address.where(user_id: current_user.id).first
     @pay = Pay.where(user_id: current_user.id).first
     if @pay.blank?

@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
     @images = Image.all
-    #@item = Item.where.not(buyer_id: nil)
   end
 
   def update
@@ -29,7 +28,6 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @user = current_user.id
     @item = Item.new
     # newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
     @item.images.new
