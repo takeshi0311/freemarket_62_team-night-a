@@ -1,8 +1,8 @@
 class FavoritesController < ApplicationController
 
   def create
-    @Favorite = current_user.favorite.create(item_id: params[:item_id])
-    if @Favorite.save!
+    favorite = current_user.favorite.new(item_id: params[:item_id])
+    if favorite.save
       flash[:notice] = "お気に入りに追加しました"
       redirect_back(fallback_location: root_path)
     else 
@@ -12,8 +12,8 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @Favorite = Favorite.find_by(item_id: params[:item_id], user_id: current_user.id)
-    if @Favorite.destroy!
+    favorite = Favorite.find_by(item_id: params[:item_id], user_id: current_user.id)
+    if favorite.destroy
       flash[:notice] = "お気に入りを解除しました"
       redirect_back(fallback_location: root_path)
     else
