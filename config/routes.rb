@@ -14,12 +14,9 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-    #Ajaxで動くアクションのルートを作成
-  resources :pays, only:[:new,:create,:show] do
+  resources :pays, only:[:new,:create,:show,:destroy] do
     collection do
-      post 'show', to:'pays#show'
       post 'register', to: 'pays#register'
-      post 'delete', to: 'pays#delete'
     end
   end
 

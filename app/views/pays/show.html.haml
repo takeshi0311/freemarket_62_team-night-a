@@ -15,7 +15,7 @@
             - exp_year  = @default_card_information.exp_year.to_s.slice(2,3)
             .card__detail__time
               = exp_month + "/" + exp_year
-            = form_tag(delete_pays_path, method: :post, id: 'charge-form',class: "card__detail__submit",name: "inputForm") do
+            = form_tag(pay_path(@pay), method: :delete, id: 'charge-form',class: "card__detail__submit",name: "inputForm") do
               %input{ type: "hidden",name: "card_id", value:""}
               %button.card__detail__submit__button 削除する
           .pay__regist

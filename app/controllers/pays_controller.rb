@@ -3,7 +3,7 @@ class PaysController < ApplicationController
 
   def new
     pay = Pay.where(user_id: current_user.id)
-    redirect_to pays_path if pay.exists?
+    redirect_to pay_path(current_user) if pay.exists?
   end
 
   def register
@@ -19,33 +19,33 @@ class PaysController < ApplicationController
       )
       @pay = Pay.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @pay.save
-        redirect_to contoller:"purchase", action:"buy"
+        redirect_to root_path, notice:"登録しました"
       else
-        redirect_to action:"create"
+        redirect_to action:"new"
       end
     end
   end
 
-  def delete
+  def destroy
     pay = Pay.where(user_id: current_user.id).first
-    if pay.blank?
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(pay.customer_id)
+    pay.delete
+    if pay.destroy
+      redirect_to action: "new", notice: "削除しました"
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(pay.customer_id)
-      customer.delete
-      pay.delete
+      redirect_to action: "new", alert:  "削除できません"
     end
-    redirect_to action: "new"
   end
 
   def show
-    pay = Pay.where(user_id: current_user.id).first
-    if pay.blank?
+    @pay = Pay.where(user_id: current_user.id).first
+    if @pay.blank?
       redirect_to action: "new"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(pay.customer_id)
-      @default_card_information = customer.cards.retrieve(pay.card_id)
+      customer = Payjp::Customer.retrieve(@pay.customer_id)
+      @default_card_information = customer.cards.retrieve(@pay.card_id)
     end
   end
 end
