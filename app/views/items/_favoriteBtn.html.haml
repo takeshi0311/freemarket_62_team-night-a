@@ -1,6 +1,7 @@
-%i.far.fa-heart お気に入り#{@item.favorite.count}
 - if current_user.already_favorited?(@item)
-  = link_to('お気に入りを取り消す',item_favorite_path(@item),method: :delete,remote: true,class:"nolike-btn")
+  = link_to item_favorite_path(@item),method: :delete,remote: true,class:"nolike-btn"do
+    %i.fas.fa-heart.nolike-btn いいね#{@item.favorite.count}
 - else
-  = link_to('お気に入り', item_favorites_path(@item),method: :post,remote: true,class:"like-btn")
+  = link_to item_favorites_path(@item),method: :post,remote: true,class:"like-btn"do
+    %i.far.fa-heart.like-btn いいね#{@item.favorite.count}
 %i.fa.fa-flag 不適切な商品の通報
