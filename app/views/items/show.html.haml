@@ -30,13 +30,18 @@
       .contentRight
         .topContent
           .item-Box
-            %h2.item-Box__name product2
+            %h2.item-Box__name 
+              =@item.name
             .item-Box__body
               %ul
                 %table.item-teble
                   %tr.main-item-imag
                     %td{align:"center", colspan:"4"}
                       = image_tag @image.image, width:"560",name:"BigImage"
+                      -if @item.buyer_id.present?
+                        .items-box_photo__soldout
+                          .items-box_photo__soldout__inner
+                            SOLD
                   %tr
                     %td
                       = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
@@ -59,7 +64,7 @@
                 %tbody
                   %tr
                     %th 出品者
-                    %td= link_to @user.nickname,item_path(@user)
+                    %td= link_to @item.user.nickname,item_path(@item.user_id)
                   %tr
                     %th カテゴリー
                     %td
@@ -73,16 +78,19 @@
                     %td
                   %tr
                     %th 商品のサイズ
-                    %td= @item.sizerail
+                    //%td= @item.size
+
                   %tr
                     %th 商品の状態
                     %td= @item.status
                   %tr
                     %th 配送料の負担
-                    %td
+
+                    //%td= @item.shipping_charges
                   %tr
                     %th 発送元の地域
-                    %td
+                    //%td= @item.region
+
                   %tr
                     %th 発送日の目安
                     %td= @item.shopping_date
@@ -93,8 +101,12 @@
                   = link_to("編集",(item_path(@item.id)),class:"item-edit-btn")
                   = link_to("削除",item_path(@item.id),method: :delete,class:"item-delete-btn")
                   -# 非出品者には購入ボタンが表示される。
+                - elsif @item.buyer_id.present?
+                  %section.buy-content__btn
+                    %button.buy-content__btn__nobuy 売り切れ
                 - else
-                  = link_to("購入",item_path(@item.id),class:"item-buy-btn")
+                  = link_to("購入",buy_purchase_index_path(id:@item.id),class:"item-buy-btn")
+
             %form.item-Description
               %textarea= @item.description
         - if user_signed_in?

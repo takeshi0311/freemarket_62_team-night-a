@@ -13,10 +13,12 @@
 ActiveRecord::Schema.define(version: 20200317032143) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "postal_code",   null: false
-    t.string   "prefecture",    null: false
+    t.string   "postal_code",   null: false
+    t.integer  "prefecture_id"
     t.string   "municipalitie", null: false
+    t.string   "street",        null: false
     t.string   "building"
+    t.integer  "user_id",       null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -73,18 +75,18 @@ ActiveRecord::Schema.define(version: 20200317032143) do
     t.integer  "user_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.integer  "buyer_id"
     t.integer  "Favorites_count"
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
   create_table "pays", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "card_number",   null: false
-    t.integer  "month",         null: false
-    t.integer  "year",          null: false
-    t.integer  "security_code", null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "user_id",     null: false
+    t.string   "customer_id", null: false
+    t.string   "card_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "purchases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
