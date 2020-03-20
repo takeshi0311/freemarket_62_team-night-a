@@ -17,7 +17,6 @@ class ItemsController < ApplicationController
     gon.image = Image.find(params[:id])
     @item = Item.find(params[:id])
     @image = Image.find(params[:id])
-    @user = User.find(params[:id])
     @comments = @item.comments.includes(:user)
   end
 

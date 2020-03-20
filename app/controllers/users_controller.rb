@@ -26,10 +26,11 @@ class UsersController < ApplicationController
   end
   
   def register
+    
     @user = User.new(id:current_user.id)
     @address = @user.build_address(user_params[:address_attributes])
     if @address.save
-      redirect_to buy_items_path
+      redirect_to root_path
     else
       render address_users_path
     end
