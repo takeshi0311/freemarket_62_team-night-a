@@ -297,6 +297,8 @@ GEM
       multi_json (~> 1.11)
       os (>= 0.9, < 2.0)
       signet (~> 0.7)
+    gretel (3.0.9)
+      rails (>= 3.1.0)
     haml (5.1.2)
       temple (>= 0.8.0)
       tilt
@@ -536,6 +538,7 @@ DEPENDENCIES
   fog
   font-awesome-sass
   gon
+  gretel
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
