@@ -4,13 +4,14 @@
       .icon
         = link_to image_tag(src= "logo.png", class: "image", size: "140x40"), root_path
       .searchbox
-        %form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
+        %form{"accept-charset" => "UTF-8", :action => search_items_path, :method => "get"}
           %input{name: "utf8", type: "hidden", value: "✓"}/
-          %input.searchbox__input{name: "key", placeholder: "キーワードから探す"}
+          %input.searchbox__input{name: "name", placeholder: "キーワードから探す"}
           %button{type: "submit"}
             .searchbox__icon
               = image_tag "icon-search1.png", size: "19x19"
               %input{name: "authenticity_token", type: "hidden", value: ""}
+        .item-search-result
     .header__inner__nav
       .list-left
         .list-left__item-first
@@ -19,6 +20,11 @@
           = link_to "ブランド", "#", class:"brand-btn"
       .list-right
         .list-right__item
+        - if user_signed_in?
+          = link_to "マイページ", mypage_users_path, class: "mypage-btn"
+        - else
           = link_to "ログイン", new_user_session_path, class: "login-btn"
           = link_to "新規会員登録", signup_index_path, class: "new-member-btn"
+          
+          -# このマイページは後で削除する
           = link_to "マイページ", mypage_users_path, class: "mypage-btn"
