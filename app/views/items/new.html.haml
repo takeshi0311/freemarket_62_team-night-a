@@ -2,7 +2,7 @@
 %section.l-single-container.buy-item-container
   .sell__block
     %h2.sell__block--head 商品の情報を入力
-    = form_for @item, html: {class: 'sell__block--form'} do |f|
+    = form_for @item, html: {class: 'sell__block--form', id: "sell__form"} do |f|
       .sell__image
         .sell__image--top
           %h3.sell__image--top--left 出品画像
@@ -39,9 +39,6 @@
           .label-content
             %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
               %i.fas.fa-camera
-              ドラッグアンドドロップ 
-              %br
-              またはクリックしてファイルをアップロード
           .hidden-content
             = f.fields_for :images do |i|
               = i.file_field :image, class: "hidden-field"
@@ -167,7 +164,7 @@
                 .sell__price--yen
                   ¥
                   .sell__price--input
-                    = f.number_field :price, class: "sell__price--default",placeholder: "例）300", min: 300, max: 9999999
+                    = f.number_field :price, class: "sell__price--default",placeholder: "例）300"
         .sell__price--second
           .sell__price--fee 販売手数料 (10%)
           .sell__price--border -

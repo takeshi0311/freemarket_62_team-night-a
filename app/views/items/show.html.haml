@@ -19,7 +19,7 @@
     %li
       %i.fa.fa-angle-right
     %li
-      %p product2
+      %p= @item.name
 
 - if flash[:notice]
   %p= flash[:notice]
@@ -30,7 +30,7 @@
       .contentRight
         .topContent
           .item-Box
-            %h2.item-Box__name product2
+            %h2.item-Box__name= @item.name
             .item-Box__body
               %ul
                 %table.item-teble
@@ -59,7 +59,7 @@
                 %tbody
                   %tr
                     %th 出品者
-                    %td= link_to @user.nickname,item_path(@user)
+                    -# %td= link_to @user.nickname,item_path(@user)
                   %tr
                     %th カテゴリー
                     %td
@@ -70,19 +70,19 @@
                       = link_to "ノーカラージャケット", "#" 
                   %tr
                     %th ブランド
-                    %td
+                    %td= @item.brand
                   %tr
                     %th 商品のサイズ
-                    %td= @item.size
+                    -# %td= @item.size
                   %tr
                     %th 商品の状態
                     %td= @item.status
                   %tr
                     %th 配送料の負担
-                    %td= @item.shipping_charges
+                    %td= @item.shipping_method
                   %tr
                     %th 発送元の地域
-                    %td= @item.region
+                    -# %td= @item.region
                   %tr
                     %th 発送日の目安
                     %td= @item.shopping_date
@@ -98,7 +98,7 @@
                   = link_to("削除",item_path(@item.id),method: :delete,class:"item-delete-btn")
                   -# 非出品者には購入ボタンが表示される。
                 - else
-                  = link_to("購入",item_path(@item.id),class:"item-buy-btn")
+                  = link_to("購入",buy_items_path(@item.id),class:"item-buy-btn")
             %form.item-Description
               %textarea= @item.description
           .commentBox

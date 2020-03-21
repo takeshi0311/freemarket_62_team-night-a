@@ -59,7 +59,7 @@
       width: 100%;
       height: 162px;
       text-align: center;
-      padding-top: 60px;
+      padding-top: 70px;
       cursor: pointer;
       &__text-visible {
         position: absolute;
@@ -82,7 +82,10 @@
   //file_fieldのcss
   .hidden-content {
     .hidden-field {
-      display: none;
+      // display: none;
+      // visibility: hidden;
+      opacity: 0;
+      position: absolute;
     }
     .hidden-checkbox {
       display: none;

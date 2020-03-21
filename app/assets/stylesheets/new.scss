@@ -160,6 +160,7 @@
                                       background: #fff;
                                       font-size: 16px;
                                       line-height: 1.5;
+                                      border-radius: 4px;
                                       }
                                     }
 // ーーーここから上は「出品名」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -412,8 +413,6 @@
                               font-size: 14px;
                               margin-left: 220px;
                               border-top: 1px solid #ccc;
-                                .sell__price--fee{
-                              }
                                 .sell__price--border{
                                   margin-left:auto;
                               }
@@ -475,7 +474,33 @@
                             }
                           }
 // ーーーここから上は「注意書き＋出品ボタン＋もどるボタン」フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+                    p.invalid{
+                      display: block;
+                      color: #ff0211;
+                      font-size: 14px;
+                      line-height: 1.4em;
+                      margin: 4px 0 0;
                     }
+                    select.invalid{
+                      border-color: #ff0211!important;
+                      margin-bottom: 16px;
+                    }
+                    .sell__name--text.invalid{
+                      border-color: #ff0211!important;
+                      margin-bottom: 16px;
+                    }
+                    .sell__explain--text.invalid{
+                      border-color: #ff0211!important;
+                      margin-bottom: 16px;
+                    }
+                    #item_price-error{
+                      padding-top: 35px;
+                      margin-left: 140px;
+                    }
+                    .sell__price--default.invalid{
+                      border-color: #ff0211!important;
+                    }
+      }
 // ーーーここから上は「出品投稿」フォーム全体ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     }
   }
