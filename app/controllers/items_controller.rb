@@ -10,6 +10,14 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def search
+    @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
 
   def edit
     gon.image = Image.find(1)
