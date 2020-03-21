@@ -44,7 +44,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-  process resize_to_fit: [720, 720]
+  process resize_to_fit: [100, 100]
 
   # 環境毎の画像保存先
   if Rails.env.development?

@@ -1,5 +1,5 @@
 =render "header"
-= link_to "商品詳細ページ","/items/show/edit"
+= link_to "商品詳細ページ",item_path(1)
 .main
   .mainSection
     .mainSection__content
@@ -89,8 +89,8 @@
           %h3.pickupCategory__box__head__color__subttl 新規投稿商品 
       .pickupCategory__box__items
         .pickupCategory__box__items__item
-        - @image.each do |item|
-          = link_to edit_item_path(id: item.id) ,class: "pickupCategory__box__items__item__link" do
+        - @images.each do |item|
+          = link_to item_path(id: item.id) ,class: "pickupCategory__box__items__item__link" do
             .pickupCategory__box__items__item__link__img
               = image_tag item.image, class: "pickupCategory__box__items__item__link__img__up"
             .pickupCategory__box__items__item__link__body
@@ -104,6 +104,10 @@
                     %i.fa.fa-star.likeIcon
                     0
                 %p.pickupCategory__box__items__item__link__body__name__show__tax (税込)
+                -if item.item.buyer_id.present?
+                  .items-box_photo__sold
+                    .items-box_photo__sold__inner
+                      SOLD
     .pickupBrand
       %h2.pickupBrand__ttl ピックアップブランド
       .pickupBrand__box
@@ -112,8 +116,8 @@
           %h3.pickupBrand__box__head__color__subttl 新規投稿商品 
       .pickupBrand__box__items
         .pickupBrand__box__items__item
-        - @image.each do |item|
-          = link_to edit_item_path(id: item.id) ,class: "pickupBrand__box__items__item__link" do
+        - @images.each do |item|
+          = link_to item_path(id: item.id) ,class: "pickupBrand__box__items__item__link" do
             .pickupBrand__box__items__item__link__img
               = image_tag item.image, class: "pickupBrand__box__items__item__link__img__up"
             .pickupBrand__box__items__item__link__body
@@ -127,6 +131,10 @@
                     %i.fa.fa-star.likeIcon
                     0
                 %p.pickupBrand__box__items__item__link__body__name__show__tax (税込)
+                -if item.item.buyer_id.present?
+                  .items-box_photo__sold
+                    .items-box_photo__sold__inner
+                      SOLD   
   = render partial:  "cameraBtn"
 =render "banner"
 =render "footer"

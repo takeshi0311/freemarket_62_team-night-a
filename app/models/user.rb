@@ -7,12 +7,21 @@ class User < ApplicationRecord
         has_many :items
         has_many :purchases
         has_many :comments
+        has_many :items, dependent: :destroy #お気に入り機能、ユーザーがデータベースから削除されてしまった場合にユーザーがした投稿も全て消えるように
+        has_many :favorite, dependent: :destroy
+        has_many :favorited_items, through: :favoriteds, source: :post
         has_one  :pay
-        has_one  :address
+        has_one  :address,inverse_of: :user
+        has_many :buyed_items, foreign_key: "buyer_id", class_name: "Item"
+
+        accepts_nested_attributes_for :address
+
+        def already_favorited?(item)
+          self.favorite.exists?(item_id: item.id)
+        end
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PASSWORD_REGEX = /(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}/i
-  # VALID_PHONE_REGEX = /(0{1}\d{9,10})/
 
 
   validates :nickname,                presence: true, length: {maximum: 20}
@@ -26,7 +35,8 @@ class User < ApplicationRecord
   validates :birthday_year,           presence: true
   validates :birthday_month,          presence: true
   validates :birthday_day,            presence: true
-  # validates :phone_number,            presence: true, format: { with: VALID_PHONE_REGEX }
 end
+
+
 
 
