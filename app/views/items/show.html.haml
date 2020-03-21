@@ -20,7 +20,7 @@
     %li
       %i.fa.fa-angle-right
     %li
-      %p product2
+      %p= @item.name
 
 - if flash[:notice]
   %p.alert= flash[:notice]
@@ -76,22 +76,19 @@
                       = link_to "ノーカラージャケット", "#" 
                   %tr
                     %th ブランド
-                    %td
+                    %td= @item.brand
                   %tr
                     %th 商品のサイズ
                     //%td= @item.size
-
                   %tr
                     %th 商品の状態
                     %td= @item.status
                   %tr
                     %th 配送料の負担
-
-                    //%td= @item.shipping_charges
+                    %td= @item.shipping_method
                   %tr
                     %th 発送元の地域
-                    //%td= @item.region
-
+                    -# %td= @item.region
                   %tr
                     %th 発送日の目安
                     %td= @item.shopping_date
@@ -107,7 +104,6 @@
                     %button.buy-content__btn__nobuy 売り切れ
                 - else
                   = link_to("購入",buy_purchase_index_path(id:@item.id),class:"item-buy-btn")
-
             %form.item-Description
               %textarea= @item.description
         - if user_signed_in?
