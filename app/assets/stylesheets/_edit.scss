@@ -28,9 +28,16 @@
     }
     li:last-child {
       font-weight: bold;
-  }
+    }
   }
 }
+
+.alert{
+  background-color:#3CCACE;
+  color: white;
+  text-align: center;
+}
+
 
 .main {
   background: #f8f8f8;
@@ -136,30 +143,7 @@
             }
           }
         }
-        .optionalArea {
-          
-          ul{
-            
-            li.likeBtn {
-              margin-right: auto;
-              padding: 6px 10px;
-              border-radius: 40px;
-              color: #3CCACE;
-              border: 1px solid #ffb340;
-              display: inline-block;
-            }
-            li.optionalBtn {
-              display: inline-block;
-              padding: 6px 10px;
-              border-radius: 4px;
-              color: #a9a9a9;
-              border: 1px solid #a9a9a9;
-              text-decoration: none;
-            
-            }
-          }  
-        }
-        
+
         .item-edit-btn{
           font-size: 24px;
           line-height: 60px;
@@ -208,7 +192,7 @@
         background-color: #fff;
         margin: 10px 0;
         text-align: center;
-        .new_comment{
+        
           textarea {
             width: 100%;
             min-height: 104px;
@@ -231,7 +215,26 @@
             width: 60%;
             border-radius: 100px;
           }
-        }
+          h4{
+            line-height: 1.57;
+            letter-spacing: 0.15em;
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+          }
+          .comments {
+            padding: 5px;
+            margin-top: 15px;
+            text-align: left;
+            color: #808080;
+            p{
+              strong{
+                a{
+                  color: #808080;
+                }
+              }
+            }
+          } 
       }
     }
     .links{
@@ -260,4 +263,26 @@
     }
   }
 }
+
+
+.items-box_photo__soldout{
+  width: 0;
+  height: 0;
+  border-top: 114px solid #ea352d ;
+  border-right: 114px solid transparent;
+  border-bottom: 114px solid transparent;
+  border-left: 114px solid #ea352d ;
+  z-index:100;
+  position: relative;
+  top:-350px;
+  &__inner{
+    transform: rotate(-45deg);
+    font-size: 32px;
+    margin:-50px 0px 0px -75px;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+}
+
 

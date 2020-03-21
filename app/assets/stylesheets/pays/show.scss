@@ -1,0 +1,51 @@
+.card__show{
+  padding:64px;
+  border-top: 1px solid #f5f5f5;
+  &__box{
+    display:block;
+    &__register{
+      max-width: 320px;
+      margin:0 auto;
+      &__list{
+        font-size:16px;
+      }
+    }
+  }
+}
+
+.card__detail{
+  margin:0 auto;
+  padding:24px 0;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  &__number{
+    margin:8px 0 0;
+    font-size: 16px;
+  }
+  &__time{
+    margin:8px 0 0;
+    font-size: 16px;
+  }
+  &__submit{
+    position: absolute;
+    top:0;
+    right:0;
+    padding:4px 6px;
+    background:#fff;
+    border-radius: 3px;
+    border:1px solid #3CCACE;
+    &__button{
+      color:#3CCACE;
+    }
+  }
+}
+
+.pay__regist{
+  margin:40px 0 0;
+  &__to{
+    display:block;
+    text-align: right;
+    color:#0099e8;
+    font-size:14px;
+  }
+}

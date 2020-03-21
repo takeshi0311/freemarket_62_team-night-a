@@ -15,5 +15,9 @@ CarrierWave.configure do |config|
     # S3のバケット名
     config.fog_directory  = 'freemarket-62-team-night-a'
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket-62-team-night-a'
+  else
+    config.storage :file
+    config.enable_processing = false if Rails.env.test?
   end
-end
+ end
+

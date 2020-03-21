@@ -3,18 +3,21 @@ class ItemsController < ApplicationController
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
 
   def index
-    @image = Image.all
-    @item = Item.all
+    @items = Item.all
+    @images = Image.all
+    @item = Item.new
+
   end
 
   def update
   end
 
   def show
-    gon.image = Image.find(1)
-    @image = Image.find(1)
-    @item = Item.find(1)
-    @user = User.find(1)
+
+    gon.image = Image.find(params[:id])
+    @item = Item.find(params[:id])
+    @image = Image.find(params[:id])
+    @comments = @item.comments.includes(:user)
   end
 
   # 出品者以外がURLから直接的に編集、購入画面に進めないようにするため
@@ -25,6 +28,18 @@ class ItemsController < ApplicationController
       redirect_to(item_path(@item))
     end
   end
+
+
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.user_id == current_user.id && @item.destroy
+      flash[:notice] = "削除しました"
+    else
+      flash[:notice] = "削除できませんでした"
+      redirect_to(item_path(@item))
+    end
+  end
+
 
   def new
     @item = Item.new
@@ -62,15 +77,18 @@ class ItemsController < ApplicationController
   # 利益の計算
   @price_profit = price - @price_tax
   
+
   def destroy
     @item = Item.find(params[:id])
     if @item.user_id == current_user.id && @item.destroy
       flash[:notice] = "削除しました"
+      redirect_to root_path
     else
       flash[:notice] = "削除できませんでした"
       redirect_to(item_path(@item))
     end
   end
+
 
   def edit
   end 
@@ -89,7 +107,7 @@ end
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image])
+    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
 end

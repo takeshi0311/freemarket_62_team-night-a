@@ -14,6 +14,5 @@ FactoryBot.define do
     birthday_day          {"1"} 
     phone_number          {"09012345678"}
   end
-
   
 end

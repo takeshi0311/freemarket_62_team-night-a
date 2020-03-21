@@ -54,7 +54,5 @@ end
 #設定した環境変数をcapistranoでの自動デプロイで利用するために、明示的に環境変数を指定する
 set :default_env, {
   rbenv_root: "/usr/local/rbenv",
-  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
-  AWS_ACCESS_KEY_ID: ENV["BASIC_AUTH_USER"],
-  AWS_SECRET_ACCESS_KEY: ENV["BASIC_AUTH_PASSWORD"]
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
 }
