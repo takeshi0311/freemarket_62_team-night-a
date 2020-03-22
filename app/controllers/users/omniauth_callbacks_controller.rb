@@ -52,7 +52,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @sns_id = sns_info[:sns].id
       session["devise.sns_auth"] = sns_info[:sns].id
       render 'signup/member'
-      # redirect_to member_signup_index_path
     end
   end
 end

@@ -58,7 +58,6 @@ class SignupController < ApplicationController
     else
       render '/signup/index'
     end
-    
   end
 
 
