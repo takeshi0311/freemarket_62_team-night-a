@@ -29,28 +29,45 @@
       .searchbox{
         width: 100%;
         margin-left: auto;
+        position: relative;
         form{
           width: 100%;
           display: flex;
           margin-bottom: 5px;
           height: 36px;
-        }
+          
           input{
             width: calc(100% - 36px);
-            height: 36px;
             padding: 0 0 0 5px;
             font-size: 16px;
             border-style: solid;
             border-color: gray;
             border-width: 1px;
           }
+        }
         button{
           cursor: pointer;
           background-color: #3ccace;
           padding: 8px;
           border: 0;
         }
+        .item-search-result{
+          position: absolute;
+          width: 100%;
+          z-index: 1;
+          .search-result{
+            background-color: white;
+            padding: 0 0 0 5px;
+            height: 35px;
+            line-height: 35px;
+            border-bottom: solid 0.5px gray;
+            a{
+              color: black;
+            }
+          }
+        }
       }
+      
     }
     &__nav{
       font-size: 14px;
