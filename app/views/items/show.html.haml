@@ -1,48 +1,132 @@
-= render partial:  "buy-header"
-  
+= render partial:  "header"
+
+%nav.breadCrumbs
+  %ul
+    %li
+      = link_to "FRIMA", "#" 
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to "メンズ", "#" 
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to "ジャケット/アウター", "#" 
+    %li
+      %i.fa.fa-angle-right
+    %li
+      = link_to "ノーカラージャケット", "#" 
+    %li
+      %i.fa.fa-angle-right
+    %li
+      %p product2
+
+- if flash[:notice]
+  %p= flash[:notice]
+
 .main
-  %section.main-section
-    %h2.main-section__verification 購入内容の確認
-    %section.main-section__item
-      .main-section__item__buy
-        .main-section__item__buy__box
-          %h3.main-section__item__buy__image
-            %img.main-section__item__buy__image__up{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png(40 kB)https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"}/
-          .main-section__item__detail
-            %p.main-section__item__detail__name 
-              商品入るよ
-            %p.main-section__item__detail__price
-              %span ¥200
-              %span.main-section__item__detail__tax (税込)送料なし
-    %section.buy-section__price
-      .buy-section__price__content
-        .buy-section__price__content__form
-          %ul.buy-section__price__content__form__list
-            %li.buy-section__price__content__form__list__cell
-              .buy-section__price__content__form__list__label 
-                支払い金額
-              .buy-section__price__content__form__list__money
-                %span ￥200
-          %ul.buy-section__point
-            %li.buy-section__point__check
-              .buy-section__point__check__box
-                %i.fas.fa-check-square
-                %label.buy-section__point__check__box__label
-                  ポイントを使用（所持ポイント:P0)
-          %section.buy-content__pay__method
-            %h3 支払い方法
-            .buy-content__pay__method__box
-              = link_to items_path, class: "buy-content__pay__method__box__register" do
-                = icon('fas', 'fa-plus-circle', class: "fal fa-plus-circle")
-                %p.buy-content__pay__method__box__register__to
-                  登録してください
-          
-          %section.buy-content__address
-            %h3 配送先
-            .buy-content__address__box
-              = link_to edit_item_path, class: "buy-content__address__register" do
-                = icon('fas', 'fa-plus-circle', class: "fal fa-plus-circle")
-                %p.buy-content__address__register__to
-                  登録してください
-        %section.buy-content__btn
-          %button.buy-content__btn__buy 購入する
+  .showmain
+    .contentLeftqq
+      .contentRight
+        .topContent
+          .item-Box
+            %h2.item-Box__name product2
+            .item-Box__body
+              %ul
+                %table.item-teble
+                  %tr.main-item-imag
+                    %td{align:"center", colspan:"4"}
+                      = image_tag @image.image, width:"560",name:"BigImage"
+                  %tr
+                    %td
+                      = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
+                        = image_tag @image.image,size: "147x87"
+                      = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
+                        = image_tag @image.image,size: "147x87"
+                    %td
+                      = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
+                        = image_tag @image.image,size: "147x87"
+            .item-Box__price
+              %span= @item.price
+              .item-Box__price-detail
+                %span
+                  (税込)
+                %span
+                  送料込み
+            .itemDetail= @item.name
+            .table
+              %table
+                %tbody
+                  %tr
+                    %th 出品者
+                    %td= link_to @user.nickname,item_path(@user)
+                  %tr
+                    %th カテゴリー
+                    %td
+                      = link_to "メンズ","#" 
+                      %br/
+                      = link_to "ジャケット/アウター", "#" 
+                      %br/
+                      = link_to "ノーカラージャケット", "#" 
+                  %tr
+                    %th ブランド
+                    %td
+                  %tr
+                    %th 商品のサイズ
+                    %td= @item.sizerail
+                  %tr
+                    %th 商品の状態
+                    %td= @item.status
+                  %tr
+                    %th 配送料の負担
+                    -# %td= @item.shipping_charges
+                  %tr
+                    %th 発送元の地域
+                    -# %td= @item.region
+                  %tr
+                    %th 発送日の目安
+                    %td= @item.shopping_date
+            .optionalArea
+              %ul
+                %li.likeBtn
+                  %i.fa.fa-star お気に入り 0
+                %li.optionalBtn
+                  %i.fa.fa-flag 不適切な商品の通報
+                  -# itemの外部キーとcurrent_user.idが同じであれば出品者なので編集ボタンが表示される。参考カリキュラムhttps://master.tech-camp.in/curriculums/178
+                - if user_signed_in? && current_user.id == @item.user_id 
+                  = link_to("編集",item_path(@item.id),class:"item-edit-btn")
+                  = link_to("削除",item_path(@item.id),method: :delete,class:"item-delete-btn")
+                  -# 非出品者には購入ボタンが表示される。
+                - else
+                  = link_to("購入",item_path(@item.id),class:"item-buy-btn")
+            %form.item-Description
+              %textarea= @item.description
+          .commentBox
+            %ul.commentContents
+            %form#new_comment.new_comment{"accept-charset":"UTF-8", action:"#", method:"post"}
+              %input{name:"utf8", type:"hidden", value:"✓"}/
+              %input{name:"authenticity_token", type:"hidden", value:"T8vpqdpS7TX8SuZ7mZbU6ev2BYEaOCJpgDk7J5BfvGywvqAdX5qOhLXc8WbCV3VXw0LWy7hbr9Hx5eJUG4fGYQ=="}/
+              %textarea#comment_body{name:"comment[body]", required:"required"}
+              %p.noticeMsg
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br/
+                不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              %br/
+              %button.commentBtn{name:"button", type:"submit"}
+                %i.fa.fa-comment
+                コメントする
+        %ul.links
+          %li
+            = link_to "#" do
+              %i.fa.fa-angle-left
+              %span
+              前の商品
+          %li
+            = link_to "#" do
+              %span 後ろの商品
+              %i.fa.fa-angle-right
+        .relatedItems
+          = link_to "メンズをもっと見る", "#"
+          .productLists
+  = render partial:  "cameraBtn"
+=render "items/singlefooter"

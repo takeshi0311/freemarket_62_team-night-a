@@ -1,11 +1,12 @@
 class SignupController < ApplicationController
-  before_action :validates_member, only: :sms
-  before_action :validates_sms, only: :create
+  before_action :validates_member, only: [:done]
+  before_action :validates_sms, only: [:done]
   def index
   end
 
   def member
-    @user = User.new 
+    
+    @user = User.new
   end
 
   def sms
@@ -20,11 +21,15 @@ class SignupController < ApplicationController
     session[:birthday_year] = user_params[:birthday_year]
     session[:birthday_month] = user_params[:birthday_month]
     session[:birthday_day] = user_params[:birthday_day]
+  if params[:sns_auth] == 'true' #viweから= hidden_field_tagより :sns_auth, trueが送られてきたら実行
+      pass = Devise.friendly_token #params[:sns_auth]が送られて来た時だけDevise.friendly_tokenを使ってパスワードを自動生成し、パスワードを不要に。
+      session[:password] = pass
+      session[:password_confirmation] = pass
+    end
     @user = User.new
   end
 
   def done
-    sign_in User.find(session[:id]) unless user_signed_in?
   end
 
   def create
@@ -45,12 +50,15 @@ class SignupController < ApplicationController
       birthday_month: session[:birthday_month],
       birthday_day: session[:birthday_day]
     )
+
     if @user.save
       session[:id] = @user.id
+      sign_in User.find(session[:id]) unless user_signed_in?
       render '/signup/done'
     else
       render '/signup/index'
     end
+    
   end
 
 
@@ -101,7 +109,8 @@ class SignupController < ApplicationController
       birthday_day: session[:birthday_day],
       phone_number: "09012345678" #次のページのバリデーションをパスするために仮置き
     )
-    # 仮で作成したインスタンスのバリデーションチェックを行う
+    # 
+
     render '/signup/member' unless @user.valid?
   end
 

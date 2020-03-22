@@ -11,13 +11,9 @@
           = link_to member_signup_index_path, { class: "signup__main__body__ttl__inner__content__btn-mail"} do
             = icon 'far', 'envelope'
             メールアドレスで登録する
-          %button#facebook-login.signup__main__body__ttl__inner__content__btn-facebook
+          = link_to user_facebook_omniauth_authorize_path, { class: "signup__main__body__ttl__inner__content__btn-facebook", method: :post} do
             %i.fab.fa-facebook-square
             Facebookで登録する
-          %button#google-login.signup__main__body__ttl__inner__content__btn-google
+          = link_to user_google_oauth2_omniauth_authorize_path, { class: "signup__main__body__ttl__inner__content__btn-google", method: :post} do
             Googleで登録する
 =render "items/singlefooter"
-
-
-
-

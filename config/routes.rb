@@ -11,8 +11,15 @@ Rails.application.routes.draw do
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'items#index'
-  resources :items
+    root to: 'items#index'
+    resources :items do
+    #Ajaxで動くアクションのルートを作成
+    collection do
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
+      get 'price', defaults: { format: 'json' }
+    end
+  end
 
   resources :users, only: [:show] do
     collection do

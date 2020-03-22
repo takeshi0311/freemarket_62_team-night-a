@@ -43,12 +43,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def authorization
-    @user = User.from_omniauth(request.env["omniauth.auth"]) #APIから受け取ったレスポンスが入る
+    sns_info = User.from_omniauth(request.env["omniauth.auth"])
+    @user = sns_info[:user]
 
     if @user.persisted? #ユーザー情報が登録済みなので、新規登録ではなくログイン処理を行う
       sign_in_and_redirect @user, event: :authentication
     else #ユーザー情報が未登録なので、新規登録画面へ遷移する
-      render template: 'signup/member'
+      @sns_id = sns_info[:sns].id
+      session["devise.sns_auth"] = sns_info[:sns].id
+      render 'signup/member'
+      # redirect_to member_signup_index_path
     end
   end
 end
