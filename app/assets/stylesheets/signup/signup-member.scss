@@ -283,7 +283,7 @@
                   line-height: 1.5;
                   cursor: pointer;
                 }
-                &__select.invalid {
+                .invalid {
                   border: #ea352d 1px solid;
                 }
                 &__select.valid {
@@ -343,8 +343,7 @@
 #nickname-error, #email-error, #password-error,
 #password_confirmation-error, #family_name-error,
 #last_name-error, #frigana_family_name-error,
-#frigana_last_name-error,#select_birth_day-error, 
-#select_birth_month-error, #select_birth_year-error{
+#frigana_last_name-error,#birthday-error, {
   color: #ea352d;
   line-height: 1.5;
   font-size: 14px;
