@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
     @items = Item.all
     @images = Image.all
     @item = Item.new
-
   end
 
   def update

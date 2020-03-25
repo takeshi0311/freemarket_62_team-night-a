@@ -112,3 +112,63 @@
     }
   }
 }
+
+.category_box{
+  max-width: 660px;
+  background-color: rgb(255, 255, 255);
+  display: none;
+  z-index: 100;
+}
+
+.parents_list{
+  line-height: 40px;
+  width: 220px;
+  background-color: rgb(255, 255, 255);
+  color: #333333;
+}
+
+.category-parent{
+  display: block;
+  padding-left: 10px;  
+  padding-right: 10px;
+  text-decoration: none;
+  color: #333333;
+}
+.category_list_children{
+  width: 220px;
+}
+
+.child_category{
+  line-height: 25px;
+  display: block;
+  background-color: rgb(255, 255, 255);
+  color: #333333;
+  padding-left: 10px;  
+  padding-right: 10px;
+}
+
+.grand_children_list{
+  width: 220px;
+}
+
+.grand_child_category{
+  line-height: 25px;
+  display: block;
+  background-color: rgb(255, 255, 255);
+  color: #333333;
+  padding-left: 10px;  
+  padding-right: 10px;
+}
+
+.now-selected-red{
+  background-color: #3ccace;
+  color: #ffffff;
+}
+
+.now-selected-gray{
+  background-color: gainsboro;
+}
+
+.grand_child_category:hover{
+  background-color: gainsboro;
+}

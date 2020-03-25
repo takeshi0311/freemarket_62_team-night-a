@@ -49,5 +49,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: [:index]
+  resources :categories, only: [:index] do
+    collection do
+      get 'new', defaults: { format: 'json' }
+    end
+  end
 end
