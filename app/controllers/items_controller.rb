@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
+  before_action :set_item, {only: [:edit,:update,]} 
 
   def index
     @items = Item.all
@@ -9,10 +10,12 @@ class ItemsController < ApplicationController
 
   end
 
-  def edit
+  def set_item
     @item = Item.find(params[:id])
-    # @image = @item.images.find(params[:id])
-    @image = @item.images.where(id: params[:id])
+  end
+
+  def edit
+    @image = @item.images
 
     require 'base64'
     @item_images_binary_datas = []
@@ -31,7 +34,6 @@ class ItemsController < ApplicationController
   end 
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path, notice: 'データを更新しました'
     else
@@ -103,17 +105,6 @@ class ItemsController < ApplicationController
   @price_tax = (price * 0.1).round
   # 利益の計算
   @price_profit = price - @price_tax
-  
-
-  def destroy
-    @item = Item.find(params[:id])
-    if @item.user_id == current_user.id && @item.destroy
-      flash[:notice] = "削除しました"
-      redirect_to root_path
-    else
-      flash[:notice] = "削除できませんでした"
-      redirect_to(item_path(@item))
-    end
   end
 
   def search
@@ -125,7 +116,6 @@ class ItemsController < ApplicationController
   end
 
 
-end
     # ----------------------------------------
   def create
     @item = Item.new(item_params)
