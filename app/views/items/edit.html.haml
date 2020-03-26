@@ -12,9 +12,17 @@
         .post__drop__box__container
           .prev-content
             - if @item.persisted?
-              - @item.images.each_with_index do |image, i|
-                = image_tag image, data: { index: i }, width: "100", height: '100'
-          .label-content
+              - @item_images_binary_datas.each_with_index do |image, i|
+                .preview-box{id: "preview-box__#{i}"}
+                  .upper-box
+                    %img{src: "data:image/png;base64,#{image}"}/
+                  .lower-box
+                    .update-box
+                      %label.edit_btn 編集
+                    .delete-box{id: "delete_btn_#{i}"}
+                      %span 削除
+                -# = image_tag image, data: { index: i }, width: "100", height: '100'
+          .label-edit-content{style: "width: #{@size}px;"}
             %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
               %i.fas.fa-camera
           .hidden-content
@@ -95,10 +103,12 @@
                     = f.number_field :price, class: "sell__price--default",placeholder: "例）300"
         .sell__price--second
           .sell__price--fee 販売手数料 (10%)
-          .sell__price--border -
+          .sell__price--border 
+            = "¥#{(@item.price * 0.1).round}"
         .sell__price--third
           .sell__price--profit 販売利益
-          .sell__price--border -
+          .sell__price--border
+            = "¥#{(@item.price)-((@item.price * 0.1).round)}"
       .sell__exhibition
         .sell__exhibition--note 
           %p
@@ -114,7 +124,6 @@
             また、出品をもちまして
             = link_to "加盟店規約", "/jp/seller_terms/", class: "a", target: "_blank"
             に同意したことになります。
-        = f.submit "出品する", class: "sell__exhibition--botton"
+        = f.submit "編集を完了する", class: "sell__exhibition--botton"
         %button.sell__exhibition--back{ type: "submit"} もどる
 =render "singlefooter"
-

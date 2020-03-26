@@ -117,7 +117,7 @@
       .pickupBrand__box__items
         .pickupBrand__box__items__item
         - @images.each do |item|
-          = link_to item_path(id: item.id) ,class: "pickupBrand__box__items__item__link" do
+          = link_to item_path(id: item.item_id) ,class: "pickupBrand__box__items__item__link" do
             .pickupBrand__box__items__item__link__img
               = image_tag item.image, class: "pickupBrand__box__items__item__link__img__up"
             .pickupBrand__box__items__item__link__body

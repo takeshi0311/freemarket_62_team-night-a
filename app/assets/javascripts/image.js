@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(window).on('turbolinks:load', function(){
   $(function(){
 
     //プレビューのhtmlを定義

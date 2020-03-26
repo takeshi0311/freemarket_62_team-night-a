@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200317032143) do
+ActiveRecord::Schema.define(version: 20200322065403) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "postal_code",   null: false
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20200317032143) do
     t.datetime "updated_at",                    null: false
     t.integer  "buyer_id"
     t.integer  "Favorites_count"
+    t.string   "region"
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end

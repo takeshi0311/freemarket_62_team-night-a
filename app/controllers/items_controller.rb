@@ -9,7 +9,34 @@ class ItemsController < ApplicationController
 
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    # @image = @item.images.find(params[:id])
+    @image = @item.images.where(id: params[:id])
+
+    require 'base64'
+    @item_images_binary_datas = []
+
+    # base64エンコードで画像をバイナリデータに変化した値を配列に格納
+    @image.each do |image|
+      binary_data = File.read(image.image.file.file)
+      @item_images_binary_datas << Base64.strict_encode64(binary_data)
+    end
+
+    # 画像のinputタグの大きさの計算→プレビュー画像に応じてinputタグ縮小するため、その計算をここで実施
+    # 配列に格納された画像のバイナリデータの数を算出
+    @number = @item_images_binary_datas.size
+    # バイナリデータの数に応じてMax値620の幅であるinputタグが小さくなっていく
+    @size = 620 -((112+15) * @number)
+  end 
+
   def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to root_path, notice: 'データを更新しました'
+    else
+      render :edit
+    end
   end
 
   def show
@@ -97,9 +124,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
-  def edit
-  end 
 
 end
     # ----------------------------------------

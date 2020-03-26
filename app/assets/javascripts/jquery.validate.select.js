@@ -1,3 +1,4 @@
+$(window).on('turbolinks:load', function(){
 $(function () {
   // メソッドの定義
   var methods = {
@@ -90,3 +91,4 @@ $(function () {
     $(this).valid();
   });
 });
+})
