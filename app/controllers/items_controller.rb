@@ -1,11 +1,18 @@
 class ItemsController < ApplicationController
 
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
+  before_action :set_parents, only: [:index, :show]
 
   def index
     @items = Item.all
     @images = Image.all
     @item = Item.new
+    parent_id = params[:parent_id]
+    @children = Category.find_by(parent_id).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def update

@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_parents
-  
+
   def index
     @parents = Category.where(ancestry: nil)
     @children = Category.where(ancestry: 1)

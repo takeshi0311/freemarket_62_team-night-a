@@ -2,12 +2,12 @@ $(function() {
   // 子カテゴリーを追加するための処理です。
   function buildChildHTML(child){
     var html =`<a class="child_category" id="${child.id}" 
-                href="/categories/${child.id}">${child.name}</a>
+                href="/category/${child.id}">${child.name}</a>
               `;
     return html;
   }
   
-  $(".category-btn").mouseenter(
+  $(".list-left__item-first").mouseenter(
     function () {
       $(".category_box").css("display", "flex");
       $(".parents_list").css("display", "block");
@@ -27,7 +27,7 @@ $(function() {
     });
 
   $(".category-parent").on("mouseenter", function() {
-    var id = this.id;//どのリンクにマウスが乗ってるのか取得します
+    var id = this.id;
 
     $(".now-selected-red").removeClass("now-selected-red")
     $('#' + id).addClass("now-selected-red");
@@ -35,7 +35,7 @@ $(function() {
     $(".grand_child_category").remove();
     $.ajax({
       type: 'GET',
-      url: 'categories/new',
+      url: '/categories/new',
       data: {parent_id: id},
       dataType: 'json'
       
@@ -49,7 +49,7 @@ $(function() {
   
   function buildGrandChildHTML(child){
     var html =`<a class="grand_child_category" id="${child.id}"
-              href="/categories/${child.id}">${child.name}</a>`;
+              href="/category/${child.id}">${child.name}</a>`;
     return html;
   }
 
@@ -65,7 +65,7 @@ $(function() {
     $('#' + id).addClass("now-selected-gray");
     $.ajax({
       type: 'GET',
-      url: 'categories/new',
+      url: '/categories/new',
       data: {parent_id: id},
       dataType: 'json'
     }).done(function(children) {
