@@ -19,7 +19,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-
     gon.image = Image.find(params[:id])
     @item = Item.find(params[:id])
     @image = Image.find(params[:id])
@@ -28,7 +27,7 @@ class ItemsController < ApplicationController
 
   # 出品者以外がURLから直接的に編集、購入画面に進めないようにするため
   def ensure_correct_user
-      @item = Item.find(1)
+      @item = Item.find(params[:id])
     if @item.user_id != current_user.id
       flash[:notice] = "権限がありません"
       redirect_to(item_path(@item))

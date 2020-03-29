@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 
   def new
     parent_id = params[:parent_id]
-    @children = Category.find_by(parent_id).children
+    @children = Category.find_by(id: parent_id).children
     respond_to do |format|
       format.html
       format.json

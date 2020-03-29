@@ -2,7 +2,7 @@ $(function() {
   // 子カテゴリーを追加するための処理です。
   function buildChildHTML(child){
     var html =`<a class="child_category" id="${child.id}" 
-                href="/category/${child.id}">${child.name}</a>
+                href="#">${child.name}</a>
               `;
     return html;
   }
@@ -49,7 +49,7 @@ $(function() {
   
   function buildGrandChildHTML(child){
     var html =`<a class="grand_child_category" id="${child.id}"
-              href="/category/${child.id}">${child.name}</a>`;
+              href="#">${child.name}</a>`;
     return html;
   }
 
