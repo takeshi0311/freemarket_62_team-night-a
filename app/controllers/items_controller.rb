@@ -15,12 +15,64 @@ class ItemsController < ApplicationController
     end
   end
 
+  def new
+    @item = Item.new
+    # newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
+    @item.images.new
+    gon.item = 0
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+    # gon.item = @item
+    # gon.image = @item.images
+    # @image = @item.images
+    gon.item = @item.images.ids.length
+    gon.image = @item.images
+    gon.id = @item.images.ids
+
+    require 'base64'
+    @item_images_binary_datas = []
+    # gon.item_images_binary_datas = []
+
+    # base64エンコードで画像をバイナリデータに変化した値を配列に格納
+    @item.images.each do |image|
+      binary_data = File.read(image.image.file.file)
+      @item_images_binary_datas << Base64.strict_encode64(binary_data)
+    end
+
+    # @item.images.each do |image|
+    #   binary_data = File.read(image.image.file.file)
+    #   gon.item_images_binary_datas << Base64.strict_encode64(binary_data)
+    # end
+
+    # 画像のinputタグの大きさの計算→プレビュー画像に応じてinputタグ縮小するため、その計算をここで実施
+    # 配列に格納された画像のバイナリデータの数を算出
+    @number = @item_images_binary_datas.size
+    # バイナリデータの数に応じてMax値620の幅であるinputタグが小さくなっていく
+    @size = 620 -((112+15) * @number)
+  end 
+
   def update
+    @item = Item.find(params[:id])
+    if @item.update(update_item_params)
+      redirect_to root_path, notice: '編集完了しました'
+    else
+      render :edit
+    end
+  end
+
+  def image_destroy
+    id = params[:id].to_i
+    Image.find(id).destroy
   end
 
   def show
     gon.image = Image.find(params[:id])
     @item = Item.find(params[:id])
+    # @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
+    # @category_children = @category_grandchildern.parent
+    # @category_parent = @category_children.parent
     @image = Image.find(params[:id])
     @comments = @item.comments.includes(:user)
   end
@@ -43,13 +95,6 @@ class ItemsController < ApplicationController
       flash[:notice] = "削除できませんでした"
       redirect_to(item_path(@item))
     end
-  end
-
-
-  def new
-    @item = Item.new
-    # newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
-    @item.images.new
   end
 
   # 以下全て、formatはjsonのみ
@@ -81,17 +126,6 @@ class ItemsController < ApplicationController
   @price_tax = (price * 0.1).round
   # 利益の計算
   @price_profit = price - @price_tax
-  
-
-  def destroy
-    @item = Item.find(params[:id])
-    if @item.user_id == current_user.id && @item.destroy
-      flash[:notice] = "削除しました"
-      redirect_to root_path
-    else
-      flash[:notice] = "削除できませんでした"
-      redirect_to(item_path(@item))
-    end
   end
 
   def search
@@ -103,10 +137,6 @@ class ItemsController < ApplicationController
   end
 
 
-  def edit
-  end 
-
-end
     # ----------------------------------------
   def create
     @item = Item.new(item_params)
@@ -122,5 +152,13 @@ end
   def item_params
     params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image]).merge(user_id: current_user.id)
   end
+
+  def update_item_params
+    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+  
+  # def set_item
+  #   @item = Item.find(params[:id])
+  # end
 
 end
