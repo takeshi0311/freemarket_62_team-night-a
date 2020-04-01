@@ -20,8 +20,8 @@ Rails.application.routes.draw do
 
   resources :purchase, only: [:index] do
     collection do
-      get 'pay'
       get 'buy'
+      get 'pay'
     end
   end
   
@@ -47,5 +47,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: [:index]
+  resources :categories, only: [:index] do
+    collection do
+      get 'new', defaults: { format: 'json' }
+    end
+  end
 end
