@@ -1,19 +1,24 @@
 class ItemsController < ApplicationController
 
-  before_action :ensure_correct_user,only: [:edit,:buy,]
-  # before_action :set_item, only: [:edit, :update]
+  before_action :ensure_correct_user,{only: [:edit,:buy,]} 
+  before_action :set_parents, only: [:index, :show]
 
   def index
     @items = Item.all
     @images = Image.all
     @item = Item.new
+    parent_id = params[:parent_id]
+    @children = Category.find_by(parent_id).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def new
     @item = Item.new
     # newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
     @item.images.new
-
     gon.item = 0
   end
 
@@ -74,7 +79,7 @@ class ItemsController < ApplicationController
 
   # 出品者以外がURLから直接的に編集、購入画面に進めないようにするため
   def ensure_correct_user
-      @item = Item.find(1)
+      @item = Item.find(params[:id])
     if @item.user_id != current_user.id
       flash[:notice] = "権限がありません"
       redirect_to(item_path(@item))
