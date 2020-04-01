@@ -70,10 +70,13 @@
                     %th カテゴリー
                     %td
                       = link_to "メンズ","#" 
+                      -# = link_to "#{@category_parent.name}","#" 
                       %br/
                       = link_to "ジャケット/アウター", "#" 
+                      -# = link_to "#{@category_children.name}", "#"
                       %br/
                       = link_to "ノーカラージャケット", "#" 
+                      -# = link_to "#{@category_grandchildern.name}", "#" 
                   %tr
                     %th ブランド
                     %td= @item.brand
@@ -88,7 +91,7 @@
                     %td= @item.shipping_method
                   %tr
                     %th 発送元の地域
-                    -# %td= @item.region
+                    %td= @item.region
                   %tr
                     %th 発送日の目安
                     %td= @item.shopping_date
