@@ -24,27 +24,31 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    # gon.item = @item
-    # gon.image = @item.images
-    # @image = @item.images
     gon.item = @item.images.ids.length
     gon.image = @item.images
     gon.id = @item.images.ids
 
     require 'base64'
+    require 'aws-sdk'
     @item_images_binary_datas = []
-    # gon.item_images_binary_datas = []
 
     # base64エンコードで画像をバイナリデータに変化した値を配列に格納
-    @item.images.each do |image|
-      binary_data = File.read(image.image.file.file)
-      @item_images_binary_datas << Base64.strict_encode64(binary_data)
+    if Rails.env.production?
+      client = Aws::S3::Client.new(
+                             region: 'ap-northeast-1',
+                             access_key_id: Rails.application.credentials.aws[:access_key_id],
+                             secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+                             )
+      @item.images.each do |image|
+        binary_data = client.get_object(bucket: 'freemarket_62_team-night-a', key: image.image.file.path).body.read
+        @item_images_binary_datas << Base64.strict_encode64(binary_data)
+      end
+    else
+      @item.images.each do |image|
+        binary_data = File.read(image.image.file.file)
+        @item_images_binary_datas << Base64.strict_encode64(binary_data)
+      end
     end
-
-    # @item.images.each do |image|
-    #   binary_data = File.read(image.image.file.file)
-    #   gon.item_images_binary_datas << Base64.strict_encode64(binary_data)
-    # end
 
     # 画像のinputタグの大きさの計算→プレビュー画像に応じてinputタグ縮小するため、その計算をここで実施
     # 配列に格納された画像のバイナリデータの数を算出
