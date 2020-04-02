@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
                              secret_access_key: Rails.application.secrets.aws_AWS_SECRET_ACCESS_KEY,
                              )
       @item.images.each do |image|
-        binary_data = client.get_object(bucket: 'freemarket_62_team-night-a', key: image.image.file.path).body.read
+        binary_data = client.get_object(bucket: 'freemarket-62-team-night-a', key: image.image.file.path).body.read
         @item_images_binary_datas << Base64.strict_encode64(binary_data)
       end
     else
