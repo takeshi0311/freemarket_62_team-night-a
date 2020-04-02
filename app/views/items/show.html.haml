@@ -98,13 +98,13 @@
             .optionalArea
               = render partial:"items/favoriteBtn"
               %ul
-                - if user_signed_in? && current_user.id == @item.user_id 
+                - if @item.buyer_id.present?
+                  %section.buy-content__btn
+                    %button.buy-content__btn__nobuy 売り切れ
+                - elsif user_signed_in? && current_user.id == @item.user_id 
                   = link_to("編集",(edit_item_path(@item.id)),class:"item-edit-btn")
                   = link_to("削除",item_path(@item.id),method: :delete,class:"item-delete-btn")
                   -# 非出品者には購入ボタンが表示される。
-                - elsif @item.buyer_id.present?
-                  %section.buy-content__btn
-                    %button.buy-content__btn__nobuy 売り切れ
                 - else
                   = link_to("購入",buy_purchase_index_path(id:@item.id),class:"item-buy-btn")
             %form.item-Description
@@ -144,4 +144,3 @@
           .productLists
   = render partial:  "cameraBtn"
 =render "items/singlefooter"
-                
