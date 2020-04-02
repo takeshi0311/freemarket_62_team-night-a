@@ -36,11 +36,11 @@ class ItemsController < ApplicationController
     if Rails.env.production?
       client = Aws::S3::Client.new(
                              region: 'ap-northeast-1',
-                             access_key_id: Rails.application.credentials.aws[:access_key_id],
-                             secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+                             access_key_id: Rails.application.secrets.aws_AWS_ACCESS_KEY_ID,
+                             secret_access_key: Rails.application.secrets.aws_AWS_SECRET_ACCESS_KEY,
                              )
       @item.images.each do |image|
-        binary_data = client.get_object(bucket: 'freemarket_62_team-night-a', key: image.image.file.path).body.read
+        binary_data = client.get_object(bucket: 'freemarket-62-team-night-a', key: image.image.file.path).body.read
         @item_images_binary_datas << Base64.strict_encode64(binary_data)
       end
     else
