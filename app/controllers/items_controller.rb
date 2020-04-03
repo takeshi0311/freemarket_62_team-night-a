@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
 
   def index
@@ -117,5 +116,7 @@ end
   def item_params
     params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image]).merge(user_id: current_user.id)
   end
+
+
 
 end

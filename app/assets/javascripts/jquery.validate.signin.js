@@ -1,3 +1,4 @@
+$(document).on('turbolinks:load', function(){
 $(function () {
   // メソッドの定義
   var methods = {
@@ -148,6 +149,7 @@ $(function () {
 });
     $("#nickname, #email, #password, #password_confirmation, #family_name, #last_name, #frigana_family_name, #frigana_last_name, #phonenumber").blur(function () {
       $(this).valid();
+    })
     });
 });
 
