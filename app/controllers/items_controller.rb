@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!,except: [:index,:show,:search]
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
   before_action :set_parents, only: [:index, :show]
 
@@ -75,6 +75,7 @@ class ItemsController < ApplicationController
   def show
     #gon.image = Image.find(params[:id])
     @item = Item.find(params[:id])
+    @item_image = @item.images[0]
     # @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
     # @category_children = @category_grandchildern.parent
     # @category_parent = @category_children.parent
