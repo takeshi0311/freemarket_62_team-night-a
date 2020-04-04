@@ -1,6 +1,5 @@
 class Item < ApplicationRecord
   belongs_to :user, foreign_key: 'user_id'
-  #belongs_to :buyer, class_name: "User"
   belongs_to :category
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
@@ -9,6 +8,7 @@ class Item < ApplicationRecord
   validates :description,         presence: true, length: { maximum: 1000 }
   validates :status,              presence: true
   validates :shipping_method,     presence: true
+  validates :region,     presence: true
   validates :shopping_date,       presence: true
   validates :price,               presence: true, numericality: { only_integer: true, greater_than: 299, less_than: 10000000}
 

@@ -1,27 +1,88 @@
 class ItemsController < ApplicationController
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
+  before_action :set_parents, only: [:index, :show]
 
   def index
     @items = Item.all
     @images = Image.all
     @item = Item.new
-
+    parent_id = params[:parent_id]
+    @children = Category.find_by(parent_id).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
+  def new
+    @item = Item.new
+    # newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
+    @item.images.new
+    gon.item = 0
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+    gon.item = @item.images.ids.length
+    gon.image = @item.images
+    gon.id = @item.images.ids
+
+    require 'base64'
+    require 'aws-sdk'
+    @item_images_binary_datas = []
+
+    # base64エンコードで画像をバイナリデータに変化した値を配列に格納
+    if Rails.env.production?
+      client = Aws::S3::Client.new(
+                             region: 'ap-northeast-1',
+                             access_key_id: Rails.application.secrets.aws_AWS_ACCESS_KEY_ID,
+                             secret_access_key: Rails.application.secrets.aws_AWS_SECRET_ACCESS_KEY,
+                             )
+      @item.images.each do |image|
+        binary_data = client.get_object(bucket: 'freemarket-62-team-night-a', key: image.image.file.path).body.read
+        @item_images_binary_datas << Base64.strict_encode64(binary_data)
+      end
+    else
+      @item.images.each do |image|
+        binary_data = File.read(image.image.file.file)
+        @item_images_binary_datas << Base64.strict_encode64(binary_data)
+      end
+    end
+
+    # 画像のinputタグの大きさの計算→プレビュー画像に応じてinputタグ縮小するため、その計算をここで実施
+    # 配列に格納された画像のバイナリデータの数を算出
+    @number = @item_images_binary_datas.size
+    # バイナリデータの数に応じてMax値620の幅であるinputタグが小さくなっていく
+    @size = 620 -((112+15) * @number)
+  end 
+
   def update
+    @item = Item.find(params[:id])
+    if @item.update(update_item_params)
+      redirect_to root_path, notice: '編集完了しました'
+    else
+      render :edit
+    end
+  end
+
+  def image_destroy
+    id = params[:id].to_i
+    Image.find(id).destroy
   end
 
   def show
-
     gon.image = Image.find(params[:id])
     @item = Item.find(params[:id])
+    # @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
+    # @category_children = @category_grandchildern.parent
+    # @category_parent = @category_children.parent
     @image = Image.find(params[:id])
     @comments = @item.comments.includes(:user)
   end
 
   # 出品者以外がURLから直接的に編集、購入画面に進めないようにするため
   def ensure_correct_user
-      @item = Item.find(1)
+      @item = Item.find(params[:id])
     if @item.user_id != current_user.id
       flash[:notice] = "権限がありません"
       redirect_to(item_path(@item))
@@ -37,13 +98,6 @@ class ItemsController < ApplicationController
       flash[:notice] = "削除できませんでした"
       redirect_to(item_path(@item))
     end
-  end
-
-
-  def new
-    @item = Item.new
-    # newアクションで定義されたItemクラスのインスタンスに関連づけられたImageクラスのインスタンスが作成される。
-    @item.images.new
   end
 
   # 以下全て、formatはjsonのみ
@@ -75,17 +129,6 @@ class ItemsController < ApplicationController
   @price_tax = (price * 0.1).round
   # 利益の計算
   @price_profit = price - @price_tax
-  
-
-  def destroy
-    @item = Item.find(params[:id])
-    if @item.user_id == current_user.id && @item.destroy
-      flash[:notice] = "削除しました"
-      redirect_to root_path
-    else
-      flash[:notice] = "削除できませんでした"
-      redirect_to(item_path(@item))
-    end
   end
 
   def search
@@ -97,10 +140,6 @@ class ItemsController < ApplicationController
   end
 
 
-  def edit
-  end 
-
-end
     # ----------------------------------------
   def create
     @item = Item.new(item_params)
@@ -117,6 +156,12 @@ end
     params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
-
+  def update_item_params
+    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+  
+  # def set_item
+  #   @item = Item.find(params[:id])
+  # end
 
 end

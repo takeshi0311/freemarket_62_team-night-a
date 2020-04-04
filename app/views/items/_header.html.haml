@@ -15,7 +15,13 @@
     .header__inner__nav
       .list-left
         .list-left__item-first
-          = link_to 'カテゴリー', categories_path, class: "category-btn"
+          = link_to 'カテゴリー', "#", class: "category-btn"
+          .category_box
+            .parents_list
+              - @parents.each do |parent|
+                = link_to "#{parent.name}", "#" , class: "category-parent", id: "#{parent.id}"
+            .category_list_children
+            .grand_children_list
         .list-left__item-second
           = link_to "ブランド", "#", class:"brand-btn"
       .list-right

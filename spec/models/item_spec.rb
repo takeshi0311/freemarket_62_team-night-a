@@ -64,6 +64,13 @@ describe Item do
     expect(item.errors[:shipping_method]).to include("can't be blank")
   end
 
+  # 「発送元の地域」がないと登録できない
+  it "is invalid without a region" do
+    item = build(:item, region: "")
+    item.valid?
+    expect(item.errors[:region]).to include("can't be blank")
+  end
+
   # 「発送までの日数」がないと登録できない
   it "is invalid without a shopping_date" do
     item = build(:item, shopping_date: "")

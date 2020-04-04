@@ -23,11 +23,11 @@ class PurchaseController < ApplicationController
       :customer => pay.customer_id,
       :currency => 'jpy'
     )
-    @item.buyer_id = current_user.id 
-    if @item.update(item_params)
+    @item.buyer_id = current_user.id
+    if @item.update!(item_params)
       redirect_to root_path, notice: '商品の購入が完了しました'
     else
-      redirect_to buy_purchase_index_path
+      redirect_to root_path, alert:'購入に失敗しました'
     end
   end
 

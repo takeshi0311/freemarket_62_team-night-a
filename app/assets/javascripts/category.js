@@ -1,3 +1,4 @@
+$(window).on('turbolinks:load', function(){
 $(function(){
   // カテゴリーセレクトボックスのオプションを作成（関数定義）
   function appendOption(category){
@@ -98,3 +99,4 @@ $(function(){
     }
   });
 });
+})
