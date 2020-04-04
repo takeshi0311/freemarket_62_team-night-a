@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
   before_action :set_parents, only: [:index, :show]
+
 
   def index
     @items = Item.all
@@ -71,12 +73,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    gon.image = Image.find(params[:id])
+    #gon.image = Image.find(params[:id])
     @item = Item.find(params[:id])
     # @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
     # @category_children = @category_grandchildern.parent
     # @category_parent = @category_children.parent
-    @image = Image.find(params[:id])
     @comments = @item.comments.includes(:user)
   end
 
@@ -94,6 +95,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.user_id == current_user.id && @item.destroy
       flash[:notice] = "削除しました"
+      redirect_to root_path
     else
       flash[:notice] = "削除できませんでした"
       redirect_to(item_path(@item))

@@ -51,7 +51,7 @@
                         = image_tag @item.images.first.image.url,size: "147x87"
                     %td
                       = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
-                        = image_tag @image.image,size: "147x87"
+                        = image_tag @item.images.first.image.url,size: "147x87"
             .item-Box__price
               %span= @item.price
               .item-Box__price-detail
