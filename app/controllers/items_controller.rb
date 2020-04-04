@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
   before_action :set_parents, only: [:index, :show]
 
