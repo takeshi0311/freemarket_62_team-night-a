@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  # before_action :authenticate_user!
   before_action :set_parents
   before_action :basic_auth, if: :production?
   protect_from_forgery with: :exception
