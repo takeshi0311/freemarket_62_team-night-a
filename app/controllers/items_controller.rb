@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
+  
 
   def index
     @items = Item.all
@@ -76,18 +77,7 @@ class ItemsController < ApplicationController
   @price_tax = (price * 0.1).round
   # 利益の計算
   @price_profit = price - @price_tax
-  
-
-  def destroy
-    @item = Item.find(params[:id])
-    if @item.user_id == current_user.id && @item.destroy
-      flash[:notice] = "削除しました"
-      redirect_to root_path
-    else
-      flash[:notice] = "削除できませんでした"
-      redirect_to(item_path(@item))
-    end
-  end
+ end
 
   def search
     @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%")
@@ -97,15 +87,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def detailed_search
+    @items = @q.result(distinct: true)
+    # @categories = Category.where(ancestry: nil)
+  end
+
+  
+
 
   def edit
   end 
 
-end
     # ----------------------------------------
   def create
     @item = Item.new(item_params)
-    if @item.save! 
+    if @item.save!
       redirect_to root_path, notice: '出品完了しました'
     else
       render :new

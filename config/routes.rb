@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     get 'category_grandchildren', defaults: { format: 'json' }
     get 'price', defaults: { format: 'json' }
     get 'search'
+    get 'detailed_search'
     end
   end
 
