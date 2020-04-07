@@ -1,3 +1,4 @@
+$(document).on('turbolinks:load', function(){
 $(function () {
   // メソッドの定義
   var methods = {
@@ -116,6 +117,10 @@ $(function () {
         phone: "フォーマットが不適切です"
       },
     },
+    // グループ化してメッセージを一つだけ表示
+    groups: {
+      birthday: "user[birthday_year] user[birthday_month] user[birthday_day]"
+    }, 
     
     errorClass: "invalid", // バリデーションNGの場合に追加するクラス名の指定
     errorElement: "p", // エラーメッセージの要素種類の指定
@@ -144,6 +149,7 @@ $(function () {
 });
     $("#nickname, #email, #password, #password_confirmation, #family_name, #last_name, #frigana_family_name, #frigana_last_name, #phonenumber").blur(function () {
       $(this).valid();
+    })
     });
 });
 

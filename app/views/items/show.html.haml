@@ -38,7 +38,7 @@
                 %table.item-teble
                   %tr.main-item-imag
                     %td{align:"center", colspan:"4"}
-                      = image_tag @image.image, width:"560",name:"BigImage"
+                      = image_tag @item_image.image.url, width:"560",name:"BigImage"
                       -if @item.buyer_id.present?
                         .items-box_photo__soldout
                           .items-box_photo__soldout__inner
@@ -46,12 +46,12 @@
                   %tr
                     %td
                       = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
-                        = image_tag @image.image,size: "147x87"
+                        = image_tag @item.images[0].image.url,size: "147x87"
                       = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
-                        = image_tag @image.image,size: "147x87"
+                        = image_tag @item.images[0].image.url,size: "147x87"
                     %td
                       = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
-                        = image_tag @image.image,size: "147x87"
+                        = image_tag @item.images.first.image.url,size: "147x87"
             .item-Box__price
               %span= @item.price
               .item-Box__price-detail
@@ -70,16 +70,16 @@
                     %th カテゴリー
                     %td
                       = link_to "メンズ","#" 
+                      -# = link_to "#{@category_parent.name}","#" 
                       %br/
                       = link_to "ジャケット/アウター", "#" 
+                      -# = link_to "#{@category_children.name}", "#"
                       %br/
                       = link_to "ノーカラージャケット", "#" 
+                      -# = link_to "#{@category_grandchildern.name}", "#" 
                   %tr
                     %th ブランド
                     %td= @item.brand
-                  %tr
-                    %th 商品のサイズ
-                    //%td= @item.size
                   %tr
                     %th 商品の状態
                     %td= @item.status
@@ -88,20 +88,20 @@
                     %td= @item.shipping_method
                   %tr
                     %th 発送元の地域
-                    -# %td= @item.region
+                    %td= @item.region
                   %tr
                     %th 発送日の目安
                     %td= @item.shopping_date
             .optionalArea
               = render partial:"items/favoriteBtn"
               %ul
-                - if user_signed_in? && current_user.id == @item.user_id 
-                  = link_to("編集",(item_path(@item.id)),class:"item-edit-btn")
-                  = link_to("削除",item_path(@item.id),method: :delete,class:"item-delete-btn")
-                  -# 非出品者には購入ボタンが表示される。
-                - elsif @item.buyer_id.present?
+                - if @item.buyer_id.present?
                   %section.buy-content__btn
                     %button.buy-content__btn__nobuy 売り切れ
+                - elsif user_signed_in? && current_user.id == @item.user_id 
+                  = link_to("編集",(edit_item_path(@item.id)),class:"item-edit-btn")
+                  = link_to("削除",item_path(@item.id),method: :delete,class:"item-delete-btn")
+                  -# 非出品者には購入ボタンが表示される。
                 - else
                   = link_to("購入",buy_purchase_index_path(id:@item.id),class:"item-buy-btn")
             %form.item-Description
@@ -141,4 +141,3 @@
           .productLists
   = render partial:  "cameraBtn"
 =render "items/singlefooter"
-                

@@ -9,10 +9,10 @@
         %p アカウントをお持ちでない方はこちら
         = link_to '新規会員登録', signup_index_path
       .signin__main__panel__loginForm-inner
-        %button#facebook-login.signin__main__panel__loginForm-inner__btnFace.btn-default
+        = link_to user_facebook_omniauth_authorize_path, { class: "signin__main__panel__loginForm-inner__btnFace btn-default", method: :post} do
           %i.fab.fa-facebook-square
           Facebookでログイン
-        %button#google-login.signin__main__panel__loginForm-inner__btnGoogle.btn-default
+        = link_to user_google_oauth2_omniauth_authorize_path, { class: "signin__main__panel__loginForm-inner__btnGoogle btn-default", method: :post} do
           Googleでログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .signin__main__panel__form-inner

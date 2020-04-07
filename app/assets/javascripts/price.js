@@ -1,3 +1,4 @@
+$(window).on('turbolinks:load', function(){
 $(function(){
   $('.sell__price--default').on('keyup', function(){
     let price = $(this).val();
@@ -28,3 +29,4 @@ $(function(){
     }
   });
 });
+})

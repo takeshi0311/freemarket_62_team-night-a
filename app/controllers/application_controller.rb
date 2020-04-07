@@ -1,11 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  before_action :set_parents
   before_action :basic_auth, if: :production?
   before_action :set_search
   protect_from_forgery with: :exception
-
   private
-
   def production?
     Rails.env.production?
   end
@@ -21,4 +19,7 @@ class ApplicationController < ActionController::Base
     @q = Item.ransack(params[:q]) #ransackメソッド推奨
   end
 
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
 end

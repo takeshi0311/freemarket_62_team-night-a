@@ -27,22 +27,25 @@
             = f.label :email, "メールアドレス", class: "member-main__container__inner__content__form-group__label"
             %span.member-main__container__inner__content__form-group__require 必須
             = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class:'member-main__container__inner__content__form-group__input', id: "email"
-          .member-main__container__inner__content__form-group
-            = f.label :password, "パスワード", class: "member-main__container__inner__content__form-group__label"
-            %span.member-main__container__inner__content__form-group__require 必須
-            = f.password_field :password, placeholder: '7文字以上の半角英数字', class:'member-main__container__inner__content__form-group__input',id: "password"
-            %p.member-main__container__inner__content__form-group__info-txt
-              ※ 英字と数字の両方を含めて設定してください
-            = f.label :password_confirmation, "パスワード(確認用)", class: "member-main__container__inner__content__form-group__label"
-            %span.member-main__container__inner__content__form-group__require 必須
-            = f.password_field :password_confirmation, placeholder: '7文字以上の半角英数字', class:'member-main__container__inner__content__form-group__input', id: "password_confirmation"
-            %p.member-main__container__inner__content__form-group__info-txt
-              ※ 英字と数字の両方を含めて設定してください
-            .member-main__container__inner__content__form-group__password-toggle
-              .member-main__container__inner__content__form-group__password-toggle__checkbox
-                %input#passcheck{type: "checkbox"}/
-                %i.icon-check
-                %label.member-main__container__inner__content__form-group__password-toggle__checkbox__label{for: "reveal_password"} パスワードを表示する
+            - if @sns_id.present?
+              = hidden_field_tag :sns_auth, true
+            - else
+              .member-main__container__inner__content__form-group
+                = f.label :password, "パスワード", class: "member-main__container__inner__content__form-group__label"
+                %span.member-main__container__inner__content__form-group__require 必須
+                = f.password_field :password, placeholder: '7文字以上の半角英数字', class:'member-main__container__inner__content__form-group__input', autocomplete: "new-password", id: "password"
+                %p.member-main__container__inner__content__form-group__info-txt
+                  ※ 英字と数字の両方を含めて設定してください
+                = f.label :password_confirmation, "パスワード(確認用)", class: "member-main__container__inner__content__form-group__label"
+                %span.member-main__container__inner__content__form-group__require 必須
+                = f.password_field :password_confirmation, placeholder: '7文字以上の半角英数字', class:'member-main__container__inner__content__form-group__input', autocomplete: "new-password", id: "password_confirmation"
+                %p.member-main__container__inner__content__form-group__info-txt
+                  ※ 英字と数字の両方を含めて設定してください
+              .member-main__container__inner__content__form-group__password-toggle
+                .member-main__container__inner__content__form-group__password-toggle__checkbox
+                  %input#passcheck{type: "checkbox"}/
+                  %i.icon-check
+                  %label.member-main__container__inner__content__form-group__password-toggle__checkbox__label{for: "reveal_password"} パスワードを表示する
               .member-main__container__inner__content__form-group__password-container
                 %span.member-main__container__inner__content__form-group__password-container-revealed
           .member-main__container__inner__content__form-group
