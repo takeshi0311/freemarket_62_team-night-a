@@ -144,7 +144,6 @@ class ItemsController < ApplicationController
 
   def detailed_search
     @items = @q.result(distinct: true)
-    # @categories = Category.where(ancestry: nil)
   end
 
   

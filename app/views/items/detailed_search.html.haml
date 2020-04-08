@@ -23,13 +23,6 @@
             = f.search_field :price_gteq, placeholder: "¥ Min"
             %p 〜
             = f.search_field :price_lteq, placeholder: "¥ Max"
-        -# 余裕があれば実装する
-        -# .detailed_search__form__group
-        -#   .detailed_search__form__group__label
-        -#     = icon('fas', 'search-plus', class: "search-icon")
-        -#     %p カテゴリー
-        -#     -# = f.search_field :category_name_cont, placeholder: "カテゴリー検索"
-        -#     = f.collection_select :category_id_eq, @categories, :id, :name, :include_blank => '指定なし'
         .detailed_search__form__btns
           .detailed_search__btn__grey
             = link_to "クリア", detailed_search_items_path, type:"button"

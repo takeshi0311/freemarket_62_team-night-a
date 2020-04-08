@@ -26,7 +26,6 @@ $(function() {
       dataType: 'json'
     })
       .done(function(items) {
-        console.log(items)
         $(".item-search-result").empty();
         if (items.length !== 0) {
           items.forEach(function(item) {
