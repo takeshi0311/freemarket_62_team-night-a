@@ -138,24 +138,16 @@ $(window).on('turbolinks:load', function(){
   }
 
     // 画像の削除
+    var imageid =[];
     $(document).on('click', '.delete-box', function() {
       var count = $('.preview-box').length;
       setLabel(count);
       //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
       var iddata = $(`#preview-box__${id} img`).attr("id");
-      $.ajax({
-        url: "/items/image_destroy",
-        type: "GET",
-        data: { id: iddata },
-        dataType: 'json',
-        success: function(data){
-          //成功時の処理
-        },
-        error: function(data){
-          //失敗時の処理
-        }
-      });
+      console.log(iddata)
+      imageid.push(iddata);
+        
       //取得したidに該当するプレビューを削除
       $(`#preview-box__${id}`).remove();
       // 削除したプレビューのinputを空にする
@@ -178,6 +170,26 @@ $(window).on('turbolinks:load', function(){
         //削除された際に、空っぽになったfile_fieldをもう一度入力可能にする
         $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
       }
+    });
+
+    $(document).on('click', '.sell__exhibition--botton', function() {
+      console.log("submitできました！")
+      console.log(imageid)
+      //TODO AJAXによるSubmit処理を書く。以下は適当。
+      $.ajax({
+        url: "/items/image_destroy",
+        type: "GET",
+        data: { takeshi: imageid },
+        dataType: 'json',
+        success: function(data){
+          //成功時の処理
+          console.log("成功")
+          console.log(imageid)
+        },
+        error: function(data){
+          //失敗時の処理
+        }
+      });
     });
   });
 })

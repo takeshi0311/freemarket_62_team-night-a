@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     gon.item = @item.images.ids.length
     gon.image = @item.images
+    gon.ids = @item.id
     gon.id = @item.images.ids
 
     require 'base64'
@@ -66,18 +67,15 @@ class ItemsController < ApplicationController
     end
   end
 
-  def image_destroy
-    id = params[:id].to_i
-    Image.find(id).destroy
-  end
+  
 
   def show
-    gon.image = Image.find(params[:id])
+    gon.image = Image.find_by(item_id: params[:id])
     @item = Item.find(params[:id])
     # @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
     # @category_children = @category_grandchildern.parent
     # @category_parent = @category_children.parent
-    @image = Image.find(params[:id])
+    @image = Image.find_by(item_id: params[:id])
     @comments = @item.comments.includes(:user)
   end
 
@@ -140,8 +138,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
-    # ----------------------------------------
   def create
     @item = Item.new(item_params)
     if @item.save! 
@@ -151,6 +147,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def image_destroy
+    iddata = params[:takeshi]
+    iddata.each do |i|
+      Image.find(i).destroy
+      end
+    # return iddata
+    # binding.pry
+    # iddata << params[:id].to_i
+    # binding.pry
+    # Image.find(id).destroy
+  end
+
   private
 
   def item_params
@@ -158,8 +166,9 @@ class ItemsController < ApplicationController
   end
 
   def update_item_params
-    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image, :id]).merge(user_id: current_user.id)
   end
+
   
   # def set_item
   #   @item = Item.find(params[:id])

@@ -1444,7 +1444,7 @@ PLATFORMS
 DEPENDENCIES
   active_hash
   ancestry
-  aws-sdk (~> 3)
+  aws-sdk
   byebug
   capistrano
   capistrano-bundler

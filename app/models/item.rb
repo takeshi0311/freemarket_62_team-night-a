@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  # after_update :image_destroy_model
   belongs_to :user, foreign_key: 'user_id'
   belongs_to :category
   has_many :images, dependent: :destroy
@@ -8,7 +9,7 @@ class Item < ApplicationRecord
   validates :description,         presence: true, length: { maximum: 1000 }
   validates :status,              presence: true
   validates :shipping_method,     presence: true
-  validates :region,     presence: true
+  validates :region,              presence: true
   validates :shopping_date,       presence: true
   validates :price,               presence: true, numericality: { only_integer: true, greater_than: 299, less_than: 10000000}
 
@@ -28,5 +29,12 @@ class Item < ApplicationRecord
     favorites.find_by(user_id: user_id)
   end
  
+  # private
 
+  # def image_destroy_model
+  #   # iddata = params[:takeshi]
+  #   $global.each do |i|
+  #     Image.find(i).destroy
+  #     end
+  # end
 end

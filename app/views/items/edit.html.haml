@@ -9,39 +9,24 @@
           %span.sell__image--top--right 必須
         .sell__image-second
           最大10枚までアップロードできます
-        -# = f.fields_for :images, @item.images.first do |f|
-        -#   .item__img__dropzone.clearfix
-        -#     #preview
-        -#     -# １〜５枚目プレビュー表示
-        -#     .item__img__dropzone__input
-        -#       = f.label :image, for: "upload-image" do
-        -#         .input-area
-        -#           = f.file_field :image, id: "upload-image", class: "upload-image", 'data-image': 0
-        -#         .item__img__dropzone__input__description
-        -#           .item__img__dropzone__input__description__text
-        -#             ドラッグアンドドロップ
-        -#             %br
-        -#             またはクリックしてファイルをアップロード
-        .post__drop__box__container
-          .prev-content
-            - if @item.persisted?
-              - @item_images_binary_datas.each_with_index do |image, i|
-                .preview-box{id: "preview-box__#{i}"}
-                  .upper-box
-                    %img{src: "data:image/png;base64,#{image}"}/
-                  .lower-box
-                    .update-box
-                      %label.edit_btn 編集
-                    .delete-box{id: "delete_btn_#{i}"}
-                      %span 削除
-          .label-content{style: "width: #{@size}px;"}
-            %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
-              %i.fas.fa-camera
-          .hidden-content
-            -# = f.fields_for :images do |i|
-            -# - binding.pry
-            - if (@item.images.ids.length >= 1)
-              = f.fields_for :images, @item.images.first do |i|
+        - if (@item.images.ids.length >= 1)
+          = f.fields_for :images, @item.images.first do |i|
+            .post__drop__box__container
+              .prev-content
+                - if @item.persisted?
+                  - @item_images_binary_datas.each_with_index do |image, i|
+                    .preview-box{id: "preview-box__#{i}"}
+                      .upper-box
+                        %img{src: "data:image/png;base64,#{image}"}/
+                      .lower-box
+                        .update-box
+                          %label.edit_btn 編集
+                        .delete-box{id: "delete_btn_#{i}"}
+                          %span 削除
+              .label-content{style: "width: #{@size}px;"}
+                %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+                  %i.fas.fa-camera
+              .hidden-content
                 = i.file_field :image, class: "hidden-field" 
                 %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
                 %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
