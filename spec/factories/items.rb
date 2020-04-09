@@ -17,10 +17,6 @@ FactoryBot.define do
     image                 {Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/sky.JPG'))}
   end
 
-  factory :category do
-    name                  {"トップス"}
-    ancestry              {"1"}
-  end
-
+  
 
 end

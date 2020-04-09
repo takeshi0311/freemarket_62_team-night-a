@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     get 'price', defaults: { format: 'json' }
     get 'image_destroy', defaults: { format: 'json' }
     get 'search'
+    get 'detailed_search'
     end
   end
 

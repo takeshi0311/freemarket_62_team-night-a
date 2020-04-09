@@ -1,4 +1,5 @@
 class PaysController < ApplicationController
+  before_action :authenticate_user!
   require "payjp"
 
   def new

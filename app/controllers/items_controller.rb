@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-
+  before_action :authenticate_user!,except: [:index,:show,:search]
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
   before_action :set_parents, only: [:index, :show]
+
 
   def index
     @items = Item.all
@@ -72,10 +73,11 @@ class ItemsController < ApplicationController
   def show
     gon.image = Image.find_by(item_id: params[:id])
     @item = Item.find(params[:id])
+    @item_image = @item.images[0]
     # @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
     # @category_children = @category_grandchildern.parent
     # @category_parent = @category_children.parent
-    @image = Image.find_by(item_id: params[:id])
+    # @image = Image.find_by(item_id: params[:id])
     @comments = @item.comments.includes(:user)
   end
 
@@ -93,6 +95,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.user_id == current_user.id && @item.destroy
       flash[:notice] = "削除しました"
+      redirect_to root_path
     else
       flash[:notice] = "削除できませんでした"
       redirect_to(item_path(@item))
@@ -138,9 +141,17 @@ class ItemsController < ApplicationController
     end
   end
 
+  def detailed_search
+    @items = @q.result(distinct: true)
+  end
+
+  
+
+
+    # ----------------------------------------
   def create
     @item = Item.new(item_params)
-    if @item.save! 
+    if @item.save!
       redirect_to root_path, notice: '出品完了しました'
     else
       render :new
