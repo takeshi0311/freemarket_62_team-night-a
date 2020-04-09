@@ -1,8 +1,9 @@
+$(document).on('turbolinks:load', function(){
 $(function() {
   function addItem(item) {
     let html = `
       <div class="search-result">
-        <a href= "#">${item.name}</a>
+        <a href= "items/${item.id}">${item.name}</a>
       </div>
     `;
     $(".item-search-result").append(html);
@@ -17,8 +18,9 @@ $(function() {
     $(".item-search-result").append(html);
   }
 
-  $(".searchbox__input").on("keyup", function() {
-    var input = $(".searchbox__input").val();
+  $(".search").on("keyup", function() {
+    var input = $(".search").val();
+    console.log(input)
     $.ajax({
       type: 'GET',
       url: '/items/search',
@@ -42,3 +44,4 @@ $(function() {
       });
   });
 });
+})

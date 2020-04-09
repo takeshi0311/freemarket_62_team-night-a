@@ -5,7 +5,7 @@
         = link_to image_tag(src= "logo.png", class: "image", size: "140x40"), root_path
       .searchbox
         = search_form_for(@q, url:detailed_search_items_path) do |f|
-          = f.search_field :name_cont, placeholder: 'キーワードから探す'
+          = f.search_field :name_cont, placeholder: 'キーワードから探す', class: "search"
           = button_tag type: 'submit', class: "searchbox__icon" do
             = image_tag(src= "icon-search1.png", size: "19x19",class: "button")
           
