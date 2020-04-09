@@ -14,9 +14,9 @@ $(function () {
   $("#sell__form").validate({
     // ルール設定
     rules: {
-      // "item[images_attributes][0][image]": {
-      //   required: true
-      // },
+      "item[images_attributes][1][image]": {
+        required: true
+      },
       "item[name]": {
         required: true,
         maxlength: 40
