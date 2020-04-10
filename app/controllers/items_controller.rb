@@ -74,9 +74,9 @@ class ItemsController < ApplicationController
     gon.image = Image.find_by(item_id: params[:id])
     @item = Item.find(params[:id])
     @item_image = @item.images[0]
-    # @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
-    # @category_children = @category_grandchildern.parent
-    # @category_parent = @category_children.parent
+    @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
+    @category_children = @category_grandchildern.parent
+    @category_parent = @category_children.parent
     @image = Image.find_by(item_id: params[:id])
     @comments = @item.comments.includes(:user)
   end
