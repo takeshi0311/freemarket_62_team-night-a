@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  # after_update :image_destroy_model
   belongs_to :user, foreign_key: 'user_id'
   belongs_to :category
   has_many :images, dependent: :destroy
@@ -29,12 +28,4 @@ class Item < ApplicationRecord
     favorites.find_by(user_id: user_id)
   end
  
-  # private
-
-  # def image_destroy_model
-  #   # iddata = params[:takeshi]
-  #   $global.each do |i|
-  #     Image.find(i).destroy
-  #     end
-  # end
 end

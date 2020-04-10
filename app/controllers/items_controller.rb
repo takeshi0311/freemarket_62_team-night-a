@@ -77,7 +77,7 @@ class ItemsController < ApplicationController
     # @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
     # @category_children = @category_grandchildern.parent
     # @category_parent = @category_children.parent
-    # @image = Image.find_by(item_id: params[:id])
+    @image = Image.find_by(item_id: params[:id])
     @comments = @item.comments.includes(:user)
   end
 

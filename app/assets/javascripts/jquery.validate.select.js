@@ -14,9 +14,9 @@ $(function () {
   $("#sell__form").validate({
     // ルール設定
     rules: {
-      "item[images_attributes][1][image]": {
-        required: true
-      },
+      // "item[images_attributes][1][image]": {
+      //   required: true
+      // },
       "item[name]": {
         required: true,
         maxlength: 40
@@ -44,7 +44,7 @@ $(function () {
     },
     // エラーメッセージの定義
     messages: {
-      "item[images_attributes][0][image]": {
+      "item[images_attributes][1][image]": {
         required: '画像がありません'
       },
       "item[name]": {
