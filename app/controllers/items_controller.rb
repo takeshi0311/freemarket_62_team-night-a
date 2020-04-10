@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!,except: [:index,:show,:search]
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
-  before_action :set_parents, only: [:index, :show]
+  before_action :set_parents, only: [:index, :show, :detailed_search]
 
 
   def index
