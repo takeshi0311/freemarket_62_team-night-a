@@ -18,9 +18,7 @@ class Item < ApplicationRecord
 
   # belongs_to :brand
   has_many :comments
-  has_one :purchase
 
-  belongs_to :user
   has_many :favorite,dependent: :destroy
   has_many :Favorite_users, through: :Favorites, source: :user
   
