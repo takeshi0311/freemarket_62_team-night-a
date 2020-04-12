@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!,except: [:index,:show,:search]
   before_action :ensure_correct_user,{only: [:edit,:buy,]} 
-  before_action :set_parents, only: [:index, :show]
+  before_action :set_parents, only: [:index, :show, :detailed_search]
 
 
   def index
@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     gon.item = @item.images.ids.length
     gon.image = @item.images
+    gon.ids = @item.id
     gon.id = @item.images.ids
 
     require 'base64'
@@ -67,18 +68,16 @@ class ItemsController < ApplicationController
     end
   end
 
-  def image_destroy
-    id = params[:id].to_i
-    Image.find(id).destroy
-  end
+  
 
   def show
-    #gon.image = Image.find(params[:id])
+    gon.image = Image.find_by(item_id: params[:id])
     @item = Item.find(params[:id])
     @item_image = @item.images[0]
-    # @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
-    # @category_children = @category_grandchildern.parent
-    # @category_parent = @category_children.parent
+    @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
+    @category_children = @category_grandchildern.parent
+    @category_parent = @category_children.parent
+    @image = Image.find_by(item_id: params[:id])
     @comments = @item.comments.includes(:user)
   end
 
@@ -142,15 +141,33 @@ class ItemsController < ApplicationController
     end
   end
 
+  def detailed_search
+    @items = @q.result(distinct: true)
+  end
+
+  
+
 
     # ----------------------------------------
   def create
     @item = Item.new(item_params)
-    if @item.save! 
+    if @item.save!
       redirect_to root_path, notice: '出品完了しました'
     else
       render :new
     end
+  end
+
+  def image_destroy
+    iddata = params[:takeshi]
+    iddata.each do |i|
+      Image.find(i).destroy
+      end
+    # return iddata
+    # binding.pry
+    # iddata << params[:id].to_i
+    # binding.pry
+    # Image.find(id).destroy
   end
 
   private
@@ -160,8 +177,9 @@ class ItemsController < ApplicationController
   end
 
   def update_item_params
-    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :brand, :status, :shipping_method, :region, :shopping_date, :price, :category_id, images_attributes: [:image, :id]).merge(user_id: current_user.id)
   end
+
   
   # def set_item
   #   @item = Item.find(params[:id])

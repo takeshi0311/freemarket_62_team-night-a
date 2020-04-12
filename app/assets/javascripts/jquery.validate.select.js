@@ -14,7 +14,7 @@ $(function () {
   $("#sell__form").validate({
     // ルール設定
     rules: {
-      // "item[images_attributes][0][image]": {
+      // "item[images_attributes][1][image]": {
       //   required: true
       // },
       "item[name]": {
@@ -40,11 +40,14 @@ $(function () {
       "item[price]": {
         required: true,
         range: [300, 9999999]
+      },
+      "item[region]": {
+        valueNotEquals: ""
       }
     },
     // エラーメッセージの定義
     messages: {
-      "item[images_attributes][0][image]": {
+      "item[images_attributes][1][image]": {
         required: '画像がありません'
       },
       "item[name]": {
@@ -71,6 +74,9 @@ $(function () {
         required: '300以上9999999以下で入力してください',
         range: '300以上9999999以下で入力してください'
       }
+      // "item[region]": {
+      //   valueNotEquals: "選択してください"
+      // }
     },
     errorClass: "invalid",
     errorElement: "p",
@@ -87,7 +93,7 @@ $(function () {
     }
   });
   // 選択欄をフォーカスアウトしたときにバリデーションを実行(ウィザードページ毎)
-  $("#item_images_attributes_0_image, #item_name, #item_description, #parent_category, #child_category, #grandchild_category, #item_status, #item_shipping_method, #item_shopping_date, #item_price").blur(function () {
+  $("#item_images_attributes_0_image, #item_name, #item_description, #parent_category, #child_category, #grandchild_category, #item_status, #item_shipping_method, #item_shopping_date, #item_price, #item_region").blur(function () {
     $(this).valid();
   });
 });
