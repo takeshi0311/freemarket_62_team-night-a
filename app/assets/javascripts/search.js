@@ -3,7 +3,7 @@ $(function() {
   function addItem(item) {
     let html = `
       <div class="search-result">
-        <a href= "items/${item.id}">${item.name}</a>
+        <a href= "/items/${item.id}">${item.name}</a>
       </div>
     `;
     $(".item-search-result").append(html);

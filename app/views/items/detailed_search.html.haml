@@ -35,7 +35,7 @@
         - @items.each do |item|
           %ul.grid_box
             %li.image
-              = image_tag item.images[0].image.url
+              = link_to image_tag(item.images[0].image.url), item_path(id: item.id)
             %li.name
               = item.name
             %li.price
