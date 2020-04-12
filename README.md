@@ -12,39 +12,39 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |frigana_last_name|string|null :false|
 |birthday|integer|null :false|
 |phone_number|integer|null :false|
-|profile|text||
+|birthday_year|integer|null :false|
+|birthday_month|integer|null :false|
+|birthday_day|integer|null :false|
 ### Association
 - has_many items
-- has_many purchases
 - has_many comments
 - has_one pay
 - has_one address
+- has_many favorite
 ## items
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |description|text|null: false|
-|size|string||
 |status|integer|null: false, enum|
-|shipping_charges|string|null: false|
 |shipping_method|string|null: false|
+|brand|string||
 |region|string|null: false|
 |price|integer|nill: false|
 |shopping_date|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
-|brand_id|integer|null: false, foreign_key: true|
+|buyer_id|integer||
+|Favorites_count|integer||
 ### Association
 - belongs_to user
 - belongs_to category
-- belongs_to brand
 - has_many comments
 - has_many images
-- has_one purchase
 ## comments
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|text|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
@@ -61,8 +61,9 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|integer|null: false|
-|prefecture|string|null: false|
+|prefecture_id|string|null: false|
 |municipalitie|string|null: false|
+|street|string|null: false|
 |building|string||
 |user_id|integer|null: false, foreign_key: true|
 ### Association
@@ -70,32 +71,32 @@ https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0de
 ## pays
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false|
-|month|integer|null: false|
-|year|integer|null: false|
-|security_code|integer|null: false|
+|card_id|string|null: false|
+|customer_id|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to user
-## purchases
+## categories
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to user
-- belongs_to item
-## categorys
-|Column|Type|Options|
-|------|----|-------|
-|type|string|null: false|
+|name|string|null: false|
 |ancestry|string|null: false|
 ### Association
 - has_many items
 - has_ancestry
-## brands
+## favorites
 |Column|Type|Options|
 |------|----|-------|
-|type|string|null: false|
+|item_id|integer||
+|user_id|integer||
 ### Association
 - has_many items
+- has_many user
+## sns_credentials
+|Column|Type|Options|
+|------|----|-------|
+|provider|string||
+|uid|string||
+|user_id|integer||
+### Association
+- has_many user
