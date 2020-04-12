@@ -1,5 +1,7 @@
 # FURIMA DB設計
-https://www.lucidchart.com/invitations/accept/f31cae39-ac94-4141-97d5-5e0735d0deca
+
+[ER図](https://gyazo.com/64f88446edfa37fc802f98a5277dd6d4)
+
 ## users
 |Column|Type|Options|
 |------|----|-------|
