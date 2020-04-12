@@ -1,6 +1,6 @@
 # FURIMA DB設計
 
-[ER図](https://gyazo.com/64f88446edfa37fc802f98a5277dd6d4)
+[ER図](https://gyazo.com/065d52bdfbbc98b534fcd4d104dbc1fa)
 
 ## users
 |Column|Type|Options|
@@ -12,7 +12,6 @@
 |last_name|string|null :false|
 |frigana_family_name|string|null :false|
 |frigana_last_name|string|null :false|
-|birthday|integer|null :false|
 |phone_number|integer|null :false|
 |birthday_year|integer|null :false|
 |birthday_month|integer|null :false|
