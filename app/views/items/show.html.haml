@@ -44,14 +44,11 @@
                           .items-box_photo__soldout__inner
                             SOLD
                   %tr
+                  -if @item.images.count > 1 #画像が１個以下の時は表示しない
                     %td
-                      = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
-                        = image_tag @item.images[0].image.url,size: "147x87"
-                      = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
-                        = image_tag @item.images[0].image.url,size: "147x87"
-                    %td
-                      = link_to "javascript:void(0)", onmouseover:"changeimage(gon.image.image)" do
-                        = image_tag @item.images.first.image.url,size: "147x87"
+                      - @item.images.each do |image|
+                        = link_to image.image.url, 'data-lightbox': image.id do
+                          = image_tag image.image.url if image.image?
             .item-Box__price
               %span= @item.price
               .item-Box__price-detail
@@ -141,3 +138,5 @@
           .productLists
   = render partial:  "cameraBtn"
 =render "items/singlefooter"
+                  
+
