@@ -68,15 +68,38 @@ class ItemsController < ApplicationController
     end
   end
 
-  
+  def category_select
+    # カテゴリーが親要素の場合
+    if @category.parent.nil?
+      @category_parent        = @category.name
+      @category_child         = " "
+      @category_grandchildern = " "
+      gon.category_parent = @category
+      gon.select_parent   = @category.children
+# カテゴリーが子要素の場合
+    elsif @category.parent.parent.nil?
+      @category_parent        = @category.parent.name
+      @category_child         = @category.name
+      @category_grandchildern = " "
+      gon.category_parent = @category.parent
+      gon.category_child  = @category
+# カテゴリーが孫要素の場合
+    else
+      @category_parent        = @category.parent.parent.name
+      @category_child         = @category.parent.name
+      @category_grandchildern = @category.name
+      gon.category_parent = @category.parent.parent
+      gon.category_child  = @category.parent
+      gon.category_grandchildern = @category
+    end
+  end
 
   def show
     gon.image = Image.find_by(item_id: params[:id])
     @item = Item.find(params[:id])
     @item_image = @item.images[0]
-    @category_grandchildern = Category.find_by(id: "#{@item.category_id}")
-    @category_children = @category_grandchildern.parent
-    @category_parent = @category_children.parent
+    @category = Category.find_by(id: "#{@item.category_id}")
+    category_select
     @image = Image.find_by(item_id: params[:id])
     @comments = @item.comments.includes(:user)
   end
