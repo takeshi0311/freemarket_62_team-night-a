@@ -66,14 +66,11 @@
                   %tr
                     %th カテゴリー
                     %td
-                      -# = link_to "メンズ","#" 
-                      = link_to "#{@category_parent.name}","#" 
+                      = link_to "#{@category_parent}","#" 
                       %br/
-                      -# = link_to "ジャケット/アウター", "#" 
-                      = link_to "#{@category_children.name}", "#"
+                      = link_to "#{@category_child}", "#"
                       %br/
-                      -# = link_to "ノーカラージャケット", "#" 
-                      = link_to "#{@category_grandchildern.name}", "#" 
+                      = link_to "#{@category_grandchildern}", "#" 
                   %tr
                     %th ブランド
                     %td= @item.brand
