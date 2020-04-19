@@ -35,7 +35,7 @@ class PaysController < ApplicationController
     if pay.destroy
       redirect_to action: "new", notice: "削除しました"
     else
-      redirect_to action: "new", alert:  "削除できません"
+      redirect_to action: "new", alert:  "削除できませんでした"
     end
   end
 

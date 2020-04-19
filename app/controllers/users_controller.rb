@@ -26,14 +26,13 @@ class UsersController < ApplicationController
     @item = user.item.page(params[:page]).per(5).order("created_at DESC")
   end
   
-  def register
-    
+  def register  
     @user = User.new(id:current_user.id)
     @address = @user.build_address(user_params[:address_attributes])
     if @address.save
-      redirect_to root_path
+      redirect_to root_path, notice: "住所登録に成功しました"
     else
-      render address_users_path
+      render address_users_path, alert:"住所登録に失敗しました"
     end
   end
 

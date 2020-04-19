@@ -1,26 +1,6 @@
 = render partial:  "header"
 - breadcrumb :item_name
 = render "layouts/breadcrumbs"
-%nav.breadCrumbs
-  %ul
-    %li
-      = link_to "FRIMA", "#" 
-    %li
-      %i.fa.fa-angle-right
-    %li
-      = link_to "メンズ", "#" 
-    %li
-      %i.fa.fa-angle-right
-    %li
-      = link_to "ジャケット/アウター", "#" 
-    %li
-      %i.fa.fa-angle-right
-    %li
-      = link_to "ノーカラージャケット", "#" 
-    %li
-      %i.fa.fa-angle-right
-    %li
-      %p= @item.name
 
 - if flash[:notice]
   %p.alert= flash[:notice]
