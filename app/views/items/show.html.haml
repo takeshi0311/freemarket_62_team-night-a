@@ -67,7 +67,8 @@
                     %th 発送日の目安
                     %td= @item.shopping_date
             .optionalArea
-              = render partial:"items/favoriteBtn"
+              - if user_signed_in?
+                = render partial:"items/favoriteBtn"
               %ul
                 - if @item.buyer_id.present?
                   %section.buy-content__btn
