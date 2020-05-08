@@ -5,7 +5,7 @@
  メルカリクローンとなっており、ほぼ本家のメルカリと同じ機能となっています。<br>
  また自分がチーム開発を元に学んだことや反省点を記したpdfファイルは以下になります。<br>
  ぜひ一度ご覧頂ければと思います。<br>
- 
+ https://docs.google.com/document/d/1YLw9e-1oJAQtuTlS1JcSwgOyoHX6AcffhQlw5g0H6CQ/edit#
  
 # Installation
 下記URLにアクセスしpassを入力してください。<br>
